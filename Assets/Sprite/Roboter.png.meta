@@ -1,0 +1,283 @@
+fileFormatVersion: 2
+guid: 8c07444222497864e81b1cd951a4f1b5
+TextureImporter:
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings:
+  - buildTarget: iPhone
+    maxTextureSize: 1024
+    textureFormat: -2
+    compressionQuality: 50
+  spriteSheet:
+    sprites:
+    - name: Roboter_0
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 721
+        width: 49
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Roboter_1
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 721
+        width: 49
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Roboter_2
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 721
+        width: 49
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Roboter_3
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 756
+        width: 41
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Roboter_4
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 766
+        width: 26
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Roboter_5
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 731
+        width: 41
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Roboter_6
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 743
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Roboter_7
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 743
+        width: 19
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Roboter_8
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 747
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Roboter_9
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 742
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Roboter_10
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 742
+        width: 4
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Roboter_11
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 572
+        width: 101
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Roboter_12
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 571
+        width: 99
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Roboter_13
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 571
+        width: 101
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Roboter_14
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 422
+        width: 99
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Roboter_15
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 422
+        width: 99
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Roboter_16
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 422
+        width: 108
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Roboter_17
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 272
+        width: 99
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Roboter_18
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 272
+        width: 112
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Roboter_19
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 270
+        width: 99
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Roboter_20
+      rect:
+        serializedVersion: 2
+        x: 474
+        y: 253
+        width: 139
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Roboter_21
+      rect:
+        serializedVersion: 2
+        x: 638
+        y: 258
+        width: 45
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Roboter_22
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 118
+        width: 99
+        height: 133
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Roboter_23
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 125
+        width: 99
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Roboter_24
+      rect:
+        serializedVersion: 2
+        x: 313
+        y: 111
+        width: 99
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Roboter_25
+      rect:
+        serializedVersion: 2
+        x: 431
+        y: 112
+        width: 61
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+  spritePackingTag: 
+  userData: 
