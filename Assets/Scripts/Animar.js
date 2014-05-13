@@ -3,7 +3,7 @@ var anim: Animator;
 var stand: float;
 function Start () {
 //pega o componente "Animator" e armazena na variavel anim
-
+//teste
 anim = GetComponent("Animator");
 //stand(parado por muito tempo) recebe 0
 stand = 0;
