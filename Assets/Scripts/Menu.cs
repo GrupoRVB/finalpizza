@@ -10,7 +10,7 @@ public class Menu : MonoBehaviour {
 		animator = GetComponent<Animator>();
 		animator.SetInteger("Selecionado", atual);
 	}
-	
+	//teste
 	// Update is called once per frame
 	void Update () {
 				lado = Input.GetAxis ("Horizontal");
