@@ -72,18 +72,19 @@ public class Jogador : MonoBehaviour {
 		}
 		//move o jogador para a direçao em que esta sendo precionada
 		if (anim.GetInteger ("velo") == 1 && anim.GetBool ("atirando") == true) {
-			if (Input.GetAxis ("Tiro") > 0) {
+						if (Input.GetAxis ("Tiro") > 0) {
 				
-				player.transform.localScale = new Vector2 (-0.5f, 0.5f);
-				player.transform.Translate (andarFrente, 0, 0);
+								player.transform.localScale = new Vector2 (-0.5f, 0.5f);
+								player.transform.Translate (andarFrente, 0, 0);
 				
-			}
-			if (Input.GetAxis ("Tiro") < 0) {
+						}
+						if (Input.GetAxis ("Tiro") < 0) {
 				
-				player.transform.localScale = new Vector2 (0.5f, 0.5f);
-				player.transform.Translate (andarFrente, 0, 0);
-			} 
-		}else {
+								player.transform.localScale = new Vector2 (0.5f, 0.5f);
+								player.transform.Translate (andarFrente, 0, 0);
+						} 
+				}
+
 			player.transform.Translate (andarFrente, 0, 0);
 		}
 		
@@ -145,6 +146,7 @@ public class Jogador : MonoBehaviour {
 			anim.SetBool("cansado", false);
 		} else {
 			atacando = false;
+			anim.SetBool("atacando", false);
 		}
 		Debug.LogError (andarFrente);
 
@@ -177,6 +179,7 @@ public class Jogador : MonoBehaviour {
 			
 		}
 	}
+
 	void Atirar()
 	{
 		
