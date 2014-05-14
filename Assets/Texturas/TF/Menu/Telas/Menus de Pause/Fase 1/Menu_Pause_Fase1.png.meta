@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Texturas/TF/Menu/Telas/Menus de Pause/Fase 1/Menu_Pause_Fase1.png.meta
 guid: 270c097746d7a0d4a83709b840bb3162
+=======
+guid: 5812736179e962049b474753c4dd35b7
+>>>>>>> 502c215652c13c39642390f4af97a4f993c43c5f:Assets/Texturas/TF/Menu/Telas/Menus de Pause/Fase 1/Menu_Pause_Fase1.png.meta
 TextureImporter:
   serializedVersion: 2
   mipmaps:
