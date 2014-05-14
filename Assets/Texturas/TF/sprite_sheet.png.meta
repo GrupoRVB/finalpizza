@@ -24,13 +24,13 @@ TextureImporter:
   maxTextureSize: 1024
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 1
     mipBias: -1
-    wrapMode: -1
+    wrapMode: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -44,6 +44,240 @@ TextureImporter:
     textureFormat: -2
     compressionQuality: 50
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: sprite_sheet_0
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 595
+        width: 45
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: sprite_sheet_1
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 595
+        width: 40
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: sprite_sheet_2
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 595
+        width: 39
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: sprite_sheet_3
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 595
+        width: 41
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: sprite_sheet_4
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 678
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: sprite_sheet_5
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 672
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: sprite_sheet_6
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 672
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: sprite_sheet_7
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 668
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: sprite_sheet_8
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 589
+        width: 97
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: sprite_sheet_9
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 482
+        width: 41
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: sprite_sheet_10
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 482
+        width: 49
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: sprite_sheet_11
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 482
+        width: 45
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: sprite_sheet_12
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 480
+        width: 53
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: sprite_sheet_13
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 480
+        width: 54
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: sprite_sheet_14
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 482
+        width: 53
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: sprite_sheet_15
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 369
+        width: 41
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: sprite_sheet_16
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 369
+        width: 49
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: sprite_sheet_17
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 369
+        width: 45
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: sprite_sheet_18
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 368
+        width: 53
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: sprite_sheet_19
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 368
+        width: 54
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: sprite_sheet_20
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 369
+        width: 53
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: sprite_sheet_21
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 261
+        width: 45
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: sprite_sheet_22
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 261
+        width: 50
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: sprite_sheet_23
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 256
+        width: 40
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: sprite_sheet_24
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 257
+        width: 40
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: sprite_sheet_25
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 256
+        width: 46
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
   spritePackingTag: 
   userData: 

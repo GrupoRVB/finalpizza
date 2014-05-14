@@ -11,10 +11,12 @@ public class Movimento : MonoBehaviour {
 	public float fireRate = 0.52f;
 	public float fireTomate = 0.1f;
 	private float proximotiro = 0.0F;
+	private float oxilador;
 	private int municao_azeitona = 5;
 	private int municao_tomate = 20;
 	private int tipodemunicao = 1;
 	private bool chefe = false;
+	private bool contrario =false;
 	Vector3 localScale;
 	public float andarFrente;
 	public GUIText muniAze;
@@ -52,8 +54,13 @@ public class Movimento : MonoBehaviour {
 	//trata do movimento
 	void Moviment()
 	{
+		if (contrario == false) {
+			oxilador = 1;
+				} else {
+			oxilador = 0.5f;
+				}
 				//cria a variavel que armazena se se o jogador esta andando para frente ou para tras
-				andarFrente = Input.GetAxis ("Horizontal") * speed;
+				andarFrente = ((Input.GetAxis ("Horizontal") * speed)*oxilador);
 				//se o valor de x for negativo(andando pra esquerda)
 				if (andarFrente < 0) {
 						//os sprites mudam para a esquerda
@@ -66,18 +73,24 @@ public class Movimento : MonoBehaviour {
 				//move o jogador para a direçao em que esta sendo precionada
 		if (anim.GetInteger ("velo") == 1 && anim.GetBool ("atirando") == true) {
 						if (Input.GetAxis ("Tiro") > 0) {
-				
 								player.transform.localScale = new Vector2 (-0.5f, 0.5f);
 								player.transform.Translate (andarFrente, 0, 0);
+				if(andarFrente > 0){
+					contrario =true;
+				}
+
 				
 						}
 						if (Input.GetAxis ("Tiro") < 0) {
-				
 								player.transform.localScale = new Vector2 (0.5f, 0.5f);
 								player.transform.Translate (andarFrente, 0, 0);
+				if(andarFrente < 0){
+					contrario =true;
+				}
 						} 
 		}else {
 			player.transform.Translate (andarFrente, 0, 0);
+			contrario = false;
 				}
 
 
@@ -136,6 +149,7 @@ public class Movimento : MonoBehaviour {
 						atacando = false;
 				}
 		Debug.LogError (andarFrente);
+
 
 	}//finalizada parte de movimento
 
