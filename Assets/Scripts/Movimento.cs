@@ -19,6 +19,7 @@ public class Movimento : MonoBehaviour {
 	private bool contrario =false;
 	Vector3 localScale;
 	public float andarFrente;
+	public float andarCima;
 	public GUIText muniAze;
 	public GUIText muniTomat;
 	private bool vivo = true;
@@ -95,7 +96,8 @@ public class Movimento : MonoBehaviour {
 
 
 				//cria a variavel que armazena se se o jogador esta indo para cima ou para baixo
-				float andarCima = Input.GetAxis ("Vertical") * speed;
+
+		andarCima = Input.GetAxis ("Vertical") * speed;
 				//move o jogador para a direçao em que esta sendo precionada
 				player.transform.Translate (0, andarCima, 0);
 				//se o jogador chegar no ponto maximo definido da tela
