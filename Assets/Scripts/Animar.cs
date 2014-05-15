@@ -4,15 +4,19 @@ using System.Collections;
 public class Animar : MonoBehaviour {
 	private Animator anim;
 	private float stand;
+	public int tipo;
 	void Start () {
 		//pega o componente "Animator" e armazena na variavel anim
 		//teste
 		anim = GetComponent<Animator>();
+		anim.SetInteger("Tipo de tiro", 1);
 		//stand(parado por muito tempo) recebe 0
 		stand = 0;
 	}
 	
 	void Update () {
+		tipo = GetComponent<Movimento> ().tipodemunicao;
+		Debug.LogError (tipo);
 		//a cada frame ele recebe o valor 0.01;
 		stand += 0.01f;
 		//se stand for maior que 5;
@@ -57,14 +61,14 @@ public class Animar : MonoBehaviour {
 		// se apertar o botao definido como "l1"
 		if (Input.GetButton ("l1")||  Input.GetKey (KeyCode.U)) {
 			//seta o estado tiroforte como true e a variavel stand se torna 0 ( se ele estiver no modo stand, sai dele)
-			anim.SetBool("tiroforte", true);
+			anim.SetInteger("Tipo de tiro", tipo);
 			stand = 0;
 			anim.SetBool("cansado", false);
 		}
 		//se apertar o botao definido como "r1" 
 		if (Input.GetButton ("r1")||  Input.GetKey (KeyCode.I)){
 			//seta o estado tiro forte como false e a variavel stand se torna 0 ( se ele estiver no modo stand, sai dele)
-			anim.SetBool("tiroforte", false);
+			anim.SetInteger("Tipo de tiro", tipo);
 			stand = 0;
 			anim.SetBool("cansado", false);
 		}

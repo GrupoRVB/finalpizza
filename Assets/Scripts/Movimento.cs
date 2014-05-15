@@ -14,7 +14,7 @@ public class Movimento : MonoBehaviour {
 	private float oxilador;
 	private int municao_azeitona = 5;
 	private int municao_tomate = 20;
-	private int tipodemunicao = 1;
+	public int tipodemunicao = 1;
 	private bool chefe = false;
 	private bool contrario =false;
 	Vector3 localScale;
@@ -200,6 +200,15 @@ public class Movimento : MonoBehaviour {
 												proximotiro = Time.time + fireTomate;								
 												Instantiate (BalaTomate, new Vector3 (player.transform.position.x, player.transform.position.y - 0.03f, 0), Quaternion.identity);
 												municao_tomate -= 1;
+					if (Input.GetAxis ("Tiro") > 0) {
+						
+						player.transform.localScale = new Vector2 (-0.5f, 0.5f);
+						
+					}
+					if (Input.GetAxis ("Tiro") < 0) {
+						
+						player.transform.localScale = new Vector2 (0.5f, 0.5f);
+					}
 					
 			
 										}
