@@ -22,6 +22,8 @@ public class Roboter_move : MonoBehaviour {
 		public float stop_falling;
 		public bool socando;
 		public float socando_timer;
+		public SpriteRenderer layer;
+		public BoxCollider2D hit_area;
 		
 		
 		
@@ -32,14 +34,18 @@ public class Roboter_move : MonoBehaviour {
 			
 			player = GameObject.Find ("Jogador");
 			anim = GetComponent<Animator> ();
+			layer = GetComponent<SpriteRenderer>();
+			hit_area = GetComponent<BoxCollider2D> ();
 			
 			//enemy_fire = GameObject.Find ("enemy_fire");
 			
 		}
 		
 		// Update is called once per frame
-		void Update () {	
+		void Update () {
 			
+		this.hit_area.center = new Vector2(0,0);
+		this.hit_area.size = new Vector2(0,0);
 			
 			distancia = player.transform.position.x - this.transform.position.x;
 			if (distancia > -10 && distancia < 10) {
@@ -91,7 +97,7 @@ public class Roboter_move : MonoBehaviour {
 
 				random_action = Random.Range(1,100);
 
-				if(random_action < 35)
+				if(random_action < 1)
 				{
 					anim.SetBool ("andando", false);
 					anim.SetBool ("tiro", true);
@@ -100,7 +106,7 @@ public class Roboter_move : MonoBehaviour {
 					control = Time.time + 0.5f;
 					this.shoting = true;
 
-				}else if(random_action >= 50 && random_action < 100){
+				}else if(random_action >= 1 && random_action < 2){
 					anim.SetBool ("andando", false);
 					anim.SetBool ("soco", true);
 					next_walk = Time.time + 2.1f;
@@ -113,12 +119,12 @@ public class Roboter_move : MonoBehaviour {
 						this.dir = -1;
 					}
 
-				}else if(random_action >= 35 && random_action < 50){
+				}else if(random_action >= 2 && random_action < 100){
 					anim.SetBool ("andando", false);
 					anim.SetBool ("pulo", true);
 					next_walk = Time.time + 8.5f;
 					next_action = Time.time + 15;
-					control = Time.time + 0.5f;
+					control = Time.time + 1.5f;
 					this.jumping = true;
 					trigger_fall = Time.time + Random.Range(3,6);
 					stop_falling = Time.time + 8;
@@ -137,7 +143,9 @@ public class Roboter_move : MonoBehaviour {
 			
 					this.transform.localScale = new Vector2 (-1 * this.dir, 1);
 					this.transform.Translate (0.04f * this.dir ,0 ,0);
-
+					this.hit_area.center = new Vector2((- 1 * this.dir) * 0.4f, -0.2f);
+					this.hit_area.size = new Vector2(0.4f, 0.4f);
+					
 
 			}
 
@@ -167,6 +175,8 @@ public class Roboter_move : MonoBehaviour {
 				this.jumping = false;
 				anim.SetBool ("pulo", false);
 				anim.SetBool ("caindo", true);
+				this.hit_area.center = new Vector2((- 1 * this.dir) * 0.2f, -0.4f);
+				this.hit_area.size = new Vector2(1, 0.4f);
 
 				if(distancia >=0)
 				{
@@ -183,10 +193,12 @@ public class Roboter_move : MonoBehaviour {
 
 			}
 
-			if(this.is_falling == true && this.transform.position.y <= player.transform.position.y + 1){
+			if(this.is_falling == true && this.transform.position.y <= player.transform.position.y + 0.5f){
 
 				stop_falling = 0;
 				this.is_falling = false;
+
+
 
 			}
 
@@ -196,8 +208,8 @@ public class Roboter_move : MonoBehaviour {
 			
 		}
 		
+
+		}
 		
-		
-		
-	}
+	
 
