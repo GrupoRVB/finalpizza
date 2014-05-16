@@ -7,6 +7,7 @@ public class Boss_fire : MonoBehaviour {
 	public float cont_wait;
 	public int real_dir;
 	public GameObject player;
+	public GameObject chefe;
 	
 	// Use this for initialization
 	void Start () {
@@ -14,11 +15,10 @@ public class Boss_fire : MonoBehaviour {
 		cont_wait = 0;
 		
 		player = GameObject.Find ("Jogador");
-		if (this.transform.position.x <= player.transform.position.x) {
-			this.dir = 1;
-		}else{
-			this.dir = -1;	
-		}
+		chefe = GameObject.Find ("Boss");
+
+		this.dir = chefe.GetComponent<Roboter_move> ().aim;
+	
 		
 		
 		
@@ -48,12 +48,18 @@ public class Boss_fire : MonoBehaviour {
 		//}
 	}
 	
-	void OnCollisionEnter2D(Collider2D other) {
+	void OnTriggerEnter2D(Collider2D other) {
+
+		if (other.gameObject.tag == "jogado") {
+			
+			other.GetComponent<Barra>().quantvida-=8;
+			other.GetComponent<Barra>().rend.color = new Color(1f, 0f, 0f, 1f);
+			other.GetComponent<Barra>().invenc = true;
+			other.GetComponent<Barra>().proxima = Time.time + 0.8f;
 		
-		if(other.gameObject.tag == "jogado"){
-			//Destroy(this.gameObject, 0.001f);
-			other.transform.Translate(5.5f,0,0);
+			Destroy (gameObject, 0.002f);
+
 		}
-		Destroy (gameObject, 0.002f);
-	}
+
+		}
 }

@@ -23,6 +23,12 @@ public class Enemymov : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {	
 	
+		if (player.transform.position.x >= 53.10f) {
+
+			Destroy (gameObject, 0.002f);
+
+				}
+
 	}
 	void OnTriggerEnter2D(Collider2D other) {
 				if (other.gameObject.tag == "Bala") {
