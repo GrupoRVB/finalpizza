@@ -2,21 +2,21 @@
 using System.Collections;
 
 public class Barra : MonoBehaviour {
-	private float posicaox;
-	private float posicaoy;
-	private float altura;
-	private float largura;
-	private float proxima;
-	private float acender;
-	private float dano;
-	private float quantvida;
-	private float MaxVida;
+	public float posicaox;
+	public float posicaoy;
+	public float altura;
+	public float largura;
+	public float proxima;
+	public float acender;
+	public float dano;
+	public float quantvida;
+	public float MaxVida;
 
 	public GUISkin textButton;
-	private Animator anim;
-	private SpriteRenderer rend;
-	private bool invenc;
-	private GameObject player;
+	public Animator anim;
+	public SpriteRenderer rend;
+	public bool invenc;
+	public GameObject player;
 
 	
 	
