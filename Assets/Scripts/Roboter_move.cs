@@ -139,7 +139,7 @@
 
 									random_action = Random.Range (1, 100);
 
-									if (random_action < 98) {
+									if (random_action < 35) {
 											anim.SetBool ("andando", false);
 											anim.SetBool ("tiro", true);
 											next_walk = Time.time + 0.8f;
@@ -152,7 +152,7 @@
 											}
 											this.shoting = true;
 
-									} else if (random_action >= 98 && random_action < 99) {
+									} else if (random_action >= 35 && random_action < 75) {
 											anim.SetBool ("andando", false);
 											anim.SetBool ("soco", true);
 											next_walk = Time.time + 2.1f;
