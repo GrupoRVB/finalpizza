@@ -5,6 +5,8 @@ public class Menu : MonoBehaviour {
 	private float lado;
 	private int atual =1;
 	private float limitador =0.0f;
+	public GameObject Controle;
+	public GameObject Creditos;
 	// Use this for initialization
 	void Start () {
 		animator = GetComponent<Animator>();
@@ -20,7 +22,7 @@ public class Menu : MonoBehaviour {
 								atual = 1;
 						}
 						animator.SetInteger ("Selecionado", atual);
-						limitador = Time.time + 0.3f;	
+						limitador = Time.time + 0.3f;
 
 
 				}
@@ -31,16 +33,16 @@ public class Menu : MonoBehaviour {
 			}
 				animator.SetInteger ("Selecionado", atual);
 				limitador = Time.time + 0.3f;
+
 		}
 		if(Input.GetButton("Selecionar")){
 			if(atual == 1){
 				Application.LoadLevel ("fase1");
 			}
 			if(atual ==2 ){
-				Application.LoadLevel("Controles");
 			}
+			Controle.transform.Translate = new Vector2 (0.09841728f,0.0701046f)
 			if(atual == 3){
-				Application.LoadLevel("Creditos");
 			}
 			if(atual == 4){
 				Application.Quit();
