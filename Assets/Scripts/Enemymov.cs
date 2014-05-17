@@ -8,6 +8,8 @@ public class Enemymov : MonoBehaviour {
 	public float rand;
 	private float vida;
 	private SpriteRenderer layer;
+	public GameObject enemy_creator;
+
 	// Use this for initialization
 	void Start () {
 		//inimigo começa com 5 vidas
@@ -16,14 +18,14 @@ public class Enemymov : MonoBehaviour {
 		layer = GetComponent<SpriteRenderer>();
 		//acha o gameobject "jogador"(personagem principal) e atribui a variavel player
 		player = GameObject.Find ("Jogador");
-			
+		enemy_creator = GameObject.Find ("Enemy_spawner");	
 
 	}
 	
 	// Update is called once per frame
 	void Update () {	
 	
-		if (player.transform.position.x >= 53.10f) {
+		if (enemy_creator.GetComponent<Enemy_Create>().boss_activated == true) {
 
 			Destroy (gameObject, 0.002f);
 

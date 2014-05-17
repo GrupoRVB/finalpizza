@@ -15,14 +15,11 @@ public class Boss_fire : MonoBehaviour {
 		cont_wait = 0;
 		
 		player = GameObject.Find ("Jogador");
-		chefe = GameObject.Find ("Boss");
+		chefe = GameObject.FindWithTag ("boss");
 
 		this.dir = chefe.GetComponent<Roboter_move> ().aim;
-	
-		
-		
-		
-		if (dir <= 0) {
+
+		if (this.dir <= 0) {
 			
 			this.transform.localScale = new Vector2 (1, 1);
 		} else {
