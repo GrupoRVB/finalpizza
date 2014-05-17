@@ -41,7 +41,7 @@ public class Menu : MonoBehaviour {
 			}
 			if(atual ==2 ){
 			}
-			Controle.transform.Translate = new Vector2 (0.09841728f,0.0701046f)
+			Controle.transform.Translate (0.09841728f,0.0701046f,0);
 			if(atual == 3){
 			}
 			if(atual == 4){
