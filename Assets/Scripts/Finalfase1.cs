@@ -11,7 +11,7 @@ public class Finalfase1 : MonoBehaviour {
 		// Update is called once per frame
 		void Update () {
 			passar += 0.1f*Time.deltaTime;	
-			if (passar > 0.855f) {
+			if (passar > 2f) {
 			Debug.LogError(passar);
 				
 				Application.LoadLevel ("Menu");
