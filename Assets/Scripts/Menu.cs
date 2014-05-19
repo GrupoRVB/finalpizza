@@ -35,10 +35,24 @@ public class Menu : MonoBehaviour {
 			
 			
 		}
+<<<<<<< HEAD
 		if (lado < 0 && Time.time > limitador) {
 			atual -= 1;
 			if (atual < 1){
 				atual = 4;
+=======
+		if(Input.GetButton("Selecionar")){
+			if(atual == 1){
+				Application.LoadLevel ("fase1");
+			}
+			if(atual ==2 ){
+			}
+			Controle.transform.Translate (0.09841728f,0.0701046f,0);
+			if(atual == 3){
+			}
+			if(atual == 4){
+				Application.Quit();
+>>>>>>> 1dc8bac24dafd47e8f32c9504d620cc2c06285f2
 			}
 			animator.SetInteger ("Selecionado", atual);
 			limitador = Time.time + 0.3f;

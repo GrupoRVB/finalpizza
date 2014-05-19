@@ -15,6 +15,9 @@ public class Enemy_Create : MonoBehaviour {
 	private float total;
 	private float total2;
 	public float time_spawn;
+	public bool boss_activated = false;
+	public float tempo;
+
 
 	// Use this for initialization
 	void Start () {
@@ -22,27 +25,36 @@ public class Enemy_Create : MonoBehaviour {
 		player = GameObject.Find ("Jogador");
 		// seta que o tempo de spawn dos mobs e de 2.5f
 		time_spawn = 2.5F;
+
+
 	
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
+		tempo = Time.time;
 		//se for a posiçao do jogador for maior ou igual a 53.10
-		if (player.transform.position.x >= 53.10f) {
-						this.boss_control = Time.time + 4;
+		if (player.transform.position.x >= 54.1f && boss_activated == false) {
+			boss_control = Time.time + 8;
+			boss_activated = true;
 			//o tempo do spawn e diminuido (fica mais rapido)
 			//time_spawn = 1.3F;
 				}
 				//}
 		//se o tempo(em segundos) for menor que o controlador do boss e o boss ainda nao for criado
-		if (Time.time < this.boss_control && this.boss_created == false) {
+		if (Time.time > boss_control && boss_created == false && boss_activated == true) {
 			//boss recebe que ja foi criado
-			this.boss_created = true;	
+			boss_created = true;	
 			// e instancia o boss
-			Instantiate (Boss, new Vector3 (57, -0.59f, 0), Quaternion.identity);
+			Instantiate (Boss, new Vector3 (58, 2.37f, 0), Quaternion.identity);
+
+
+
+
 				}
 		//se 
-		if (Time.time > proximotiro && this.cont_spawn < 100 && player.transform.position.x > 2.35f && this.boss_created == false) {								
+		if (Time.time > proximotiro && this.cont_spawn < 100 && player.transform.position.x > 2.35f && boss_activated == false) {								
 			proximotiro = Time.time + time_spawn;;	
 		
 						total2 = Random.Range (player.transform.position.x - 2, player.transform.position.x + 2);
