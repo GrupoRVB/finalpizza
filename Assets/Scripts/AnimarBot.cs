@@ -3,31 +3,22 @@ using System.Collections;
 
 public class AnimarBot : MonoBehaviour {
 	private Animator anim;
+	private int tipo;
+	private GameObject player;
 	//funciona quando inicia
 	void Start () {
-		
+		player = GameObject.Find ("Jogador");
 		//pega o componente "Animator" e armazena na variavel anim
 		anim = GetComponent<Animator>();
 		//seta a variavel do animator "sele" como true
-		anim.SetBool("sele", true);
 		
 	}
 	//funciona por frame
 	void Update () {
 		//stand vai receber 0.1por frame
-		
+		tipo = player.GetComponent<Movimento> ().tipodemunicao;
 		//se apertar o botao definido como tipo 1
-		if (Input.GetButton ("l1")||  Input.GetKey (KeyCode.U)) {
-			anim.SetBool("sele", false);
+		anim.SetInteger("Tipo de tiro", tipo);
 			
 		}
-		if (Input.GetButton ("r1")||  Input.GetKey (KeyCode.I)){
-			anim.SetBool("sele", true);
-			
-		}
-		
-		
-		
-		
-	}
 }

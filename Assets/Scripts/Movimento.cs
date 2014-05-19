@@ -12,6 +12,7 @@ public class Movimento : MonoBehaviour {
 	public float fireTomate = 0.1f;
 	private float proximotiro = 0.0F;
 	private float oxilador;
+	private int totaldearmas = 2;
 	private int municao_azeitona = 5;
 	private int municao_tomate = 20;
 	public int tipodemunicao = 1;
@@ -150,7 +151,7 @@ public class Movimento : MonoBehaviour {
 				} else {
 						atacando = false;
 				}
-		Debug.LogError (andarFrente);
+
 
 
 	}//finalizada parte de movimento
@@ -158,16 +159,22 @@ public class Movimento : MonoBehaviour {
 	//trata o tiro
 	void TipoDeTiro()
 	{
-		if (Input.GetButton ("r1")||  Input.GetKey (KeyCode.U)) {
-						tipodemunicao = 1;
 
-				}
-		if (Input.GetButton ("l1")||  Input.GetKey (KeyCode.I)) {
-						tipodemunicao = 2;
-
-		
-				}
+		if (Input.GetButtonDown ("l1")||  Input.GetKey  (KeyCode.I)) {
+			tipodemunicao -= 1;
+			if(tipodemunicao < 1){
+				tipodemunicao = totaldearmas;
+			}
 		}
+		if (Input.GetButtonDown ("r1")||  Input.GetKey (KeyCode.U)) {
+			tipodemunicao +=1;
+			if( tipodemunicao > totaldearmas){
+
+				tipodemunicao = 1;
+			}
+		}
+		}
+		
 	void Atirar()
 	{
 

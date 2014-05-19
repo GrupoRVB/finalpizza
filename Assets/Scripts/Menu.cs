@@ -16,7 +16,6 @@ public class Menu : MonoBehaviour {
 	//teste
 	// Update is called once per frame
 	void Update () {
-		Debug.LogError (atual);
 		if (principal == true) {
 						Menu_inicial ();
 				} else {

@@ -16,7 +16,6 @@ public class Animar : MonoBehaviour {
 	
 	void Update () {
 		tipo = GetComponent<Movimento> ().tipodemunicao;
-		Debug.LogError (tipo);
 		//a cada frame ele recebe o valor 0.01;
 		stand += 0.01f;
 		//se stand for maior que 5;
