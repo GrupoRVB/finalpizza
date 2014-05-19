@@ -145,7 +145,7 @@
 											next_walk = Time.time + 0.8f;
 											next_action = Time.time + 7;
 											control = Time.time + 0.5f;
-											if (distancia >= 0.8f) {
+											if (distancia >= 0.3f) {
 												this.aim = 1;
 											} else {
 												this.aim = -1;
@@ -165,7 +165,7 @@
 													this.dir = -1;
 											}
 
-									} else if (random_action >= 99 && random_action < 100) {
+									} else if (random_action >= 75 && random_action < 100) {
 											anim.SetBool ("andando", false);
 											anim.SetBool ("pulo", true);
 											next_walk = Time.time + 8.5f;
@@ -221,11 +221,11 @@
 									this.jumping = false;
 									anim.SetBool ("pulo", false);
 									anim.SetBool ("caindo", true);
-									this.hit_area.center = new Vector2 ((- 1 * this.dir) * 0.2f, -0.4f);
-									this.hit_area.size = new Vector2 (1, 0.4f);
+									this.hit_area.center = new Vector2 (-0.2f, -0.6f);
+									this.hit_area.size = new Vector2 (1.4f, 0.8f);
 									this.jump_hit = true;
 
-									if (distancia >= 0) {
+									if (distancia >= 0) {	
 											this.transform.Translate (0.01f, 0, 0);
 						
 						
