@@ -35,83 +35,84 @@
 		
 		// Update is called once per frame
 		void Update () {	
+				if (anim.GetBool ("vivo") == false) {
+						this.transform.Translate (0, 0, 0);
+				} else {
 
-
-			distancia = player.transform.position.x - this.transform.position.x;
-			if (distancia > -8 && distancia < 8) {
+						distancia = player.transform.position.x - this.transform.position.x;
+						if (distancia > -8 && distancia < 8) {
 											
-					if(Time.time > next_walk){
+								if (Time.time > next_walk) {
 
-					if (distancia >= 0 && this.isAttacking == false) {
-						this.transform.localScale = new Vector2 (-1, 1);
-						this.aim = 1;
-					} else {
-						this.transform.localScale = new Vector2 (1, 1);
-						this.aim = -1;
-					}
+										if (distancia >= 0 && this.isAttacking == false) {
+												this.transform.localScale = new Vector2 (-1, 1);
+												this.aim = 1;
+										} else {
+												this.transform.localScale = new Vector2 (1, 1);
+												this.aim = -1;
+										}
 
-					this.isAttacking = false;
+										this.isAttacking = false;
 
-						if(distancia >=0)
-						{
-							this.transform.Translate (0.008f, 0, 0);
-							anim.SetBool ("andando", true);
-						anim.SetBool ("atacando", false);
-						}else{
-							this.transform.Translate (-0.008f, 0, 0);
-							anim.SetBool ("andando", true);
-						anim.SetBool ("atacando", false);
+										if (distancia >= 0) {
+												this.transform.Translate (0.008f, 0, 0);
+												anim.SetBool ("andando", true);
+												anim.SetBool ("atacando", false);
+										} else {
+												this.transform.Translate (-0.008f, 0, 0);
+												anim.SetBool ("andando", true);
+												anim.SetBool ("atacando", false);
 							
-						}
+										}
 										
 					
-					if (player.transform.position.y >= this.transform.position.y) {
-						this.transform.Translate (0, 0.003f, 0);
-						anim.SetBool ("andando", true);
-						anim.SetBool ("atacando", false);
+										if (player.transform.position.y >= this.transform.position.y) {
+												this.transform.Translate (0, 0.003f, 0);
+												anim.SetBool ("andando", true);
+												anim.SetBool ("atacando", false);
 						
 						
-					} else {
+										} else {
 						
 						
-						this.transform.Translate (0, -0.003f, 0);
-						anim.SetBool ("andando", true);
-						anim.SetBool ("atacando", false);
-					}
-				}
+												this.transform.Translate (0, -0.003f, 0);
+												anim.SetBool ("andando", true);
+												anim.SetBool ("atacando", false);
+										}
+								}
 
-					if (distancia >= -1 && distancia <= 1 && Time.time > proximotiro)
-				{	
-					this.isAttacking = true;
-					next_walk = Time.time + 2;
-					proximotiro = Time.time + 6;
-					anim.SetBool ("andando", false);
-					anim.SetBool ("atacando", true);
-					control_attack = Time.time + 0.15f;
-					this.aim_attack = this.aim;
+								if (distancia >= -1 && distancia <= 1 && Time.time > proximotiro) {	
+										this.isAttacking = true;
+										next_walk = Time.time + 2;
+										proximotiro = Time.time + 6;
+										anim.SetBool ("andando", false);
+										anim.SetBool ("atacando", true);
+										control_attack = Time.time + 0.15f;
+										this.aim_attack = this.aim;
 
 
-				}
+								}
 
-				if (this.isAttacking == true && Time.time <= control_attack){
+								if (this.isAttacking == true && Time.time <= control_attack) {
 
-				if(player.transform.position.y >= this.transform.position.y){
+										if (player.transform.position.y >= this.transform.position.y) {
 
-					this.transform.Translate(0.1f * this.aim_attack, 0.05f, 0);
-				}	else{
+												this.transform.Translate (0.1f * this.aim_attack, 0.05f, 0);
+										} else {
 
-					this.transform.Translate(0.1f * this.aim_attack, -0.05f, 0);
+												this.transform.Translate (0.1f * this.aim_attack, -0.05f, 0);
 
-				}
+										}
 
 										
+								}
+
+
+
+						}
+			
+			
 				}
-
-
-
-			}
-			
-			
 		}
 		
 		void OnTriggerEnter2D(Collider2D other) {
