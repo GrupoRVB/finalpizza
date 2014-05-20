@@ -9,6 +9,7 @@ public class Enemymov : MonoBehaviour {
 	private float vida;
 	private SpriteRenderer layer;
 	public GameObject enemy_creator;
+	public Animator anim;
 
 	// Use this for initialization
 	void Start () {
@@ -19,20 +20,22 @@ public class Enemymov : MonoBehaviour {
 		//acha o gameobject "jogador"(personagem principal) e atribui a variavel player
 		player = GameObject.Find ("Jogador");
 		enemy_creator = GameObject.Find ("Enemy_spawner");	
+		anim = this.GetComponent<Animator>();
+		anim.SetBool("vivo", true);
 
 	}
 	
 	// Update is called once per frame
-	void Update () {	
-	
-		if (enemy_creator.GetComponent<Enemy_Create>().boss_activated == true) {
+	void Update () {
+				if (enemy_creator.GetComponent<Enemy_Create> ().boss_activated == true) {
 
-			Destroy (gameObject, 0.002f);
+						Destroy (gameObject, 0.002f);
 
 				}
-
-	}
+		}
 	void OnTriggerEnter2D(Collider2D other) {
+			if (anim.GetBool ("vivo") == false) {
+			} else {
 				if (other.gameObject.tag == "Bala") {
 						vida -= 3;
 			this.transform.Translate( - 0.1f, 0, 0);
@@ -54,7 +57,9 @@ public class Enemymov : MonoBehaviour {
 
 
 		if(vida <= 0){
-			Destroy (this.gameObject);
+			anim.SetBool("vivo", false);
+				Component.Destroy(this.collider2D);
+			Destroy (this.gameObject , 2f);
 			rand = Random.Range(1,100);
 			if(rand <40){
 				Instantiate (municao1, new Vector3(this.transform.position.x,this.transform.position.y-0.2f,0), Quaternion.identity);
@@ -65,9 +70,9 @@ public class Enemymov : MonoBehaviour {
 			if(rand < 10){
 				Instantiate (municao1, new Vector3(this.transform.position.x,this.transform.position.y-0.3f,0), Quaternion.identity);
 				Instantiate (municao2, new Vector3(this.transform.position.x,this.transform.position.y-0.2f,0), Quaternion.identity);
-			
-			}Debug.LogError(rand);
+					}
 				}
+			}
 		}
+	}
 
-}
