@@ -39,28 +39,30 @@ public class Menu : MonoBehaviour {
 						atual -= 1;
 						if (atual < 1) {
 								atual = 4;
-
-								if (Input.GetButton ("Selecionar")) {
-										if (atual == 1) {
-												Application.LoadLevel ("fase1");
-										}
-										if (atual == 2) {
-										}
-										Controle.transform.Translate (0.09841728f, 0.0701046f, 0);
-										if (atual == 3) {
-										}
-										if (atual == 4) {
-												Application.Quit ();
-										}
-										animator.SetInteger ("Selecionado", atual);
-										limitador = Time.time + 0.3f;
-			
-								}
-								if (Input.GetButton ("Selecionar")) {
-										Selecionar ();
-										principal = false;
-								}
 						}
+						animator.SetInteger ("Selecionado", atual);
+						limitador = Time.time + 0.3f;
+				}
+
+				if (Input.GetButton ("Selecionar")) {
+						if (atual == 1) {
+								Application.LoadLevel ("fase1");
+						}
+						if (atual == 2) {
+						}
+						Controle.transform.Translate (0.09841728f, 0.0701046f, 0);
+						if (atual == 3) {
+						}
+						if (atual == 4) {
+								Application.Quit ();
+						}
+						animator.SetInteger ("Selecionado", atual);
+						limitador = Time.time + 0.3f;
+			
+				}
+				if (Input.GetButton ("Selecionar")) {
+						Selecionar ();
+						principal = false;
 				}
 		}
 

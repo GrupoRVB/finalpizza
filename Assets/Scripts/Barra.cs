@@ -30,8 +30,8 @@ public class Barra : MonoBehaviour {
 		//pega o componente Animator, e joga ele dentro da variavel anim
 		anim = GetComponent<Animator>();
 		//define as variveis
-		quantvida =100;
-		MaxVida= 100;
+		quantvida =105;
+		MaxVida= 105;
 		dano = 0.8f;
 		proxima = 0.0f;
 		//seta a variavel "vivo" como true no componente animator
@@ -40,6 +40,7 @@ public class Barra : MonoBehaviour {
 	}
 	
 	void Update () {
+	
 		if(invenc == true){
 			rend.color = new Color(1f, 0f, 0f, 1f);	
 			acender +=1;
@@ -68,18 +69,18 @@ public class Barra : MonoBehaviour {
 		// define a largura barra de vida sendo 1/4 do tamanho da tela, e com uma quantidade de vida pre estabelecida, podendo sempre que a quantidade maxima de vida aumentar, a mesma tambem cresce.
 		largura = Screen.width/4 * (quantvida/MaxVida);
 		//se a quant de vida for menor que que 100(ou seja, que a vida maxima
-		if(quantvida < 100){
+		if(quantvida < 105){
 			//ganha uma pequena regeneraçao de vida
 			quantvida+= 0.009f;
 			
 		}
 		//se a vida for menor ou igual a 0
-		if (quantvida <=0){
+		if (quantvida <=5){
 			//seta na variavel de animaçao "vivo", para false
 			anim.SetBool("vivo", false);
+			quantvida = 3;
 			
-		}
-		
+		}		
 	}
 	//funçao de colisao no colisor
 	void OnCollisionEnter2D(Collision2D coll) {
