@@ -10,6 +10,9 @@ public class Enemymov : MonoBehaviour {
 	private SpriteRenderer layer;
 	public GameObject enemy_creator;
 	public Animator anim;
+	public SpriteRenderer rend;
+	private int feedback;
+	private bool tomou = false;
 
 	// Use this for initialization
 	void Start () {
@@ -22,11 +25,28 @@ public class Enemymov : MonoBehaviour {
 		enemy_creator = GameObject.Find ("Enemy_spawner");	
 		anim = this.GetComponent<Animator>();
 		anim.SetBool("vivo", true);
+		rend = this.GetComponent<SpriteRenderer>();
 
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		if(tomou == true){
+			rend.color = new Color(1f, 0f, 0f, 1f);	
+			feedback +=1;
+			rend.color = new Color(1f, 1f, 1f, 1f);
+			
+			if(feedback == 9){
+				rend.color = new Color(1f, 0f, 0f, 1f);	
+				feedback = 0;
+				tomou =false;
+			}
+			
+		}
+		if(tomou == false){
+			rend.color = new Color(1f, 1f, 1f, 1f);
+			
+		}
 				if (enemy_creator.GetComponent<Enemy_Create> ().boss_activated == true) {
 
 						Destroy (gameObject, 0.002f);
@@ -34,17 +54,21 @@ public class Enemymov : MonoBehaviour {
 				}
 		}
 	void OnTriggerEnter2D(Collider2D other) {
+
 			if (anim.GetBool ("vivo") == false) {
 			} else {
 				if (other.gameObject.tag == "Bala") {
+				tomou = true;
 						vida -= 3;
 			this.transform.Translate( - 0.1f, 0, 0);
 				}
 			if (other.gameObject.tag == "Bala_tomate") {
+				tomou = true;
 						vida -= 1.5f;
 				}
 		if (other.gameObject.tag == "jogado" && other.GetComponent<Movimento>().atacando == true && other.GetComponent<Movimento>().andarFrente == 0) {
 			vida -= 2;
+				tomou = true;
 
 
 				}
@@ -53,7 +77,7 @@ public class Enemymov : MonoBehaviour {
 				}
 		if (player.transform.position.y < this.transform.position.y) {
 			this.layer.sortingLayerName = "Frente";
-		}		
+		}
 
 
 		if(vida <= 0){
