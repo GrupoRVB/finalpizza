@@ -53,7 +53,7 @@ TextureImporter:
         width: 49
         height: 64
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
     - name: Roboter_1
       rect:
         serializedVersion: 2
@@ -62,7 +62,7 @@ TextureImporter:
         width: 49
         height: 64
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
     - name: Roboter_2
       rect:
         serializedVersion: 2
@@ -71,7 +71,7 @@ TextureImporter:
         width: 49
         height: 64
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
     - name: Roboter_3
       rect:
         serializedVersion: 2
@@ -80,7 +80,7 @@ TextureImporter:
         width: 41
         height: 40
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
     - name: Roboter_4
       rect:
         serializedVersion: 2
@@ -89,7 +89,7 @@ TextureImporter:
         width: 26
         height: 26
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
     - name: Roboter_5
       rect:
         serializedVersion: 2
@@ -98,8 +98,26 @@ TextureImporter:
         width: 41
         height: 40
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
     - name: Roboter_6
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 658
+        width: 124
+        height: 140
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Roboter_7
+      rect:
+        serializedVersion: 2
+        x: 519
+        y: 658
+        width: 124
+        height: 140
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Roboter_8
       rect:
         serializedVersion: 2
         x: 247
@@ -107,8 +125,8 @@ TextureImporter:
         width: 9
         height: 8
       alignment: 0
-      pivot: {x: .5, y: .5}
-    - name: Roboter_7
+      pivot: {x: 0, y: 0}
+    - name: Roboter_9
       rect:
         serializedVersion: 2
         x: 266
@@ -116,8 +134,8 @@ TextureImporter:
         width: 19
         height: 8
       alignment: 0
-      pivot: {x: .5, y: .5}
-    - name: Roboter_8
+      pivot: {x: 0, y: 0}
+    - name: Roboter_10
       rect:
         serializedVersion: 2
         x: 297
@@ -125,8 +143,8 @@ TextureImporter:
         width: 5
         height: 5
       alignment: 0
-      pivot: {x: .5, y: .5}
-    - name: Roboter_9
+      pivot: {x: 0, y: 0}
+    - name: Roboter_11
       rect:
         serializedVersion: 2
         x: 298
@@ -134,8 +152,8 @@ TextureImporter:
         width: 12
         height: 11
       alignment: 0
-      pivot: {x: .5, y: .5}
-    - name: Roboter_10
+      pivot: {x: 0, y: 0}
+    - name: Roboter_12
       rect:
         serializedVersion: 2
         x: 309
@@ -143,8 +161,8 @@ TextureImporter:
         width: 4
         height: 10
       alignment: 0
-      pivot: {x: .5, y: .5}
-    - name: Roboter_11
+      pivot: {x: 0, y: 0}
+    - name: Roboter_13
       rect:
         serializedVersion: 2
         x: 21
@@ -152,8 +170,8 @@ TextureImporter:
         width: 99
         height: 140
       alignment: 0
-      pivot: {x: .5, y: .5}
-    - name: Roboter_12
+      pivot: {x: 0, y: 0}
+    - name: Roboter_14
       rect:
         serializedVersion: 2
         x: 146
@@ -161,8 +179,8 @@ TextureImporter:
         width: 99
         height: 140
       alignment: 0
-      pivot: {x: .5, y: .5}
-    - name: Roboter_13
+      pivot: {x: 0, y: 0}
+    - name: Roboter_15
       rect:
         serializedVersion: 2
         x: 256
@@ -170,8 +188,26 @@ TextureImporter:
         width: 99
         height: 140
       alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Roboter_16
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 516
+        width: 124
+        height: 140
+      alignment: 0
       pivot: {x: .5, y: .5}
-    - name: Roboter_14
+    - name: Roboter_17
+      rect:
+        serializedVersion: 2
+        x: 518
+        y: 516
+        width: 124
+        height: 140
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Roboter_18
       rect:
         serializedVersion: 2
         x: 21
@@ -179,8 +215,8 @@ TextureImporter:
         width: 99
         height: 140
       alignment: 0
-      pivot: {x: .5, y: .5}
-    - name: Roboter_15
+      pivot: {x: 0, y: 0}
+    - name: Roboter_19
       rect:
         serializedVersion: 2
         x: 134
@@ -188,8 +224,8 @@ TextureImporter:
         width: 99
         height: 140
       alignment: 0
-      pivot: {x: .5, y: .5}
-    - name: Roboter_16
+      pivot: {x: 0, y: 0}
+    - name: Roboter_20
       rect:
         serializedVersion: 2
         x: 247
@@ -197,8 +233,8 @@ TextureImporter:
         width: 108
         height: 140
       alignment: 0
-      pivot: {x: .5, y: .5}
-    - name: Roboter_17
+      pivot: {x: 0, y: 0}
+    - name: Roboter_21
       rect:
         serializedVersion: 2
         x: 36
@@ -206,8 +242,8 @@ TextureImporter:
         width: 99
         height: 140
       alignment: 0
-      pivot: {x: .5, y: .5}
-    - name: Roboter_18
+      pivot: {x: 0, y: 0}
+    - name: Roboter_22
       rect:
         serializedVersion: 2
         x: 157
@@ -215,8 +251,8 @@ TextureImporter:
         width: 112
         height: 140
       alignment: 0
-      pivot: {x: .5, y: .5}
-    - name: Roboter_19
+      pivot: {x: 0, y: 0}
+    - name: Roboter_23
       rect:
         serializedVersion: 2
         x: 352
@@ -224,8 +260,8 @@ TextureImporter:
         width: 99
         height: 140
       alignment: 0
-      pivot: {x: .5, y: .5}
-    - name: Roboter_20
+      pivot: {x: 0, y: 0}
+    - name: Roboter_24
       rect:
         serializedVersion: 2
         x: 474
@@ -233,8 +269,8 @@ TextureImporter:
         width: 139
         height: 66
       alignment: 0
-      pivot: {x: .5, y: .5}
-    - name: Roboter_21
+      pivot: {x: 0, y: 0}
+    - name: Roboter_25
       rect:
         serializedVersion: 2
         x: 638
@@ -242,8 +278,8 @@ TextureImporter:
         width: 45
         height: 49
       alignment: 0
-      pivot: {x: .5, y: .5}
-    - name: Roboter_22
+      pivot: {x: 0, y: 0}
+    - name: Roboter_26
       rect:
         serializedVersion: 2
         x: 30
@@ -251,17 +287,17 @@ TextureImporter:
         width: 99
         height: 134
       alignment: 0
-      pivot: {x: .5, y: .5}
-    - name: Roboter_23
+      pivot: {x: 0, y: 0}
+    - name: Roboter_27
       rect:
         serializedVersion: 2
         x: 161
         y: 117
         width: 99
-        height: 134
+        height: 127
       alignment: 0
-      pivot: {x: .5, y: .5}
-    - name: Roboter_24
+      pivot: {x: 0, y: 0}
+    - name: Roboter_28
       rect:
         serializedVersion: 2
         x: 285
@@ -269,8 +305,8 @@ TextureImporter:
         width: 99
         height: 127
       alignment: 0
-      pivot: {x: .5, y: .5}
-    - name: Roboter_25
+      pivot: {x: 0, y: 0}
+    - name: Roboter_29
       rect:
         serializedVersion: 2
         x: 433
@@ -278,6 +314,6 @@ TextureImporter:
         width: 61
         height: 8
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
   spritePackingTag: 
   userData: 
