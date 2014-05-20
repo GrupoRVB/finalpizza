@@ -15,16 +15,10 @@ public class Boss_fire : MonoBehaviour {
 		cont_wait = 0;
 		
 		player = GameObject.Find ("Jogador");
-		chefe = GameObject.FindWithTag ("boss");
+		chefe = GameObject.FindGameObjectWithTag ("boss");
 
 		this.dir = chefe.GetComponent<Roboter_move> ().aim;
 
-		if (this.dir <= 0) {
-			
-			this.transform.localScale = new Vector2 (1, 1);
-		} else {
-			this.transform.localScale = new Vector2 (-1, 1);
-		}
 	}
 	
 	// Update is called once per frame
@@ -35,7 +29,7 @@ public class Boss_fire : MonoBehaviour {
 		//if (cont_wait >= 20) {
 		
 		Destroy (gameObject, 1.5f);
-		if (dir <= 0) {
+		if (this.dir <= 0) {
 			this.transform.Translate (-0.1f, 0, 0);
 			
 			

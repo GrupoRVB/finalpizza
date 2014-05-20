@@ -67,7 +67,7 @@ public class Enemy_Create : MonoBehaviour {
 						if (total2 < -2.15f) {
 								total2 = -2.1f;
 						}
-						Instantiate (Robotic, new Vector3 (total2, -0.8572596f, 0), Quaternion.identity);
+						Instantiate (Enemy2, new Vector3 (total2, -0.8572596f, 0), Quaternion.identity);
 						//Instantiate (Enemy2, new Vector3(Random.Range(player.transform.position.x - 3, player.transform.position.x + 3),-0.8572596f,0),Quaternion.identity);
 						//Instantiate (Robotic, new Vector3(Random.Range(player.transform.position.x - 3, player.transform.position.x + 3),-0.8572596f,0),Quaternion.identity);
 						cont_spawn++;

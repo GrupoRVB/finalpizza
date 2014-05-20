@@ -33,9 +33,10 @@
 			public int camera_control = 0;
 			public float camera_y;
 			public float max_y = 0.154f;
-			public float min_y = -0.862f;
+			public float min_y = -0.81f;
 			public float distancia_y;
-						
+			public float randomX;
+			public float randomY;			
 			
 			// Use this for initialization
 			void Start () {
@@ -48,10 +49,10 @@
 				camera_y = camera_obj.transform.position.y;
 				
 				anim.SetBool ("caindo", true);
-				next_walk = Time.time + 6;
+				next_walk = Time.time + 4;
 				trigger_fall = Time.time + 0.01f;
 				stop_falling = Time.time + 8;
-				next_action = Time.time + 12;
+				next_action = Time.time +11;
 				
 								
 			}
@@ -72,10 +73,10 @@
 			
 			if (distancia > -10 && distancia < 10) {
 					
-							if (distancia >= 0.3f && this.socando == false) {
+							if (distancia >= 0.1f && this.socando == false) {
 									this.transform.localScale = new Vector2 (-1, 1);
 									this.aim = 1;
-							} else if(distancia <= -0.3f) {
+							} else if(distancia <= -0.1f) {
 									this.transform.localScale = new Vector2 (1, 1);
 									this.aim = -1;
 							}
@@ -139,20 +140,20 @@
 
 									random_action = Random.Range (1, 100);
 
-									if (random_action < 35) {
+									if (random_action < 1) {
 											anim.SetBool ("andando", false);
 											anim.SetBool ("tiro", true);
 											next_walk = Time.time + 0.8f;
 											next_action = Time.time + 7;
 											control = Time.time + 0.5f;
-											if (distancia >= 0.3f) {
+											if (distancia >= 0.1f) {
 												this.aim = 1;
 											} else {
 												this.aim = -1;
 											}
 											this.shoting = true;
 
-									} else if (random_action >= 35 && random_action < 75) {
+									} else if (random_action >= 1 && random_action < 2) {
 											anim.SetBool ("andando", false);
 											anim.SetBool ("soco", true);
 											next_walk = Time.time + 2.1f;
@@ -165,7 +166,7 @@
 													this.dir = -1;
 											}
 
-									} else if (random_action >= 75 && random_action < 100) {
+									} else if (random_action >= 2 && random_action < 100) {
 											anim.SetBool ("andando", false);
 											anim.SetBool ("pulo", true);
 											next_walk = Time.time + 8.5f;
@@ -211,6 +212,8 @@
 						
 									}
 
+									
+
 
 							}
 
@@ -221,28 +224,20 @@
 									this.jumping = false;
 									anim.SetBool ("pulo", false);
 									anim.SetBool ("caindo", true);
-									this.hit_area.center = new Vector2 (-0.2f, -0.6f);
-									this.hit_area.size = new Vector2 (1.4f, 0.8f);
+									this.hit_area.center = new Vector2 (-0.15f, -0.6f);
+									this.hit_area.size = new Vector2 (1.6f, 0.8f);
 									this.jump_hit = true;
 
-									if (distancia >= 0) {	
-											this.transform.Translate (0.01f, 0, 0);
-						
-						
-									} else {
-											this.transform.Translate (-0.01f, 0, 0);
-						
-						
-						
-									}
+									randomX = Random.Range(55.13f,58.458f);
+									randomY = Random.Range(-0.81f, 0.154f);
 
+									this.transform.position = new Vector2(randomX, randomY);
 
 							}
 
-							if (this.is_falling == true && this.transform.position.y <= Random.Range(min_y,max_y)) {
+							if (this.is_falling == true && this.transform.position.y <= randomY) {
 									
-									this.hit_area.center = new Vector2 (0, 0);
-									this.hit_area.size = new Vector2 (0, 0);
+									
 									stop_falling = 0;
 									this.is_falling = false;
 
@@ -273,6 +268,8 @@
 									}
 							}else{		
 									camera_shake = false;
+									this.hit_area.center = new Vector2 (0, 0);
+									this.hit_area.size = new Vector2 (0, 0);
 					
 								}
 								}
