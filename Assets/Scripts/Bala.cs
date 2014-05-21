@@ -25,12 +25,12 @@ public class Bala : MonoBehaviour {
 	//metodo para definir a direçao aonde a bola esta indo
 	void direcao(){
 		//se a escala do jogador estiver maior que zero
-		if (Input.GetAxis ("Tiro") < 0) {
+		if (Input.GetAxis ("Tiro") < 0  || Input.GetKey (KeyCode.K)) {
 			//dar força ao rigidbody2D em um vetor forca(2000 no eixo x(direita)) e 0 ( 0 no eixto Y)
 						rigidbody2D.AddForce (new Vector2 (forca, 0));
 				}
 		//se a escala do jogador estiver menor que zero
-		if (Input.GetAxis ("Tiro") > 0) {
+		if (Input.GetAxis ("Tiro") > 0  || Input.GetKey (KeyCode.J)) {
 
 			//dar força ao rigidbody2D em um vetor forca(-2000 no eixo x(esquerda)) e 0 ( 0 no eixto Y)
 		rigidbody2D.AddForce (new Vector2 (-forca, 0));

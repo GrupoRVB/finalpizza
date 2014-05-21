@@ -44,7 +44,7 @@ public class Menu : MonoBehaviour {
 						limitador = Time.time + 0.3f;
 				}
 
-				if (Input.GetButton ("Selecionar")) {
+				if (Input.GetButton ("Selecionar")|| Input.GetKey(KeyCode.J)){
 						if (atual == 1) {
 								Application.LoadLevel ("fase1");
 						}
@@ -60,14 +60,14 @@ public class Menu : MonoBehaviour {
 						limitador = Time.time + 0.3f;
 			
 				}
-				if (Input.GetButton ("Selecionar")) {
+		if (Input.GetButton ("Selecionar")|| Input.GetKey(KeyCode.J)) {
 						Selecionar ();
 						principal = false;
 				}
 		}
 
 	void Selecionar(){
-				if (Input.GetButton ("Selecionar")) {
+		if (Input.GetButton ("Selecionar")|| Input.GetKey(KeyCode.J)) {
 						if (atual == 1) {
 								Application.LoadLevel ("fase1");
 						}
@@ -84,11 +84,11 @@ public class Menu : MonoBehaviour {
 				}
 		}
 	void Voltar(){
-		if (Input.GetButton ("Voltar") && atual == 2) {
+		if (Input.GetButton ("Voltar") && atual == 2 || Input.GetKey(KeyCode.K) && atual == 2) {
 			Controle.transform.position = new Vector2 (0, 10);
 			principal = true;
 				}
-		if (Input.GetButton ("Voltar") && atual == 3) {
+		if (Input.GetButton ("Voltar") && atual == 3 || Input.GetKey(KeyCode.K) && atual == 3) {
 			Creditos.transform.position = new Vector2 (0, 10);
 			principal = true;
 		}

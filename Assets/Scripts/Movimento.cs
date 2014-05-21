@@ -74,7 +74,7 @@ public class Movimento : MonoBehaviour {
 				}
 				//move o jogador para a direçao em que esta sendo precionada
 		if (anim.GetInteger ("velo") == 1 && anim.GetBool ("atirando") == true) {
-						if (Input.GetAxis ("Tiro") > 0) {
+			if (Input.GetAxis ("Tiro") > 0 || Input.GetKey (KeyCode.J)){
 								player.transform.localScale = new Vector2 (-0.5f, 0.5f);
 								player.transform.Translate (andarFrente, 0, 0);
 				if(andarFrente > 0){
@@ -83,7 +83,7 @@ public class Movimento : MonoBehaviour {
 
 				
 						}
-						if (Input.GetAxis ("Tiro") < 0) {
+			if (Input.GetAxis ("Tiro") < 0 || Input.GetKey (KeyCode.K)) {
 								player.transform.localScale = new Vector2 (0.5f, 0.5f);
 								player.transform.Translate (andarFrente, 0, 0);
 				if(andarFrente < 0){
@@ -146,7 +146,7 @@ public class Movimento : MonoBehaviour {
 		if(Input.GetKey(KeyCode.F)){
 			player.transform.Translate(0.8f, 0 ,0);
 		}
-		if (Input.GetButton ("Atacar")) {
+		if (Input.GetButton ("Atacar")|| Input.GetKey (KeyCode.N)) {
 						atacando = true;
 				} else {
 						atacando = false;
@@ -160,13 +160,13 @@ public class Movimento : MonoBehaviour {
 	void TipoDeTiro()
 	{
 
-		if (Input.GetButtonDown ("l1")||  Input.GetKey  (KeyCode.I)) {
+		if (Input.GetButtonDown ("l1")||  Input.GetKeyDown  (KeyCode.I)) {
 			tipodemunicao -= 1;
 			if(tipodemunicao < 1){
 				tipodemunicao = totaldearmas;
 			}
 		}
-		if (Input.GetButtonDown ("r1")||  Input.GetKey (KeyCode.U)) {
+		if (Input.GetButtonDown ("r1")||  Input.GetKeyDown (KeyCode.U)) {
 			tipodemunicao +=1;
 			if( tipodemunicao > totaldearmas){
 
@@ -181,17 +181,17 @@ public class Movimento : MonoBehaviour {
 				//se o jogador apertar a tecla RT ou LT no controle
 				if (tipodemunicao == 1) {
 						if (municao_azeitona > 0) {		
-								if (Input.GetAxis ("Tiro") != 0 && Time.time > proximotiro || Input.GetKey (KeyCode.J) && Time.time > proximotiro) {								
+				if (Input.GetAxis ("Tiro") != 0 && Time.time > proximotiro || Input.GetKey (KeyCode.J) && Time.time > proximotiro || Input.GetKey (KeyCode.K) && Time.time > proximotiro) {								
 										//cria o objeto "Bala", na posiçao do player								
 										proximotiro = Time.time + fireRate;								
 										Instantiate (Bala, new Vector2 (player.transform.position.x, player.transform.position.y - 0.05f), Quaternion.identity);
 										municao_azeitona -= 1;
-										if (Input.GetAxis ("Tiro") > 0) {
+					if (Input.GetAxis ("Tiro") > 0 || Input.GetKey (KeyCode.J)) {
 						
 												player.transform.localScale = new Vector2 (-0.5f, 0.5f);
 
 										}
-										if (Input.GetAxis ("Tiro") < 0) {
+					if (Input.GetAxis ("Tiro") < 0  || Input.GetKey (KeyCode.K)) {
 						
 												player.transform.localScale = new Vector2 (0.5f, 0.5f);
 										}
@@ -202,17 +202,17 @@ public class Movimento : MonoBehaviour {
 				}
 						if (tipodemunicao == 2) {
 								if (municao_tomate > 0) {		
-										if (Input.GetAxis ("Tiro") != 0 && Time.time > proximotiro) {								
+				if (Input.GetAxis ("Tiro") != 0 && Time.time > proximotiro || Input.GetKey (KeyCode.J) && Time.time > proximotiro || Input.GetKey (KeyCode.K) && Time.time > proximotiro) {								
 												//cria o objeto "Bala", na posiçao do player								
 												proximotiro = Time.time + fireTomate;								
 												Instantiate (BalaTomate, new Vector3 (player.transform.position.x, player.transform.position.y - 0.03f, 0), Quaternion.identity);
 												municao_tomate -= 1;
-					if (Input.GetAxis ("Tiro") > 0) {
+					if (Input.GetAxis ("Tiro") > 0 || Input.GetKey (KeyCode.J)) {
 						
 						player.transform.localScale = new Vector2 (-0.5f, 0.5f);
 						
 					}
-					if (Input.GetAxis ("Tiro") < 0) {
+					if (Input.GetAxis ("Tiro") < 0 || Input.GetKey (KeyCode.K)) {
 						
 						player.transform.localScale = new Vector2 (0.5f, 0.5f);
 					}

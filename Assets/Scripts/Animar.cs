@@ -44,7 +44,7 @@ public class Animar : MonoBehaviour {
 		}
 		
 		//Se a tecla padrao de "tiro" for diferente de 0 (ou seja, se ela for 1) 
-		if (Input.GetAxis ("Tiro") != 0 ||  Input.GetKey (KeyCode.J)) {
+		if (Input.GetAxis ("Tiro") != 0 ||  Input.GetKey (KeyCode.J)||  Input.GetKey (KeyCode.K)) {
 			//manda para o componente animator na variavel "atirando" true e a variavel stand se torna 0 ( se ele estiver no modo stand, sai dele)
 			anim.SetBool("atirando", true);
 			stand = 0;
@@ -72,7 +72,7 @@ public class Animar : MonoBehaviour {
 			anim.SetBool("cansado", false);
 		}
 		//se o jogador apertar o botao definido como "Atacar"  
-		if(Input.GetButton("Atacar")){
+		if(Input.GetButton("Atacar")||  Input.GetKey (KeyCode.N)){
 			//seta o estado atacando como true e a variavel stand se torna 0 ( se ele estiver no modo stand, sai dele)
 			anim.SetBool("atacando", true);
 			stand = 0;
