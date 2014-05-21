@@ -31,20 +31,16 @@ public class Enemymov : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(tomou == true){
-			rend.color = new Color(1f, 0f, 0f, 1f);	
-			feedback +=1;
+		if (tomou == false) {
 			rend.color = new Color(1f, 1f, 1f, 1f);
-			
-			if(feedback == 9){
+				}else{
+			rend.color = new Color(1f, 0f, 0f, 1f);	
+			feedback +=1;			
+			if(feedback == 2){
 				rend.color = new Color(1f, 0f, 0f, 1f);	
 				feedback = 0;
 				tomou =false;
 			}
-			
-		}
-		if(tomou == false){
-			rend.color = new Color(1f, 1f, 1f, 1f);
 			
 		}
 				if (enemy_creator.GetComponent<Enemy_Create> ().boss_activated == true) {
@@ -53,15 +49,16 @@ public class Enemymov : MonoBehaviour {
 
 				}
 		}
+
 	void OnTriggerEnter2D(Collider2D other) {
 
 			if (anim.GetBool ("vivo") == false) {
 			} else {
 				if (other.gameObject.tag == "Bala") {
-				tomou = true;
 						vida -= 3;
 			this.transform.Translate( - 0.1f, 0, 0);
-				}
+								tomou = true;
+			}
 			if (other.gameObject.tag == "Bala_tomate") {
 				tomou = true;
 						vida -= 1.5f;

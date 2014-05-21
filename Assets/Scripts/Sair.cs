@@ -10,7 +10,7 @@ public class Sair : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetButton("Start") ){
+		if (Input.GetButton("Start") || Input.GetKey(KeyCode.K)){
 			Application.LoadLevel ("Menu");
 		}
 	
