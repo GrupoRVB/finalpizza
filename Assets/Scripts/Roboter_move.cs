@@ -59,9 +59,16 @@
 			
 			// Update is called once per frame
 			void Update () {
-			
+					
+		if (this.ishiting == false && this.socando == false && this.jump_hit == false) {
+
+			this.hit_area.center = new Vector2 (0, 0);
+			this.hit_area.size = new Vector2 (0, 0);
+
+				}			
+
 					distancia = player.transform.position.x - this.transform.position.x;
-					distancia_y = player.transform.position.y - this.transform.position.y;
+					distancia_y = player.transform.position.y - (this.transform.position.y - 0.4f);
 
 		if (player.transform.position.y > (this.transform.position.y - 0.4f)) {
 			this.layer.sortingLayerName = "Pe";
@@ -69,7 +76,7 @@
 		if (player.transform.position.y < (this.transform.position.y - 0.4f)) {
 			this.layer.sortingLayerName = "Frente";
 		}	
-
+			
 			
 			if (distancia > -10 && distancia < 10) {
 					
@@ -85,10 +92,12 @@
 									anim.SetBool ("soco", false);
 									anim.SetBool ("pulo", false);
 									anim.SetBool ("caindo", false);
+									anim.SetBool("normal", false);
 									anim.SetBool ("andando", true);
 									this.shoting = false;
 									this.socando = false;
 									this.jump_hit = false;
+									this.ishiting = false;
 
 									if (distancia <= -0.8f || distancia >= 0.8f) {
 											if (distancia >= 0) {
@@ -136,11 +145,11 @@
 					
 				}
 					
-							if (Time.time > next_action) {
+							if (Time.time > next_action && this.ishiting == false) {
 
 									random_action = Random.Range (1, 100);
 
-									if (random_action < 1) {
+									if (random_action < 40) {
 											anim.SetBool ("andando", false);
 											anim.SetBool ("tiro", true);
 											next_walk = Time.time + 0.8f;
@@ -153,7 +162,7 @@
 											}
 											this.shoting = true;
 
-									} else if (random_action >= 1 && random_action < 2) {
+									} else if (random_action >= 40 && random_action < 75) {
 											anim.SetBool ("andando", false);
 											anim.SetBool ("soco", true);
 											next_walk = Time.time + 2.1f;
@@ -166,7 +175,7 @@
 													this.dir = -1;
 											}
 
-									} else if (random_action >= 2 && random_action < 100) {
+									} else if (random_action >= 75 && random_action < 100) {
 											anim.SetBool ("andando", false);
 											anim.SetBool ("pulo", true);
 											next_walk = Time.time + 8.5f;
@@ -250,7 +259,8 @@
 					}
 				
 					if (camera_shake == true){
-			
+					this.hit_area.center = new Vector2 (0, 0);
+					this.hit_area.size = new Vector2 (0, 0);
 							if (Time.time < camera_time) {
 
 							if (camera_control >= 0 && camera_control <= 3) {
@@ -268,11 +278,22 @@
 									}
 							}else{		
 									camera_shake = false;
-									this.hit_area.center = new Vector2 (0, 0);
-									this.hit_area.size = new Vector2 (0, 0);
+									
 					
 								}
 								}
+
+		if (distancia >= -0.3f && distancia <= 0.3f && distancia_y > -0.2f && distancia_y < 0.2f) {
+
+			this.anim.SetBool("andando", false);
+			this.anim.SetBool("normal",true);
+			this.ishiting = true;
+			next_walk = 0;
+			next_walk = Time.time + 0.5f;
+			next_action = 0;
+			next_action = Time.time + 5;
+
+			}
 
 					}
 					
@@ -302,6 +323,19 @@
 				
 			}
 			
+		if (other.gameObject.tag == "jogado" && Time.time > time_hit && this.ishiting == true) {
+			
+			other.GetComponent<Barra>().quantvida-=15;
+			other.GetComponent<Barra>().rend.color = new Color(1f, 0f, 0f, 1f);
+			other.GetComponent<Barra>().invenc = true;
+			other.GetComponent<Barra>().proxima = Time.time + 0.8f;
+			other.transform.Translate(1 * this.aim,0, 0);
+			time_hit = Time.time + 3;
+			this.hit_area.center = new Vector2(0,0);
+			this.hit_area.size = new Vector2(0,0);
+			
+		}
+
 			
 		}
 
