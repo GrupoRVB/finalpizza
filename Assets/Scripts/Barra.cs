@@ -107,7 +107,7 @@ public class Barra : MonoBehaviour {
 			Destroy(other.gameObject);
 			//perde 2 de vida
 			quantvida -=2;
-			
+
 			
 			
 		}

@@ -5,6 +5,7 @@ public class Animar : MonoBehaviour {
 	private Animator anim;
 	private float stand;
 	public int tipo;
+	private bool tomou;
 	void Start () {
 		//pega o componente "Animator" e armazena na variavel anim
 		//teste
@@ -16,6 +17,10 @@ public class Animar : MonoBehaviour {
 	
 	void Update () {
 		tipo = GetComponent<Movimento> ().tipodemunicao;
+		tomou = GetComponent<Barra> ().invenc;
+		if (tomou == true) {
+			stand = 0;
+				}
 		//a cada frame ele recebe o valor 0.01;
 		stand += 0.01f;
 		//se stand for maior que 5;
