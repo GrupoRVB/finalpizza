@@ -33,10 +33,11 @@
 			public int camera_control = 0;
 			public float camera_y;
 			public float max_y = 0.154f;
-			public float min_y = -0.81f;
+			public float min_y = -0.71f;
 			public float distancia_y;
 			public float randomX;
-			public float randomY;			
+			public float randomY;
+			public bool action = false;
 			
 			// Use this for initialization
 			void Start () {
@@ -59,13 +60,6 @@
 			
 			// Update is called once per frame
 			void Update () {
-					
-		if (this.ishiting == false && this.socando == false && this.jump_hit == false) {
-
-			this.hit_area.center = new Vector2 (0, 0);
-			this.hit_area.size = new Vector2 (0, 0);
-
-				}			
 
 					distancia = player.transform.position.x - this.transform.position.x;
 					distancia_y = player.transform.position.y - (this.transform.position.y - 0.4f);
@@ -80,10 +74,10 @@
 			
 			if (distancia > -10 && distancia < 10) {
 					
-							if (distancia >= 0.1f && this.socando == false) {
+							if (distancia >= 0.4f && this.socando == false) {
 									this.transform.localScale = new Vector2 (-1, 1);
 									this.aim = 1;
-							} else if(distancia <= -0.1f) {
+							} else if(distancia <= -0.4f) {
 									this.transform.localScale = new Vector2 (1, 1);
 									this.aim = -1;
 							}
@@ -98,16 +92,17 @@
 									this.socando = false;
 									this.jump_hit = false;
 									this.ishiting = false;
+									this.action = false;
 
-									if (distancia <= -0.8f || distancia >= 0.8f) {
+									if (distancia <= -0.6f || distancia >= 0.6f) {
 											if (distancia >= 0) {
-													this.transform.Translate (0.01f, 0, 0);
+													this.transform.Translate (0.008f, 0, 0);
 													anim.SetBool ("andando", true);
 													this.hit_area.center = new Vector2 (0, 0);
 													this.hit_area.size = new Vector2 (0, 0);
 								
 											} else {
-													this.transform.Translate (-0.01f, 0, 0);
+													this.transform.Translate (-0.008f, 0, 0);
 													anim.SetBool ("andando", true);
 													this.hit_area.center = new Vector2 (0, 0);
 													this.hit_area.size = new Vector2 (0, 0);
@@ -145,7 +140,7 @@
 					
 				}
 					
-							if (Time.time > next_action && this.ishiting == false) {
+							if (Time.time > next_action) {
 
 									random_action = Random.Range (1, 100);
 
@@ -155,7 +150,8 @@
 											next_walk = Time.time + 0.8f;
 											next_action = Time.time + 7;
 											control = Time.time + 0.5f;
-											if (distancia >= 0.1f) {
+											action = true;
+											if (distancia >= 0.4f) {
 												this.aim = 1;
 											} else {
 												this.aim = -1;
@@ -168,8 +164,9 @@
 											next_walk = Time.time + 2.1f;
 											next_action = Time.time + 8;
 											this.socando = true;
+											action = true;
 											socando_timer = Time.time + 2;
-											if (distancia >= 0) {
+											if (distancia >= 0.4f) {
 													this.dir = 1;
 											} else {
 													this.dir = -1;
@@ -178,13 +175,14 @@
 									} else if (random_action >= 75 && random_action < 100) {
 											anim.SetBool ("andando", false);
 											anim.SetBool ("pulo", true);
-											next_walk = Time.time + 8.5f;
+											next_walk = Time.time + 8.1f;
 											next_action = Time.time + 15;
 											control = Time.time + 1.5f;
 											this.jumping = true;
-											trigger_fall = Time.time + Random.Range (3, 6);
+											trigger_fall = Time.time + 5;
 											stop_falling = Time.time + 8;
 											this.is_falling = false;
+											action = true;		
 
 
 									}
@@ -200,11 +198,7 @@
 				
 									this.transform.localScale = new Vector2 (-1 * this.dir, 1);
 									this.transform.Translate (0.04f * this.dir, 0, 0);
-									this.hit_area.center = new Vector2 (-0.4f, -0.2f);
-									this.hit_area.size = new Vector2 (0.4f, 0.4f);
-						
-
-							}
+								}
 
 							if (Time.time > control && this.jumping == true && Time.time < trigger_fall) {
 
@@ -221,6 +215,8 @@
 						
 									}
 
+								
+
 									
 
 
@@ -233,18 +229,13 @@
 									this.jumping = false;
 									anim.SetBool ("pulo", false);
 									anim.SetBool ("caindo", true);
-									this.hit_area.center = new Vector2 (-0.15f, -0.6f);
-									this.hit_area.size = new Vector2 (1.6f, 0.8f);
 									this.jump_hit = true;
 
-									randomX = Random.Range(55.13f,58.458f);
-									randomY = Random.Range(-0.81f, 0.154f);
-
-									this.transform.position = new Vector2(randomX, randomY);
+									
 
 							}
 
-							if (this.is_falling == true && this.transform.position.y <= randomY) {
+							if (this.is_falling == true && this.transform.position.y <= Random.Range(min_y,max_y)) {
 									
 									
 									stop_falling = 0;
@@ -283,7 +274,7 @@
 								}
 								}
 
-		if (distancia >= -0.3f && distancia <= 0.3f && distancia_y > -0.2f && distancia_y < 0.2f) {
+		if (distancia >= -0.4f && distancia <= 0.4f && distancia_y > -0.1f && distancia_y < 0.1f && action == false) {
 
 			this.anim.SetBool("andando", false);
 			this.anim.SetBool("normal",true);
