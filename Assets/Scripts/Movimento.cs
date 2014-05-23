@@ -26,6 +26,7 @@ public class Movimento : MonoBehaviour {
 	private bool vivo = true;
 	public bool atacando = false;
 	private Animator anim;
+	public AudioClip azeitona;
 	// Use this for initialization
 	void Start () {	
 
@@ -186,15 +187,18 @@ public class Movimento : MonoBehaviour {
 										proximotiro = Time.time + fireRate;								
 										Instantiate (Bala, new Vector2 (player.transform.position.x, player.transform.position.y - 0.05f), Quaternion.identity);
 										municao_azeitona -= 1;
+					audio.PlayOneShot(azeitona);
+
 					if (Input.GetAxis ("Tiro") > 0 || Input.GetKey (KeyCode.J)) {
 						
-												player.transform.localScale = new Vector2 (-0.5f, 0.5f);
-
-										}
-					if (Input.GetAxis ("Tiro") < 0  || Input.GetKey (KeyCode.K)) {
+						player.transform.localScale = new Vector2 (-0.5f, 0.5f);
 						
-												player.transform.localScale = new Vector2 (0.5f, 0.5f);
-										}
+					}
+					if (Input.GetAxis ("Tiro") < 0 || Input.GetKey (KeyCode.K)) {
+						
+						player.transform.localScale = new Vector2 (0.5f, 0.5f);
+					}
+
 			
 										
 								}
