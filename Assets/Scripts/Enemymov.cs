@@ -53,6 +53,7 @@ public class Enemymov : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other) {
 
 			if (anim.GetBool ("vivo") == false) {
+
 			} else {
 				if (other.gameObject.tag == "Bala") {
 						vida -= 3;
@@ -78,6 +79,7 @@ public class Enemymov : MonoBehaviour {
 
 
 		if(vida <= 0){
+				this.layer.sortingLayerName = "Frente";
 			anim.SetBool("vivo", false);
 				Component.Destroy(this.collider2D);
 			Destroy (this.gameObject , 2f);
