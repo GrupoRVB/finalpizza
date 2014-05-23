@@ -43,7 +43,7 @@ public class Enemymov : MonoBehaviour {
 			}
 			
 		}
-				if (enemy_creator.GetComponent<Enemy_Create> ().boss_activated == true) {
+				if (enemy_creator.GetComponent<Enemy_Create> ().boss_activated == true && this.tag != "boss") {
 
 						Destroy (gameObject, 0.002f);
 

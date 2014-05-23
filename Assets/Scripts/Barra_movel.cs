@@ -14,7 +14,7 @@ public class Barra_movel : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (player.transform.position.x < 56.60 && chefe == false) {
+		if (player.transform.position.x < 55.10 && chefe == false) {
 			this.transform.position = new Vector3 ((player.transform.position.x-horizontal),vertical, 0);
 		} else {
 			chefe = true;
