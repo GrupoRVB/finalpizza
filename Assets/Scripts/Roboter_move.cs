@@ -384,7 +384,6 @@
 				
 						if (other.gameObject.tag == "Bala") {
 								boss_life -= 1;
-								this.transform.Translate (- 0.1f, 0, 0);
 								tomou = true;
 						}
 						if (other.gameObject.tag == "Bala_tomate") {

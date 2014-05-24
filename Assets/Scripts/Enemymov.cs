@@ -57,7 +57,6 @@ public class Enemymov : MonoBehaviour {
 			} else {
 				if (other.gameObject.tag == "Bala") {
 						vida -= 3;
-			this.transform.Translate( - 0.1f, 0, 0);
 								tomou = true;
 			}
 			if (other.gameObject.tag == "Bala_tomate") {
