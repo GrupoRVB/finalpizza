@@ -55,11 +55,11 @@
 										this.isAttacking = false;
 
 										if (distancia >= 0) {
-												this.transform.Translate (0.008f, 0, 0);
+						this.transform.Translate (0.008f* Time.deltaTime, 0, 0);
 												anim.SetBool ("andando", true);
 												anim.SetBool ("atacando", false);
 										} else {
-												this.transform.Translate (-0.008f, 0, 0);
+						this.transform.Translate (-0.008f* Time.deltaTime, 0, 0);
 												anim.SetBool ("andando", true);
 												anim.SetBool ("atacando", false);
 							
@@ -67,7 +67,7 @@
 										
 					
 										if (player.transform.position.y >= this.transform.position.y) {
-												this.transform.Translate (0, 0.003f, 0);
+						this.transform.Translate (0, 0.003f* Time.deltaTime, 0);
 												anim.SetBool ("andando", true);
 												anim.SetBool ("atacando", false);
 						
@@ -75,7 +75,7 @@
 										} else {
 						
 						
-												this.transform.Translate (0, -0.003f, 0);
+						this.transform.Translate (0, -0.003f* Time.deltaTime, 0);
 												anim.SetBool ("andando", true);
 												anim.SetBool ("atacando", false);
 										}
@@ -97,10 +97,10 @@
 
 										if (player.transform.position.y >= this.transform.position.y) {
 
-												this.transform.Translate (0.1f * this.aim_attack, 0.05f, 0);
+						this.transform.Translate (0.1f * this.aim_attack* Time.deltaTime, 0.05f* Time.deltaTime, 0);
 										} else {
 
-												this.transform.Translate (0.1f * this.aim_attack, -0.05f, 0);
+						this.transform.Translate (0.1f * this.aim_attack* Time.deltaTime, -0.05f* Time.deltaTime, 0);
 
 										}
 

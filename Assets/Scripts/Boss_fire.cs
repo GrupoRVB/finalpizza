@@ -28,13 +28,13 @@ public class Boss_fire : MonoBehaviour {
 		
 		//if (cont_wait >= 20) {
 		
-		Destroy (gameObject, 1.5f);
+		Destroy (gameObject, 1.5f* Time.deltaTime);
 		if (this.dir <= 0) {
-			this.transform.Translate (-0.1f, 0, 0);
+			this.transform.Translate (-0.1f* Time.deltaTime, 0, 0);
 			
 			
 		} else {
-			this.transform.Translate (0.1f, 0, 0);
+			this.transform.Translate (0.1f* Time.deltaTime, 0, 0);
 		}
 		//}
 	}

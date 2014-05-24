@@ -65,7 +65,7 @@ public class Movimento : MonoBehaviour {
 			oxilador = 0.5f;
 				}
 				//cria a variavel que armazena se se o jogador esta andando para frente ou para tras
-				andarFrente = ((Input.GetAxis ("Horizontal") * speed)*oxilador);
+		andarFrente = ((Input.GetAxis ("Horizontal") * Time.deltaTime));
 				//se o valor de x for negativo(andando pra esquerda)
 				if (andarFrente < 0) {
 						//os sprites mudam para a esquerda
@@ -101,7 +101,7 @@ public class Movimento : MonoBehaviour {
 
 				//cria a variavel que armazena se se o jogador esta indo para cima ou para baixo
 
-		andarCima = Input.GetAxis ("Vertical") * speed;
+		andarCima = Input.GetAxis ("Vertical") *Time.deltaTime;
 				//move o jogador para a direçao em que esta sendo precionada
 				player.transform.Translate (0, andarCima, 0);
 				//se o jogador chegar no ponto maximo definido da tela
@@ -149,7 +149,7 @@ public class Movimento : MonoBehaviour {
 		if(Input.GetKey(KeyCode.F)){
 			player.transform.Translate(0.8f, 0 ,0);
 		}
-		if (Input.GetButton ("Atacar")|| Input.GetKey (KeyCode.N)) {
+		if (Input.GetButton ("Atacar") || Input.GetKey (KeyCode.N)) {
 						atacando = true;
 				} else {
 						atacando = false;
