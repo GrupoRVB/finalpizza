@@ -16,7 +16,7 @@ public class Robot_Move : MonoBehaviour {
 	public float aim;
 	public float distancia_min;
 	public float control = 0.0f;
-
+	public AudioClip tiro;
 
 
 	// Use this for initialization
@@ -83,6 +83,7 @@ public class Robot_Move : MonoBehaviour {
 								}
 
 								if (Time.time > control) {
+					audio.PlayOneShot(tiro);
 										control = Time.time + 3;
 										Instantiate (enemy_fire, new Vector3 (this.transform.position.x + (0.25f * this.aim), this.transform.position.y - 0.05f, 0), Quaternion.identity);
 									

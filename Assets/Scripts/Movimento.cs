@@ -35,6 +35,7 @@ public class Movimento : MonoBehaviour {
 				player = this.gameObject;
 		//pega o componente "Animator" e armazena na variavel anim
 		anim = GetComponent<Animator>();
+
 	}
 	// Vai chamar a cada frame os metodos:Movimentar e Atirar
 	void Update () {
