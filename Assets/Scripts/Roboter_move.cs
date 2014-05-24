@@ -3,7 +3,7 @@
 
 		public class Roboter_move : MonoBehaviour {
 
-				private int contador;
+				
 				public GameObject player;
 				public GameObject camera_obj;
 				public float distancia;
@@ -14,7 +14,6 @@
 				public bool shoting;
 				public float next_walk;
 				public int aim = -1;
-				private float distancia_min;
 				private float control = 0.0f;
 				private int random_action;
 				public bool jumping;
@@ -31,11 +30,9 @@
 				public bool camera_shake;
 				public float camera_time = 0;
 				public int camera_control = 0;
-				public float camera_y;
 				public float max_y = 0.154f;
 				public float min_y = -0.69f;
 				public float distancia_y;
-				public float randomX;
 				public float randomY;
 				public bool action = false;
 				public float hit_pulo;
@@ -44,6 +41,7 @@
 				private bool tomou = false;
 				private GUISkin textButton;
 				public bool dead = false;
+				public float control_dead = 0;
 				
 				
 				// Use this for initialization
@@ -54,7 +52,7 @@
 					anim = GetComponent<Animator> ();
 					layer = GetComponent<SpriteRenderer>();
 					hit_area = GetComponent<BoxCollider2D> ();
-					camera_y = camera_obj.transform.position.y;
+					
 					
 					
 					anim.SetBool ("caindo", true);
@@ -319,14 +317,12 @@
 
 				}
 				
-		if (boss_life <= 0) {
-			
+		if (boss_life <= 0 && dead == false) {
+
+			layer.color = new Color (1f, 1f, 1f, 1f);
 			dead = true;
-			
-		}
-		
-		if (dead == true) {
-			
+			control_dead = Time.time + 4;
+
 			anim.SetBool ("tiro", false);
 			anim.SetBool ("soco", false);
 			anim.SetBool ("pulo", false);
@@ -334,9 +330,13 @@
 			anim.SetBool ("normal", false);
 			anim.SetBool ("andando", false);
 			anim.SetBool("morto",true);
+		}
+		
+		if (dead == true && Time.time > control_dead) {
 			
-			Destroy(gameObject, 4);
-			
+			anim.SetBool("morto",false);
+			anim.SetBool("morto2",true);
+									
 		}
 
 		}
@@ -397,6 +397,8 @@
 						
 						}
 				}
+				
+				
 
 
 	void OnGUI()
