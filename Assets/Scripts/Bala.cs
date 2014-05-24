@@ -40,10 +40,10 @@ public class Bala : MonoBehaviour {
 }//ainda nao ta pronto :p
 
 		void OnTriggerEnter2D(Collider2D other) {
-			if (other.gameObject.tag == "barreira") {
+			if (other.gameObject.tag == "barreira" ) {
 				Destroy(this.gameObject, 0.02f);
 		}
-		if (other.gameObject.tag == "inimigo") {
+		if (other.gameObject.tag == "inimigo"|| other.gameObject.tag == "boss") {
 			Destroy(this.gameObject);	
 		}
 }
