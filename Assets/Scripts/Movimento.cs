@@ -27,6 +27,7 @@ public class Movimento : MonoBehaviour {
 	public bool atacando = false;
 	private Animator anim;
 	public AudioClip azeitona;
+	public AudioClip tomate;
 	// Use this for initialization
 	void Start () {	
 
@@ -211,6 +212,7 @@ public class Movimento : MonoBehaviour {
 												proximotiro = Time.time + fireTomate;								
 												Instantiate (BalaTomate, new Vector3 (player.transform.position.x, player.transform.position.y - 0.03f, 0), Quaternion.identity);
 												municao_tomate -= 1;
+					audio.PlayOneShot(tomate);
 					if (Input.GetAxis ("Tiro") > 0 || Input.GetKey (KeyCode.J)) {
 						
 						player.transform.localScale = new Vector2 (-0.5f, 0.5f);
