@@ -3,23 +3,33 @@ using System.Collections;
 public class Menu : MonoBehaviour {
 	private Animator animator;
 	private float lado;
+	public bool primeiro;
 	private int atual =1;
 	public bool principal =true;
 	private float limitador =0.0f;
 	public GameObject Controle;
 	public GameObject Creditos;
+	public GameObject Press;
 	// Use this for initialization
 	void Start () {
 		animator = GetComponent<Animator>();
 		animator.SetInteger("Selecionado", atual);
+		primeiro = true;
 	}
 	//teste
 	// Update is called once per frame
 	void Update () {
-		if (principal == true) {
-						Menu_inicial ();
+		if (primeiro == true) {
+			if(Input.GetButton ("Start")){
+				primeiro = false;
+				Destroy(Press);
+			}
 				} else {
-			Voltar();
+						if (principal == true) {
+								Menu_inicial ();
+						} else {
+								Voltar ();
+						}
 				}
 	
 	}
@@ -85,11 +95,11 @@ public class Menu : MonoBehaviour {
 		}
 	void Voltar(){
 		if (Input.GetButton ("Voltar") && atual == 2 || Input.GetKey(KeyCode.K) && atual == 2) {
-			Controle.transform.position = new Vector2 (0, 10);
+			Controle.transform.position = new Vector2 (0, 15);
 			principal = true;
 				}
 		if (Input.GetButton ("Voltar") && atual == 3 || Input.GetKey(KeyCode.K) && atual == 3) {
-			Creditos.transform.position = new Vector2 (0, 10);
+			Creditos.transform.position = new Vector2 (0, 15);
 			principal = true;
 		}
 	}
