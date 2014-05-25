@@ -83,13 +83,13 @@ public class Enemymov : MonoBehaviour {
 				Component.Destroy(this.collider2D);
 			Destroy (this.gameObject , 2f);
 			rand = Random.Range(1,100);
-			if(rand <40){
+			if(rand <35 && rand > 5){
 				Instantiate (municao1, new Vector3(this.transform.position.x,this.transform.position.y-0.2f,0), Quaternion.identity);
 			}
-			if(rand > 80){
+			if(rand > 85){
 				Instantiate (municao2, new Vector3(this.transform.position.x,this.transform.position.y-0.2f,0), Quaternion.identity);
 			}
-			if(rand < 10){
+			if(rand < 5){
 				Instantiate (municao1, new Vector3(this.transform.position.x,this.transform.position.y-0.3f,0), Quaternion.identity);
 				Instantiate (municao2, new Vector3(this.transform.position.x,this.transform.position.y-0.2f,0), Quaternion.identity);
 					}

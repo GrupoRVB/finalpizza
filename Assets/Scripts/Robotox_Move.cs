@@ -81,7 +81,7 @@
 										}
 								}
 
-								if (distancia >= -0.3f && distancia <= 0.3f && Time.time > proximotiro) {	
+								if (distancia >= -0.3f && distancia <= 0.15f && Time.time > proximotiro) {	
 										this.isAttacking = true;
 										next_walk = Time.time + 2;
 										proximotiro = Time.time + 6;
@@ -97,10 +97,10 @@
 
 										if (player.transform.position.y >= this.transform.position.y) {
 	
-						this.transform.Translate (0.04f * this.aim_attack/** Time.deltaTime*/, 0.05f/* Time.deltaTime*/, 0);
+						this.transform.Translate (0.04f * this.aim_attack/** Time.deltaTime*/, 0.025f/* Time.deltaTime*/, 0);
 										} else {
 
-						this.transform.Translate (0.04f * this.aim_attack/** Time.deltaTime*/, -0.05f/* Time.deltaTime*/, 0);
+						this.transform.Translate (0.04f * this.aim_attack/** Time.deltaTime*/, -0.025f/* Time.deltaTime*/, 0);
 
 										}
 

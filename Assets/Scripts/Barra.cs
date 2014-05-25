@@ -85,17 +85,23 @@ public class Barra : MonoBehaviour {
 	//funçao de colisao no colisor
 	void OnCollisionEnter2D(Collision2D coll) {
 		//se colidir com um gameObject com a tag "inimigo" e o se tempo for maior que a variavel proxima(definida assim para que a vida desça por segundo em vez de por frame)
-		if (coll.gameObject.tag == "inimigo" && Time.time > proxima){
-			//o proximo golpe sera depois de um tempo
-			proxima = Time.time + dano;	
-			rend.color = new Color(1f, 0f, 0f, 1f);
-			invenc = true;
-			//e perde 2 de vida
-			quantvida -=2;
-			
+		if (coll.gameObject.tag == "inimigo" && Time.time > proxima) {
+						//o proximo golpe sera depois de um tempo
+						proxima = Time.time + dano;	
+						rend.color = new Color (1f, 0f, 0f, 1f);
+						invenc = true;
+						//e perde 2 de vida
+						quantvida -= 2;
+				}
+
+			if(coll.gameObject.tag == "medico"){
+				quantvida +=30;
+			if(quantvida > MaxVida){
+				quantvida = MaxVida;
+			}
+			}
 			
 		}
-	}
 	//funçao de colisao baseado no trigger
 	void OnTriggerEnter2D(Collider2D other ) {
 		//se colidir com outro objeto com a tag "inimigo_tiro" e o se tempo for maior que a variavel proxima(definida assim para que a vida desça por segundo em vez de por frame)

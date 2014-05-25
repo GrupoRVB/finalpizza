@@ -42,7 +42,7 @@
 				private GUISkin textButton;
 				public bool dead = false;
 				public float control_dead = 0;
-				
+	private float passar = 0;
 				
 				// Use this for initialization
 				void Start () {
@@ -63,13 +63,20 @@
 					
 									
 				}
+
 				
 				// Update is called once per frame
 				void Update () {
 
-				if (dead == true) {	
+				if (dead == true) {
+			/** Time.deltaTime*/;
+			passar += 0.01f/** Time.deltaTime*/;
+			Debug.LogError(passar);
+			if (passar > 5) {
 			Application.LoadLevel ("finalfase1");
-				}else{
+
+			}
+		}else{
 
 
 						if (tomou == false) {
@@ -386,7 +393,7 @@
 
 				
 						if (other.gameObject.tag == "Bala") {
-								boss_life -= 1;
+								boss_life -= 100;
 								tomou = true;
 						}
 						if (other.gameObject.tag == "Bala_tomate") {
