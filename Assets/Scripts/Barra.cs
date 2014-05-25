@@ -71,7 +71,7 @@ public class Barra : MonoBehaviour {
 		//se a quant de vida for menor que que 100(ou seja, que a vida maxima
 		if(quantvida < 105){
 			//ganha uma pequena regeneraçao de vida
-			quantvida+= 0.009f* Time.deltaTime;
+			quantvida+= 0.009f/** Time.deltaTime*/;
 			
 		}
 		//se a vida for menor ou igual a 0

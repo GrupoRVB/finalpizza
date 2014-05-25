@@ -50,11 +50,11 @@ public class Robot_Move : MonoBehaviour {
 								
 										if (distancia <= -0.8f || distancia >= 0.8f) {
 												if (distancia >= 0) {
-							this.transform.Translate (0.005f* Time.deltaTime, 0, 0);
+							this.transform.Translate (0.005f/** Time.deltaTime*/, 0, 0);
 														anim.SetBool ("andando", true);
 														anim.SetBool ("atirando", false);
 												} else {
-							this.transform.Translate (-0.005f* Time.deltaTime, 0, 0);
+							this.transform.Translate (-0.005f/** Time.deltaTime*/, 0, 0);
 														anim.SetBool ("andando", true);
 														anim.SetBool ("atirando", false);	
 
@@ -62,14 +62,14 @@ public class Robot_Move : MonoBehaviour {
 										}						
 				
 										if (player.transform.position.y >= this.transform.position.y) {
-						this.transform.Translate (0, 0.003f* Time.deltaTime, 0);
+						this.transform.Translate (0, 0.003f/** Time.deltaTime*/, 0);
 												anim.SetBool ("andando", true);
 												anim.SetBool ("atirando", false);
 									
 										} else {
 				
 
-						this.transform.Translate (0, -0.003f* Time.deltaTime, 0);
+						this.transform.Translate (0, -0.003f/** Time.deltaTime*/, 0);
 												anim.SetBool ("andando", true);
 												anim.SetBool ("atirando", false);
 										}
@@ -85,7 +85,7 @@ public class Robot_Move : MonoBehaviour {
 								if (Time.time > control) {
 					audio.PlayOneShot(tiro);
 										control = Time.time + 3;
-					Instantiate (enemy_fire, new Vector3 (this.transform.position.x + (0.25f* Time.deltaTime * this.aim), this.transform.position.y - 0.05f* Time.deltaTime, 0), Quaternion.identity);
+					Instantiate (enemy_fire, new Vector3 (this.transform.position.x + (0.25f/** Time.deltaTime*/ * this.aim), this.transform.position.y - 0.05f/** Time.deltaTime*/, 0), Quaternion.identity);
 									
 								}
 
