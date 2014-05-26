@@ -393,7 +393,7 @@
 
 				
 						if (other.gameObject.tag == "Bala") {
-								boss_life -= 100;
+								boss_life -= 1;
 								tomou = true;
 						}
 						if (other.gameObject.tag == "Bala_tomate") {

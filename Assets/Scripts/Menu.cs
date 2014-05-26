@@ -20,7 +20,7 @@ public class Menu : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (primeiro == true) {
-			if(Input.GetButton ("Start")){
+			if(Input.GetButton ("Start")|| Input.GetKey(KeyCode.K)){
 				primeiro = false;
 				Destroy(Press);
 			}
