@@ -50,12 +50,18 @@ public class Enemy_fire : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collider2D other) {
 
-			if(other.gameObject.tag == "jogado"){
-			Destroy (gameObject, 0.002f);
-			//Destroy(this.gameObject, 0.001f);
-			//other.transform.Translate(5.5f,0,0);
-			}
-
-	}
+				if (other.gameObject.tag == "jogado") {
+						Destroy (gameObject, 0.002f);
+						//Destroy(this.gameObject, 0.001f);
+						//other.transform.Translate(5.5f,0,0);
+				}
+				
+		}
+	void OnTriggerEnter2D(Collider2D other) {
+				if (other.gameObject.tag == "barreira") {
+						Destroy (gameObject);
+		
+				}
+		}
 }
 

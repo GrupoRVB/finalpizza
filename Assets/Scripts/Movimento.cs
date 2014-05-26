@@ -5,8 +5,8 @@ public class Movimento : MonoBehaviour {
 	private GameObject player;
 	public GameObject Bala;
 	public GameObject BalaTomate;
-	public float alturaMaxima;
-	public float alturaMinima;
+	public float alturaMaxima = -0.42f;
+	public float alturaMinima = -1.25f;
 	public float speed;
 	public float fireRate = 0.52f;
 	public float fireTomate = 0.1f;

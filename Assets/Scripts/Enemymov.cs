@@ -55,6 +55,7 @@ public class Enemymov : MonoBehaviour {
 			if (anim.GetBool ("vivo") == false) {
 
 			} else {
+		
 				if (other.gameObject.tag == "Bala") {
 						vida -= 3;
 								tomou = true;
