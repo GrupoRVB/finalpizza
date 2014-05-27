@@ -55,7 +55,6 @@ public class Enemy_Create : MonoBehaviour
 		// Update is called once per frame
 		void Update ()
 		{
-				Debug.LogError (maxima);
 				tempo = Time.time;
 				//se for a posiçao do jogador for maior ou igual a 53.10
 				if (player.transform.position.x >= 57.9f && boss_activated == false) {

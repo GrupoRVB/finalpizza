@@ -16,7 +16,7 @@ public class Movimento : MonoBehaviour {
 	private int municao_azeitona = 5;
 	private int municao_tomate = 20;
 	public int tipodemunicao = 1;
-	private bool chefe = false;
+	public bool chefe = false;
 	private bool contrario =false;
 	Vector3 localScale;
 	public float andarFrente;
