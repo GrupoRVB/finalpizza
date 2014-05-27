@@ -4,7 +4,7 @@ using System.Collections;
 public class Chefe_sound : MonoBehaviour {
 	public AudioClip alert;
 	public AudioClip loop;
-	private float mudar=0;
+	private bool mudar = true;
 	// Use this for initialization
 	void Start () {
 		audio.clip = alert;
@@ -12,14 +12,16 @@ public class Chefe_sound : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		mudar += 0.4f * Time.deltaTime;
-		Debug.LogError (mudar);
-		if (mudar > 1) {
-						if (audio.isPlaying) {
-								audio.clip = loop;
-								audio.Play ();
-						}
-				}
-
+		Debug.LogError (audio.time);
+		Debug.Log (0.05*Time.deltaTime);
+		if (audio.time > 3.4f && mudar == true) {
+			audio.clip = loop;
+			audio.Play ();
+			mudar = false;
 		}
+						//if (audio.isPlaying) {
+						//
+						//
+				}
+	
 }
