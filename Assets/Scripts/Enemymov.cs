@@ -14,6 +14,7 @@ public class Enemymov : MonoBehaviour {
 	private int feedback;
 	private bool tomou = false;
 
+
 	// Use this for initialization
 	void Start () {
 		//inimigo começa com 5 vidas
@@ -26,6 +27,7 @@ public class Enemymov : MonoBehaviour {
 		anim = this.GetComponent<Animator>();
 		anim.SetBool("vivo", true);
 		rend = this.GetComponent<SpriteRenderer>();
+
 
 	}
 	
@@ -80,6 +82,7 @@ public class Enemymov : MonoBehaviour {
 
 		if(vida <= 0){
 				this.layer.sortingLayerName = "Frente";
+
 			anim.SetBool("vivo", false);
 				Component.Destroy(this.collider2D);
 			Destroy (this.gameObject , 2f);

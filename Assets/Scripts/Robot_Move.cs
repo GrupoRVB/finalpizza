@@ -17,6 +17,8 @@ public class Robot_Move : MonoBehaviour {
 	public float distancia_min;
 	public float control = 0.0f;
 	public AudioClip tiro;
+	public GameObject enemy_spawn;
+	public bool is_shoting;
 
 
 	// Use this for initialization
@@ -24,6 +26,7 @@ public class Robot_Move : MonoBehaviour {
 
 		player = GameObject.Find ("Jogador");
 		anim = GetComponent<Animator> ();
+		enemy_spawn = GameObject.Find ("Enemy_spawner");
 
 		//enemy_fire = GameObject.Find ("enemy_fire");
 	
@@ -37,7 +40,7 @@ public class Robot_Move : MonoBehaviour {
 
 			shoting = anim.GetBool ("atirando");
 						distancia = player.transform.position.x - this.transform.position.x;
-						if (distancia > -2 && distancia < 2) {
+						if (distancia > -8 && distancia < 8) {
 					
 								if (distancia >= 0) {
 										this.transform.localScale = new Vector2 (-1, 1);
@@ -75,18 +78,19 @@ public class Robot_Move : MonoBehaviour {
 										}
 								}
 
-								if (Time.time > proximotiro) {
+				if (Time.time > proximotiro && this.transform.position.x >= enemy_spawn.GetComponent<Enemy_Create>().min_x && this.transform.position.x <= enemy_spawn.GetComponent<Enemy_Create>().max_x) {
 										anim.SetBool ("atirando", true);
 										next_walk = Time.time + 0.5f;
 										control = Time.time + 0.5f;
 										proximotiro = Time.time + Random.Range (1, 3);
+										is_shoting = true;
 								}
 
-								if (Time.time > control) {
+								if (Time.time > control && this.is_shoting == true) {
 					audio.PlayOneShot(tiro);
 										control = Time.time + 3;
 					Instantiate (enemy_fire, new Vector3 (this.transform.position.x + (0.25f/** Time.deltaTime*/ * this.aim), this.transform.position.y - 0.05f/** Time.deltaTime*/, 0), Quaternion.identity);
-									
+					this.is_shoting = false;									
 								}
 
 						}
