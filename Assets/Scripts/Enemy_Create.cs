@@ -33,6 +33,11 @@ public class Enemy_Create : MonoBehaviour
 		public GameObject camera_control;
 		public GameObject main_camera;
 		int count_remain = 0;
+		public GUIText go;
+	public float control_go;
+	public bool go_showed;
+	public bool start_go;
+	public int size_go = 0;
 
 
 
@@ -49,6 +54,7 @@ public class Enemy_Create : MonoBehaviour
 				camera_control = GameObject.Find ("camera_control");
 				main_camera = GameObject.Find ("Main Camera");
 
+
 	
 		}
 	
@@ -57,8 +63,8 @@ public class Enemy_Create : MonoBehaviour
 		{
 				tempo = Time.time;
 				//se for a posiçao do jogador for maior ou igual a 53.10
-				if (player.transform.position.x >= 57.9f && boss_activated == false) {
-						boss_control = Time.time + 8;
+				if (player.transform.position.x >= 53 && boss_activated == false) {
+						boss_control = Time.time + 10;
 						boss_activated = true;
 						//o tempo do spawn e diminuido (fica mais rapido)
 						//time_spawn = 1.3F;
@@ -76,7 +82,7 @@ public class Enemy_Create : MonoBehaviour
 
 				}
 
-				if (player.transform.position.x >= initial_position + 7 && lock_screen == false && boss_created == false) {
+				if (player.transform.position.x >= initial_position + 5 && lock_screen == false && boss_created == false && player.transform.position.x <= 53) {
 
 						max_x = player.transform.position.x + 1.8f;
 						min_x = player.transform.position.x - 1.8f;
@@ -151,9 +157,50 @@ public class Enemy_Create : MonoBehaviour
 			lock_screen = false;
 			camera_control.GetComponent<Camera>().camera_lock = false;
 			spawned_area = false;
-			initial_position = player.transform.position.x;
+			initial_position = max_x;
+			control_go = Time.time + 2;
+
+			start_go = true;
 
 				}
+
+		if (Time.time > control_go && go_showed == false && start_go == true) {
+
+			go_showed = true;
+			go.text = "Go!";
+			//go.transform.position = new Vector2 (max_x - 1, 0.81f);
+			go.fontSize = 30;
+
+				}
+
+		if (go_showed == true) {
+			go.text = "Go!";
+						if (size_go <= 40) {
+
+				go.enabled = false;
+				size_go++;
+
+						} else if (size_go > 40 && size_go <= 80) {
+
+				go.enabled = true;
+				size_go++;
+
+						} else {
+
+								size_go = 0;
+
+						}
+				}
+
+		if (go_showed == true && player.transform.position.x > max_x) {
+
+			go_showed = false;
+			go.enabled = false;
+			start_go = false;	
+
+				}
+
+
 
 				//se 
 				//if (Time.time > proximotiro && this.cont_spawn < 100 && player.transform.position.x > 2.35f && boss_activated == false) {								

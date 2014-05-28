@@ -18,6 +18,9 @@
 		public float control_attack;
 		public int aim_attack;
 		public float control_rotation = 0;
+		public GameObject enemy_creator;
+		public CircleCollider2D hit_circle;
+		
 
 
 		
@@ -28,6 +31,8 @@
 			
 			player = GameObject.Find ("Jogador");
 			anim = GetComponent<Animator> ();
+			enemy_creator = GameObject.Find ("Enemy_spawner");
+			hit_circle = GetComponent<CircleCollider2D>();
 			
 			//enemy_fire = GameObject.Find ("enemy_fire");
 			
@@ -37,6 +42,7 @@
 		void Update () {	
 				if (anim.GetBool ("vivo") == false) {
 						this.transform.Translate (0, 0, 0);
+			this.hit_circle.enabled = false;
 				} else {
 
 						distancia = player.transform.position.x - this.transform.position.x;
@@ -44,26 +50,32 @@
 											
 								if (Time.time > next_walk) {
 
-										if (distancia >= 0 && this.isAttacking == false) {
+										if (distancia >= 0.5f && this.isAttacking == false) {
 												this.transform.localScale = new Vector2 (-1, 1);
 												this.aim = 1;
-										} else {
+										} else if(distancia < -0.5f) {
 												this.transform.localScale = new Vector2 (1, 1);
 												this.aim = -1;
 										}
 
 										this.isAttacking = false;
 
-										if (distancia >= 0) {
+										if (distancia >= 0.5f) {
 						this.transform.Translate (0.008f/* Time.deltaTime*/, 0, 0);
 												anim.SetBool ("andando", true);
 												anim.SetBool ("atacando", false);
-										} else {
+					} else if(distancia < -0.5f) {
 						this.transform.Translate (-0.008f/* Time.deltaTime*/, 0, 0);
 												anim.SetBool ("andando", true);
 												anim.SetBool ("atacando", false);
 							
-										}
+					}else{
+
+						this.transform.Translate (0.008f * this.aim/* Time.deltaTime*/, 0, 0);
+						anim.SetBool ("andando", true);
+						anim.SetBool ("atacando", false);
+
+					}
 										
 					
 										if (player.transform.position.y >= this.transform.position.y) {
@@ -81,7 +93,7 @@
 										}
 								}
 
-								if (distancia >= -0.3f && distancia <= 0.15f && Time.time > proximotiro) {	
+								if (distancia >= -0.5f && distancia <= 0.5f && Time.time > proximotiro) {	
 										this.isAttacking = true;
 										next_walk = Time.time + 2;
 										proximotiro = Time.time + 6;
@@ -97,10 +109,10 @@
 
 										if (player.transform.position.y >= this.transform.position.y) {
 	
-						this.transform.Translate (0.04f * this.aim_attack/** Time.deltaTime*/, 0.025f/* Time.deltaTime*/, 0);
+						this.transform.Translate (0.08f * this.aim_attack/** Time.deltaTime*/, 0.025f/* Time.deltaTime*/, 0);
 										} else {
 
-						this.transform.Translate (0.04f * this.aim_attack/** Time.deltaTime*/, -0.025f/* Time.deltaTime*/, 0);
+						this.transform.Translate (0.08f * this.aim_attack/** Time.deltaTime*/, -0.025f/* Time.deltaTime*/, 0);
 
 										}
 
@@ -110,7 +122,17 @@
 
 
 						}
-			
+
+			if((this.transform.position.x > enemy_creator.GetComponent<Enemy_Create>().max_x || this.transform.position.x < enemy_creator.GetComponent<Enemy_Create>().min_x) && enemy_creator.GetComponent<Enemy_Create>().lock_screen == true){
+
+				this.hit_circle.enabled = false;
+
+			}else{
+
+				this.hit_circle.enabled = true;
+
+			}
+
 			
 				}
 		}

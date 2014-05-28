@@ -6,13 +6,14 @@ public class Enemymov : MonoBehaviour {
 	public GameObject municao2;	
 	public GameObject player;
 	public float rand;
-	private float vida;
+	public float vida;
 	private SpriteRenderer layer;
 	public GameObject enemy_creator;
 	public Animator anim;
 	public SpriteRenderer rend;
 	private int feedback;
 	private bool tomou = false;
+	public BoxCollider2D hit_box;
 
 
 	// Use this for initialization
@@ -27,6 +28,7 @@ public class Enemymov : MonoBehaviour {
 		anim = this.GetComponent<Animator>();
 		anim.SetBool("vivo", true);
 		rend = this.GetComponent<SpriteRenderer>();
+		hit_box = this.GetComponent<BoxCollider2D> ();
 
 
 	}
@@ -84,7 +86,7 @@ public class Enemymov : MonoBehaviour {
 				this.layer.sortingLayerName = "Frente";
 
 			anim.SetBool("vivo", false);
-				Component.Destroy(this.collider2D);
+				this.hit_box.enabled = false;
 			Destroy (this.gameObject , 2f);
 			rand = Random.Range(1,100);
 			if(rand <35 && rand > 5){
