@@ -19,6 +19,8 @@ public class Robot_Move : MonoBehaviour {
 	public AudioClip tiro;
 	public GameObject enemy_spawn;
 	public bool is_shoting;
+	public CircleCollider2D hit_circle;
+	public GameObject enemy_creator;
 
 
 	// Use this for initialization
@@ -27,13 +29,18 @@ public class Robot_Move : MonoBehaviour {
 		player = GameObject.Find ("Jogador");
 		anim = GetComponent<Animator> ();
 		enemy_spawn = GameObject.Find ("Enemy_spawner");
+		enemy_creator = GameObject.Find ("Enemy_spawner");
+		hit_circle = GetComponent<CircleCollider2D>();
 
 		//enemy_fire = GameObject.Find ("enemy_fire");
 	
 	}
 	
 	// Update is called once per frame
-	void Update () {	
+	void Update () {
+
+
+
 				if (anim.GetBool ("vivo") == false) {
 			this.transform.Translate(0,0 , 0 );
 				} else {
@@ -51,18 +58,22 @@ public class Robot_Move : MonoBehaviour {
 								}
 								if (Time.time > next_walk) {
 								
-										if (distancia <= -0.8f || distancia >= 0.8f) {
-												if (distancia >= 0) {
-							this.transform.Translate (0.005f/** Time.deltaTime*/, 0, 0);
-														anim.SetBool ("andando", true);
-														anim.SetBool ("atirando", false);
-												} else {
-							this.transform.Translate (-0.005f/** Time.deltaTime*/, 0, 0);
-														anim.SetBool ("andando", true);
-														anim.SetBool ("atirando", false);	
 
-												}
-										}						
+						if (distancia >= 0 ) {
+							this.transform.Translate (0.005f/** Time.deltaTime*/, 0, 0);
+							anim.SetBool ("andando", true);
+							anim.SetBool ("atirando", false);
+						} else if(distancia <= 0) {
+							this.transform.Translate (-0.005f/** Time.deltaTime*/, 0, 0);
+							anim.SetBool ("andando", true);
+							anim.SetBool ("atirando", false);	
+							
+						}
+
+
+
+
+											
 				
 										if (player.transform.position.y >= this.transform.position.y) {
 						this.transform.Translate (0, 0.003f/** Time.deltaTime*/, 0);
@@ -78,11 +89,11 @@ public class Robot_Move : MonoBehaviour {
 										}
 								}
 
-				if (Time.time > proximotiro && this.transform.position.x >= enemy_spawn.GetComponent<Enemy_Create>().min_x && this.transform.position.x <= enemy_spawn.GetComponent<Enemy_Create>().max_x) {
+				if (Time.time > proximotiro && this.transform.position.x >= enemy_spawn.GetComponent<Enemy_Create>().min_x && this.transform.position.x <= enemy_spawn.GetComponent<Enemy_Create>().max_x && (this.transform.position.y <= (player.transform.position.y + 0.2f) && this.transform.position.y >= (player.transform.position.y - 0.2f)) ) {
 										anim.SetBool ("atirando", true);
 										next_walk = Time.time + 0.5f;
 										control = Time.time + 0.5f;
-										proximotiro = Time.time + Random.Range (1, 3);
+										proximotiro = Time.time + Random.Range (1, 6);
 										is_shoting = true;
 								}
 
@@ -94,7 +105,15 @@ public class Robot_Move : MonoBehaviour {
 								}
 
 						}
-
+			if((this.transform.position.x > enemy_creator.GetComponent<Enemy_Create>().max_x || this.transform.position.x < enemy_creator.GetComponent<Enemy_Create>().min_x) && enemy_creator.GetComponent<Enemy_Create>().lock_screen == true){
+				
+				this.hit_circle.enabled = false;
+				
+			}else{
+				
+				this.hit_circle.enabled = true;
+				
+			}
 
 				}
 		}
