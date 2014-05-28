@@ -57,7 +57,7 @@ public class Enemymov : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other) {
 
 			if (anim.GetBool ("vivo") == false) {
-
+			Destroy(this.collider.gameObject);
 			} else {
 		
 				if (other.gameObject.tag == "Bala") {

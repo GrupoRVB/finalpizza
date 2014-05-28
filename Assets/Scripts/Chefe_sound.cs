@@ -12,9 +12,7 @@ public class Chefe_sound : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Debug.LogError (audio.time);
-		Debug.Log (0.05*Time.deltaTime);
-		if (audio.time > 3.4f && mudar == true) {
+		if (audio.time > 3.0f && mudar == true) {
 			audio.clip = loop;
 			audio.Play ();
 			mudar = false;

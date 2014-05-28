@@ -14,6 +14,7 @@ public class Menu : MonoBehaviour {
 	void Start () {
 		animator = GetComponent<Animator>();
 		animator.SetInteger("Selecionado", atual);
+		animator.SetBool("on", true);
 		primeiro = true;
 	}
 	//teste
@@ -28,6 +29,9 @@ public class Menu : MonoBehaviour {
 						if (principal == true) {
 								Menu_inicial ();
 						} else {
+				if (atual == 5) {
+					principal = true;		
+				}
 								Voltar ();
 						}
 				}
@@ -37,7 +41,7 @@ public class Menu : MonoBehaviour {
 				lado = Input.GetAxis ("Horizontal");
 				if (lado > 0 && Time.time > limitador) {
 						atual += 1;
-						if (atual > 4) {
+						if (atual > 5) {
 								atual = 1;
 						}
 						animator.SetInteger ("Selecionado", atual);
@@ -48,13 +52,13 @@ public class Menu : MonoBehaviour {
 				if (lado < 0 && Time.time > limitador) {
 						atual -= 1;
 						if (atual < 1) {
-								atual = 4;
+								atual = 5;
 						}
 						animator.SetInteger ("Selecionado", atual);
 						limitador = Time.time + 0.3f;
 				}
 
-				if (Input.GetButton ("Selecionar")|| Input.GetKey(KeyCode.J)){
+				if (Input.GetButtonDown("Selecionar")|| Input.GetKey(KeyCode.J)){
 						if (atual == 1) {
 								Application.LoadLevel ("fase1");
 						}
@@ -66,6 +70,15 @@ public class Menu : MonoBehaviour {
 						if (atual == 4) {
 								Application.Quit ();
 						}
+						if (atual == 5) {
+						if(animator.GetBool("on") == true){
+							animator.SetBool("on", false);
+							AudioListener.volume = 0.0f;
+						}else{
+							animator.SetBool("on", true);
+							AudioListener.volume = 1.0f;
+				}
+			}
 						animator.SetInteger ("Selecionado", atual);
 						limitador = Time.time + 0.3f;
 			
@@ -102,6 +115,7 @@ public class Menu : MonoBehaviour {
 			Creditos.transform.position = new Vector2 (0, 15);
 			principal = true;
 		}
+	
 	}
 
 }

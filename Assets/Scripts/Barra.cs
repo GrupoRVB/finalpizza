@@ -30,8 +30,8 @@ public class Barra : MonoBehaviour {
 		//pega o componente Animator, e joga ele dentro da variavel anim
 		anim = GetComponent<Animator>();
 		//define as variveis
-		quantvida =105;
-		MaxVida= 105;
+		quantvida =100;
+		MaxVida= 100;
 		dano = 0.8f;
 		proxima = 0.0f;
 		//seta a variavel "vivo" como true no componente animator
@@ -69,9 +69,7 @@ public class Barra : MonoBehaviour {
 		// define a largura barra de vida sendo 1/4 do tamanho da tela, e com uma quantidade de vida pre estabelecida, podendo sempre que a quantidade maxima de vida aumentar, a mesma tambem cresce.
 		largura = Screen.width/4 * (quantvida/MaxVida);
 		//se a quant de vida for menor que que 100(ou seja, que a vida maxima
-		if(quantvida < 105){
-			//ganha uma pequena regeneraçao de vida
-			quantvida+= 0.009f/** Time.deltaTime*/;
+		if(quantvida < 100){
 			
 		}
 		//se a vida for menor ou igual a 0
