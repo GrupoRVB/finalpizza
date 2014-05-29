@@ -59,11 +59,11 @@ public class Robot_Move : MonoBehaviour {
 								if (Time.time > next_walk) {
 								
 
-						if (distancia >= 0 ) {
+						if (distancia >= 0.8f ) {
 							this.transform.Translate (0.005f/** Time.deltaTime*/, 0, 0);
 							anim.SetBool ("andando", true);
 							anim.SetBool ("atirando", false);
-						} else if(distancia <= 0) {
+						} else if(distancia <= -0.8f) {
 							this.transform.Translate (-0.005f/** Time.deltaTime*/, 0, 0);
 							anim.SetBool ("andando", true);
 							anim.SetBool ("atirando", false);	

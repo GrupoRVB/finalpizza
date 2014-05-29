@@ -10,11 +10,12 @@ public class Menu : MonoBehaviour {
 	public GameObject Controle;
 	public GameObject Creditos;
 	public GameObject Press;
+	private bool sound = true;
 	// Use this for initialization
 	void Start () {
 		animator = GetComponent<Animator>();
 		animator.SetInteger("Selecionado", atual);
-		animator.SetBool("on", true);
+		animator.SetBool ("on", true);
 		primeiro = true;
 	}
 	//teste
@@ -58,7 +59,7 @@ public class Menu : MonoBehaviour {
 						limitador = Time.time + 0.3f;
 				}
 
-				if (Input.GetButtonDown("Selecionar")|| Input.GetKey(KeyCode.J)){
+				/*if (Input.GetButtonDown("Selecionar")|| Input.GetKey(KeyCode.J)){
 						if (atual == 1) {
 								Application.LoadLevel ("fase1");
 						}
@@ -82,7 +83,7 @@ public class Menu : MonoBehaviour {
 						animator.SetInteger ("Selecionado", atual);
 						limitador = Time.time + 0.3f;
 			
-				}
+				}*/
 		if (Input.GetButton ("Selecionar")|| Input.GetKey(KeyCode.J)) {
 						Selecionar ();
 						principal = false;
@@ -90,7 +91,7 @@ public class Menu : MonoBehaviour {
 		}
 
 	void Selecionar(){
-		if (Input.GetButton ("Selecionar")|| Input.GetKey(KeyCode.J)) {
+				if (Input.GetButtonDown ("Selecionar") || Input.GetKey (KeyCode.J)) {
 						if (atual == 1) {
 								Application.LoadLevel ("fase1");
 						}
@@ -103,7 +104,19 @@ public class Menu : MonoBehaviour {
 						if (atual == 4) {
 								Application.Quit ();
 						}
-			
+						if (atual == 5) {
+				if(sound == true){
+					animator.SetBool ("on", false);
+					AudioListener.volume = 0.0f;
+					sound = false;
+								}else{
+					animator.SetBool ("on", true);
+					AudioListener.volume = 1.0f;
+					sound = true;
+				}
+			}
+			Debug.LogError(sound);
+
 				}
 		}
 	void Voltar(){
