@@ -46,7 +46,7 @@ public class Menu : MonoBehaviour {
 								atual = 1;
 						}
 						animator.SetInteger ("Selecionado", atual);
-						limitador = Time.time + 0.3f;
+						limitador = Time.time + 15f*Time.deltaTime;
 			
 			
 				}
@@ -56,7 +56,7 @@ public class Menu : MonoBehaviour {
 								atual = 5;
 						}
 						animator.SetInteger ("Selecionado", atual);
-						limitador = Time.time + 0.3f;
+			limitador = Time.time + 15f*Time.deltaTime;
 				}
 
 				/*if (Input.GetButtonDown("Selecionar")|| Input.GetKey(KeyCode.J)){

@@ -69,8 +69,7 @@
 				void Update () {
 
 				if (dead == true) {
-			/** Time.deltaTime*/;
-			passar += 0.01f/** Time.deltaTime*/;
+			passar += 0.01f* Time.deltaTime;
 			Debug.LogError(passar);
 			if (passar > 5) {
 			Application.LoadLevel ("finalfase1");
@@ -128,13 +127,13 @@
 
 										if (distancia <= -0.49f || distancia >= 0.49f) {
 												if (distancia >= 0) {
-							this.transform.Translate (0.008f/** Time.deltaTime*/, 0, 0);
+							this.transform.Translate (0.008f* Time.deltaTime, 0, 0);
 														anim.SetBool ("andando", true);
 														this.hit_area.center = new Vector2 (0, 0);
 														this.hit_area.size = new Vector2 (0, 0);
 									
 												} else {
-							this.transform.Translate (-0.008f/** Time.deltaTime*/, 0, 0);
+							this.transform.Translate (-0.008f* Time.deltaTime, 0, 0);
 														anim.SetBool ("andando", true);
 														this.hit_area.center = new Vector2 (0, 0);
 														this.hit_area.size = new Vector2 (0, 0);
@@ -144,14 +143,14 @@
 							
 										
 										if (player.transform.position.y >= (this.transform.position.y - 0.4f)) {
-						this.transform.Translate (0, 0.003f/** Time.deltaTime*/, 0);
+						this.transform.Translate (0, 0.003f* Time.deltaTime, 0);
 												anim.SetBool ("andando", true);
 								
 								
 										} else if (player.transform.position.y < this.transform.position.y) {
 							
 								
-						this.transform.Translate (0, -0.003f/** Time.deltaTime*/, 0);
+						this.transform.Translate (0, -0.003f* Time.deltaTime, 0);
 												anim.SetBool ("andando", true);
 								
 										}
@@ -221,7 +220,7 @@
 								}
 								if (Time.time > control && this.shoting == true) {
 										this.shoting = false;
-					Instantiate (Boss_fire, new Vector3 (this.transform.position.x + (0.56f * this.aim)/** Time.deltaTime*/, (this.transform.position.y - 0.21f)/** Time.deltaTime*/, 0), Quaternion.identity);
+					Instantiate (Boss_fire, new Vector3 (this.transform.position.x + (0.56f * this.aim)* Time.deltaTime, (this.transform.position.y - 0.21f)* Time.deltaTime, 0), Quaternion.identity);
 									
 								}	
 
@@ -229,19 +228,19 @@
 
 					
 										this.transform.localScale = new Vector2 (-1 * this.dir, 1);
-					this.transform.Translate ((0.04f * this.dir)/** Time.deltaTime*/, 0, 0);
+					this.transform.Translate ((0.04f * this.dir)* Time.deltaTime, 0, 0);
 								}
 
 								if (Time.time > control && this.jumping == true && Time.time < trigger_fall) {
 
-					this.transform.Translate (0, 0.5f/** Time.deltaTime*/, 0);
+					this.transform.Translate (0, 0.5f* Time.deltaTime, 0);
 
 										if (distancia >= 0) {
-						this.transform.Translate (0.01f/** Time.deltaTime*/, 0, 0);
+						this.transform.Translate (0.01f* Time.deltaTime, 0, 0);
 
 							
 										} else {
-						this.transform.Translate (-0.01f/** Time.deltaTime*/, 0, 0);
+						this.transform.Translate (-0.01f* Time.deltaTime, 0, 0);
 
 							
 							

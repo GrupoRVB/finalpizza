@@ -39,11 +39,11 @@ public class Enemy_fire : MonoBehaviour {
 
 						Destroy (gameObject, 1.5f);
 						if (dir <= 0) {
-			this.transform.Translate (-0.1f/** Time.deltaTime*/, 0, 0);
+			this.transform.Translate (-5f * Time.deltaTime, 0, 0);
 
 
 						} else {
-			this.transform.Translate (0.1f/** Time.deltaTime*/, 0, 0);
+			this.transform.Translate (5f* Time.deltaTime, 0, 0);
 						}
 				//}
 		}
