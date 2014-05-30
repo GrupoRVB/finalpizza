@@ -43,7 +43,7 @@ public class Bala : MonoBehaviour {
 			if (other.gameObject.tag == "barreira" ) {
 				Destroy(this.gameObject, 0.02f);
 		}
-		if (other.gameObject.tag == "inimigo"|| other.gameObject.tag == "boss" || other.gameObject.tag == "inimigo_atirador" && other.GetComponent<Enemymov>().vida > 0) {
+		if (other.gameObject.tag == "inimigo"|| other.gameObject.tag == "boss" || other.gameObject.tag == "inimigo_atirador") {
 			Destroy(this.gameObject);	
 		}
 }

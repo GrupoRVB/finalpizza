@@ -40,6 +40,11 @@ public class Barra : MonoBehaviour {
 	}
 	
 	void Update () {
+		if (Input.GetButtonDown ("Kitmedico")) {
+				if(GetComponent<Movimento>().MedictKit > 0){
+				quantvida +=30;
+			}
+		}
 	
 		if(invenc == true){
 			rend.color = new Color(1f, 0f, 0f, 1f);	
@@ -61,7 +66,7 @@ public class Barra : MonoBehaviour {
 			
 		}
 		//posiçao no eixo x recebe o valor da tela/20(posiciona mais para esquerda)
-		posicaox = Screen.width/20  ;
+		posicaox = Screen.width/17  ;
 		//posiçao no eixo y recebe o valor da tela/3- o valor da tela/4, ou seja, um valor positivo (posiciona proximo do topo)
 		posicaoy = Screen.height/3 - Screen.height/4;
 		//define a largua sendo 50 vezes menor que a tela
@@ -73,10 +78,9 @@ public class Barra : MonoBehaviour {
 			
 		}
 		//se a vida for menor ou igual a 0
-		if (quantvida <=5){
+		if (quantvida <=0){
 			//seta na variavel de animaçao "vivo", para false
 			anim.SetBool("vivo", false);
-			quantvida = 3;
 			
 		}		
 	}
@@ -91,13 +95,6 @@ public class Barra : MonoBehaviour {
 						//e perde 2 de vida
 						quantvida -= 2;
 				}
-
-			if(coll.gameObject.tag == "medico"){
-				quantvida +=30;
-			if(quantvida > MaxVida){
-				quantvida = MaxVida;
-			}
-			}
 			
 		}
 	//funçao de colisao baseado no trigger
@@ -120,9 +117,11 @@ public class Barra : MonoBehaviour {
 	//funçao de texto dinamico na tela
 	void OnGUI()
 	{
-		//"pele rrecebe textBUTTON
-		GUI.skin = textButton;
-		//Define que o botao vai ser um retangulo com essas propriedades sem texto.
-		GUI.Button(new Rect(posicaox,posicaoy,largura,altura)," ");
+		if (quantvida >= 5) {
+						//"pele rrecebe textBUTTON
+						GUI.skin = textButton;
+						//Define que o botao vai ser um retangulo com essas propriedades sem texto.
+						GUI.Button (new Rect (posicaox, posicaoy, largura, altura), " ");
+				}
 	}
 }

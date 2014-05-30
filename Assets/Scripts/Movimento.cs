@@ -13,16 +13,19 @@ public class Movimento : MonoBehaviour {
 	private float proximotiro = 0.0F;
 	private float oxilador;
 	private int totaldearmas = 2;
-	private int municao_azeitona = 5;
-	private int municao_tomate = 20;
+	private int municao_azeitona = 0;
+	private int municao_tomate = 0;
+	public int MedictKit = 0;
 	public int tipodemunicao = 1;
 	public bool chefe = false;
 	private bool contrario =false;
 	Vector3 localScale;
+	private float tempo=0;
 	public float andarFrente;
 	public float andarCima;
 	public GUIText muniAze;
 	public GUIText muniTomat;
+	public GUIText Kitmedico;
 	private bool vivo = true;
 	public bool atacando = false;
 	private Animator anim;
@@ -48,12 +51,14 @@ public class Movimento : MonoBehaviour {
 						Atirar ();
 						TipoDeTiro ();
 				} else {
+	
 			//senao, chama a funçao gameover
 			GameOver();
 			}
 		//faz com que o GUITEXT(que e o contador), apar
 		muniAze.text = ""+municao_azeitona;
 		muniTomat.text = ""+municao_tomate;
+		Kitmedico.text = "" + Kitmedico;
 	}
 
 	//trata do movimento
@@ -229,9 +234,18 @@ public class Movimento : MonoBehaviour {
 								}
 						}
 				}
+	void Curar(){
+		if (Input.GetButtonDown ("Kitmedico")) {
+			if(MedictKit >0){
+			MedictKit -=1;
+			}
+		}
+
+	}
 	void Vivo(){
 				if (anim.GetBool("vivo") == false) {
 				vivo = false;
+
 			}
 				
 	}
@@ -239,19 +253,25 @@ public class Movimento : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D colisor)
 	{
 
-		if (colisor.gameObject.tag == "azeitona") 
-		{
-			municao_azeitona +=5;
+				if (colisor.gameObject.tag == "azeitona") {
+						municao_azeitona += 5;
+				}
+				if (colisor.gameObject.tag == "tomate") {
+						municao_tomate += 20;
+				}
+				if (colisor.gameObject.tag == "medico") {
+			MedictKit +=1;
+				}
 		}
-		if (colisor.gameObject.tag == "tomate") 
-		{
-			municao_tomate +=20;
-		}
-	}
-
 	void GameOver(){
-	Application.LoadLevel ("GameOver");
-	}
+
+		tempo += 1 * Time.deltaTime;
+		Debug.LogError (tempo);
+		if (tempo > 5) {
+						Application.LoadLevel ("GameOver");
+	
+				}
+		}
 
 	
 }
