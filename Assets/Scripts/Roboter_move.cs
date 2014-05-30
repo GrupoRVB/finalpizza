@@ -42,7 +42,8 @@
 				private GUISkin textButton;
 				public bool dead = false;
 				public float control_dead = 0;
-	private float passar = 0;
+				private float passar = 0;
+	public bool falled = false;
 				
 				// Use this for initialization
 				void Start () {
@@ -116,6 +117,7 @@
 										anim.SetBool ("soco", false);
 										anim.SetBool ("pulo", false);
 										anim.SetBool ("caindo", false);
+										anim.SetBool ("caindo2", false);
 										anim.SetBool ("normal", false);
 										//anim.SetBool ("morto", false);
 										anim.SetBool ("andando", true);
@@ -127,13 +129,13 @@
 
 										if (distancia <= -0.49f || distancia >= 0.49f) {
 												if (distancia >= 0) {
-							this.transform.Translate (0.008f* Time.deltaTime, 0, 0);
+							this.transform.Translate (0.5f* Time.deltaTime, 0, 0);
 														anim.SetBool ("andando", true);
 														this.hit_area.center = new Vector2 (0, 0);
 														this.hit_area.size = new Vector2 (0, 0);
 									
 												} else {
-							this.transform.Translate (-0.008f* Time.deltaTime, 0, 0);
+							this.transform.Translate (-0.5f* Time.deltaTime, 0, 0);
 														anim.SetBool ("andando", true);
 														this.hit_area.center = new Vector2 (0, 0);
 														this.hit_area.size = new Vector2 (0, 0);
@@ -143,14 +145,14 @@
 							
 										
 										if (player.transform.position.y >= (this.transform.position.y - 0.4f)) {
-						this.transform.Translate (0, 0.003f* Time.deltaTime, 0);
+						this.transform.Translate (0, 0.15f* Time.deltaTime, 0);
 												anim.SetBool ("andando", true);
 								
 								
 										} else if (player.transform.position.y < this.transform.position.y) {
 							
 								
-						this.transform.Translate (0, -0.003f* Time.deltaTime, 0);
+						this.transform.Translate (0, -0.15f* Time.deltaTime, 0);
 												anim.SetBool ("andando", true);
 								
 										}
@@ -175,7 +177,7 @@
 
 										random_action = Random.Range (1, 100);
 
-										if (random_action < 40) {
+										if (random_action <1) {
 												anim.SetBool ("andando", false);
 												anim.SetBool ("tiro", true);
 												next_walk = Time.time + 0.8f;
@@ -189,7 +191,7 @@
 												}
 												this.shoting = true;
 
-										} else if (random_action >= 40 && random_action < 75) {
+										} else if (random_action >= 1 && random_action < 2) {
 												anim.SetBool ("andando", false);
 												anim.SetBool ("soco", true);
 												next_walk = Time.time + 2.1f;
@@ -203,24 +205,25 @@
 														this.dir = -1;
 												}
 
-										} else if (random_action >= 75 && random_action < 100) {
+										} else if (random_action >= 2 && random_action < 100) {
 												anim.SetBool ("andando", false);
 												anim.SetBool ("pulo", true);
-												next_walk = Time.time + 8.1f;
+												next_walk = Time.time + 11.1f;
 												next_action = Time.time + 15;
 												control = Time.time + 1.5f;
 												this.jumping = true;
 												trigger_fall = Time.time + 5;
-												stop_falling = Time.time + 8;
+												stop_falling = Time.time + 10;
 												this.is_falling = false;
-												action = true;		
+												action = true;	
+											falled = false;
 
 
 										}
 								}
 								if (Time.time > control && this.shoting == true) {
 										this.shoting = false;
-					Instantiate (Boss_fire, new Vector3 (this.transform.position.x + (0.56f * this.aim)* Time.deltaTime, (this.transform.position.y - 0.21f)* Time.deltaTime, 0), Quaternion.identity);
+					Instantiate (Boss_fire, new Vector3 (this.transform.position.x + (0.56f * this.aim), this.transform.position.y - 0.21f, 0), Quaternion.identity);
 									
 								}	
 
@@ -228,19 +231,19 @@
 
 					
 										this.transform.localScale = new Vector2 (-1 * this.dir, 1);
-					this.transform.Translate ((0.04f * this.dir)* Time.deltaTime, 0, 0);
+					this.transform.Translate ((2.5f * this.dir)* Time.deltaTime, 0, 0);
 								}
 
 								if (Time.time > control && this.jumping == true && Time.time < trigger_fall) {
 
-					this.transform.Translate (0, 0.5f* Time.deltaTime, 0);
+					this.transform.Translate (0, 18* Time.deltaTime, 0);
 
 										if (distancia >= 0) {
-						this.transform.Translate (0.01f* Time.deltaTime, 0, 0);
+						this.transform.Translate (0.5f* Time.deltaTime, 0, 0);
 
 							
 										} else {
-						this.transform.Translate (-0.01f* Time.deltaTime, 0, 0);
+						this.transform.Translate (-0.5f* Time.deltaTime, 0, 0);
 
 							
 							
@@ -256,32 +259,35 @@
 
 								if (Time.time > trigger_fall && Time.time < stop_falling) {
 										this.is_falling = true;
-										this.transform.Translate (0, -0.8f, 0);
+										this.transform.Translate (0, -40 * Time.deltaTime, 0);
 										this.jumping = false;
 										anim.SetBool ("pulo", false);
-										anim.SetBool ("caindo", true);
+										
 										this.jump_hit = true;
 
 										
 
 								}
 
-								if (this.is_falling == true && this.transform.position.y <= Random.Range (min_y, max_y)) {
+								if (this.is_falling == true && this.transform.position.y <= Random.Range (min_y, max_y) && falled == false) {
 										
-										hit_pulo = Time.time + 0.3f;
+										hit_pulo = Time.time + 0.1f;
 										stop_falling = 0;
-										this.is_falling = false;
-
+										anim.SetBool ("caindo", true);
 										camera_shake = true;
 										camera_time = Time.time + 2;
+										falled = true;
 
 								}
 								
+									//bool check = anim.GetBool("caindo");
 
-								if (Time.time > hit_pulo) {
-									
-										this.hit_area.center = new Vector2 (0, 0);
-										this.hit_area.size = new Vector2 (0, 0);
+								if (Time.time > hit_pulo && this.is_falling == true) {
+										
+										anim.SetBool ("caindo", false);
+										anim.SetBool ("caindo2", true);
+										
+										this.is_falling = false;
 										
 
 								}
