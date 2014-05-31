@@ -14,20 +14,12 @@ public class Fase1 : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		passar += 0.01f* Time.deltaTime;
+		passar += 1f* Time.deltaTime;
 
-		if (anim.GetBool ("Acabou") == false && passar > 2.5f* Time.deltaTime) {
-			anim.SetBool("Acabou", true);
-			passar = 0;
-
-				}
-				if (anim.GetBool ("Acabou") == true) {
-
-			if (passar > 2.1f* Time.deltaTime) {
+			if (passar > 8.5) {
 									
 								Application.LoadLevel ("cena12");
 						}
+		Debug.Log (passar);
 				}
-		Debug.LogError (passar);
-		}
 }

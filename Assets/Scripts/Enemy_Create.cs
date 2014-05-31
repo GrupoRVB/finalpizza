@@ -37,7 +37,7 @@ public class Enemy_Create : MonoBehaviour
 	public float control_go;
 	public bool go_showed;
 	public bool start_go;
-	public int size_go = 0;
+	public float size_go = 0;
 
 
 
@@ -96,7 +96,7 @@ public class Enemy_Create : MonoBehaviour
 				
 		if(lock_screen == true && main_camera.transform.position.x <= (max_x - 1.8f)){
 
-			main_camera.transform.position = new Vector3 (main_camera.transform.position.x + 0.01f, -0.2832063f, -38.33f);
+			main_camera.transform.position = new Vector3 (main_camera.transform.position.x + 0.5f*Time.deltaTime, -0.2832063f, -38.33f);
 
 		}
 
@@ -178,12 +178,12 @@ public class Enemy_Create : MonoBehaviour
 						if (size_go <= 40) {
 
 				go.enabled = false;
-				size_go++;
+				size_go+=100f*Time.deltaTime;;
 
 						} else if (size_go > 40 && size_go <= 80) {
 
 				go.enabled = true;
-				size_go++;
+				size_go+=100f*Time.deltaTime;
 
 						} else {
 

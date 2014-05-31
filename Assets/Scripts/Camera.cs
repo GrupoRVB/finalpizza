@@ -50,7 +50,7 @@ public class Camera : MonoBehaviour {
 						} else {
 								chefe = true;
 								if (maincamera.transform.position.x < 56.60f) {
-										maincamera.transform.position = new Vector3 ((maincamera.transform.position.x + 0.01f), -0.2832063f, Distancia);
+					maincamera.transform.position = new Vector3 ((maincamera.transform.position.x + 0.5f*Time.deltaTime), -0.2832063f, Distancia);
 								} else {
 										maincamera.transform.position = new Vector3 (56.60f, -0.2832063f, Distancia);
 								}

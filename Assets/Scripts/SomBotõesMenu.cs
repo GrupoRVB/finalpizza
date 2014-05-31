@@ -14,20 +14,18 @@ public class SomBotõesMenu : MonoBehaviour {
 				if (GetComponent<Menu> ().primeiro == false) {
 						if (GetComponent<Menu> ().principal == true) {
 								lado = Input.GetAxis ("Horizontal");
-								if (lado > 0 && Time.time > limitador) {
+								if (lado != 0){
+						if (limitador > 0.5) {
+							{
 										limitador = Time.time + 0.3f;
 										audio.Play ();
 				
 				
-								}
-								if (lado < 0 && Time.time > limitador) {
-										limitador = Time.time + 0.3f;
-										audio.Play ();
-								}
-	
-						} else {
 						}
+					}
 				}
+			}
 		}
+	}
 }
 

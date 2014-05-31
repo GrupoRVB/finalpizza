@@ -43,15 +43,20 @@ public class Barra : MonoBehaviour {
 		if (Input.GetButtonDown ("Kitmedico")) {
 				if(GetComponent<Movimento>().MedictKit > 0){
 				quantvida +=30;
-			}
+				if(quantvida  > 100)
+				{
+					quantvida = 100;
+							}
+				}
 		}
 	
 		if(invenc == true){
 			rend.color = new Color(1f, 0f, 0f, 1f);	
-			acender +=1;
+			acender +=10*Time.deltaTime;
 			rend.color = new Color(1f, 1f, 1f, 1f);
+			Debug.Log(acender);
 			
-			if(acender == 9){
+			if(acender > 1.5f){
 				
 				rend.color = new Color(1f, 0f, 0f, 1f);	
 				acender = 0;

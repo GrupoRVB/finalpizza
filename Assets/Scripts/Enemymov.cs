@@ -11,7 +11,7 @@ public class Enemymov : MonoBehaviour {
 	public GameObject enemy_creator;
 	public Animator anim;
 	public SpriteRenderer rend;
-	private int feedback;
+	private float feedback;
 	private bool tomou = false;
 	public BoxCollider2D hit_box;
 
@@ -35,18 +35,18 @@ public class Enemymov : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (tomou == false) {
-			rend.color = new Color(1f, 1f, 1f, 1f);
-				}else{
-			rend.color = new Color(1f, 0f, 0f, 1f);	
-			feedback +=1;			
-			if(feedback == 2){
-				rend.color = new Color(1f, 0f, 0f, 1f);	
-				feedback = 0;
-				tomou =false;
-			}
+				if (tomou == false) {
+						rend.color = new Color (1f, 1f, 1f, 1f);
+				} else {
+						rend.color = new Color (1f, 0f, 0f, 1f);	
+						feedback += 10f * Time.deltaTime;			
+						if (feedback > 0.4f) {
+								rend.color = new Color (1f, 0f, 0f, 1f);	
+								feedback = 0;
+								tomou = false;
+						}
 			
-		}
+				}
 				if (enemy_creator.GetComponent<Enemy_Create> ().boss_activated == true && this.tag != "boss") {
 
 						Destroy (gameObject, 0.002f);
@@ -57,7 +57,7 @@ public class Enemymov : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other) {
 
 			if (anim.GetBool ("vivo") == false) {
-			Destroy(this.collider.gameObject);
+			Destroy(this.GetComponent<CircleCollider2D>());
 			} else {
 		
 				if (other.gameObject.tag == "Bala") {

@@ -50,6 +50,7 @@ public class Movimento : MonoBehaviour {
 						Moviment ();
 						Atirar ();
 						TipoDeTiro ();
+						Curar();
 				} else {
 	
 			//senao, chama a funçao gameover
@@ -58,7 +59,7 @@ public class Movimento : MonoBehaviour {
 		//faz com que o GUITEXT(que e o contador), apar
 		muniAze.text = ""+municao_azeitona;
 		muniTomat.text = ""+municao_tomate;
-		Kitmedico.text = "" + Kitmedico;
+		Kitmedico.text = "" + MedictKit;
 	}
 
 	//trata do movimento
