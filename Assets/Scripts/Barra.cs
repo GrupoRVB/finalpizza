@@ -40,6 +40,7 @@ public class Barra : MonoBehaviour {
 	}
 	
 	void Update () {
+
 		if (Input.GetButtonDown ("Kitmedico")) {
 				if(GetComponent<Movimento>().MedictKit > 0){
 				quantvida +=30;
@@ -49,14 +50,14 @@ public class Barra : MonoBehaviour {
 							}
 				}
 		}
+
 	
 		if(invenc == true){
 			rend.color = new Color(1f, 0f, 0f, 1f);	
 			acender +=10*Time.deltaTime;
 			rend.color = new Color(1f, 1f, 1f, 1f);
-			Debug.Log(acender);
 			
-			if(acender > 1.5f){
+			if(acender > 0.4f){
 				
 				rend.color = new Color(1f, 0f, 0f, 1f);	
 				acender = 0;
@@ -65,6 +66,7 @@ public class Barra : MonoBehaviour {
 		}
 		if(Time.time > proxima){
 			invenc = false;
+
 		}
 		if(invenc == false){
 			rend.color = new Color(1f, 1f, 1f, 1f);
@@ -83,11 +85,11 @@ public class Barra : MonoBehaviour {
 			
 		}
 		//se a vida for menor ou igual a 0
-		if (quantvida <=0){
+		if (quantvida <=0.1f){
 			//seta na variavel de animaçao "vivo", para false
 			anim.SetBool("vivo", false);
 			
-		}		
+		}
 	}
 	//funçao de colisao no colisor
 	void OnCollisionEnter2D(Collision2D coll) {
@@ -122,11 +124,12 @@ public class Barra : MonoBehaviour {
 	//funçao de texto dinamico na tela
 	void OnGUI()
 	{
-		if (quantvida >= 5) {
+		if (quantvida >= 0.1f) {
 						//"pele rrecebe textBUTTON
 						GUI.skin = textButton;
 						//Define que o botao vai ser um retangulo com essas propriedades sem texto.
 						GUI.Button (new Rect (posicaox, posicaoy, largura, altura), " ");
-				}
+				} else {
+		}
 	}
 }

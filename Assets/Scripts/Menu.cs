@@ -10,7 +10,8 @@ public class Menu : MonoBehaviour {
 	public GameObject Controle;
 	public GameObject Creditos;
 	public GameObject Press;
-	private bool sound = true;
+	public GameObject controlador_som;
+
 	// Use this for initialization
 	void Start () {
 		animator = GetComponent<Animator>();
@@ -21,49 +22,47 @@ public class Menu : MonoBehaviour {
 	//teste
 	// Update is called once per frame
 	void Update () {
+
 		if (primeiro == true) {
 			if(Input.GetButton ("Start")|| Input.GetKey(KeyCode.K)){
 				primeiro = false;
+
 				Destroy(Press);
 			}
 				} else {
 						if (principal == true) {
-				limitador += 3 * Time.deltaTime;
 								Menu_inicial ();
+				//limitador += 2f * Time.deltaTime;
 						} else {		
 								Voltar ();
 						}
-				}
+		}
 	
 	}
 	void Menu_inicial(){
-	
-				lado = Input.GetAxis ("Horizontal");
-		if (lado > 0) {
-			Debug.Log(limitador);
-						if (limitador > 0.5) {
+		limitador += 10f*Time.deltaTime;	
+				lado = Input.GetAxis ("Horizontal") * Time.deltaTime;
+		if (lado > 0 && limitador > 2.5f) {
+			controlador_som.GetComponent<Som_menu>().Mudou();
+			limitador= 0;
+						atual += 1;
+						if (atual > 4) {
+								atual = 1;
 
-								limitador = 0;
-								atual += 1;
-								if (atual > 4) {
-										atual = 1;
-
-								}
-			
-								animator.SetInteger ("Selecionado", atual);
 						}
+			
+						animator.SetInteger ("Selecionado", atual);
 				}
-		if (lado < 0) {
-			limitador += 1 * Time.deltaTime;
-			if (limitador > 1) {
-				limitador = 0;
-				atual -= 1;
-				if (atual < 1) {
-					atual = 4;
-				}
-				animator.SetInteger ("Selecionado", atual);
-			}
+		if (lado < 0 && limitador > 2.5f) {	
+			limitador= 0;
+			controlador_som.GetComponent<Som_menu>().Mudou();
+						atual -= 1;
+						if (atual < 1) {
+								atual = 4;
+						}
+						animator.SetInteger ("Selecionado", atual);
 		}
+	
 
 
 				/*if (lado < 0 && Time.time > limitador) {
@@ -122,19 +121,10 @@ public class Menu : MonoBehaviour {
 								Application.Quit ();
 						}
 						if (atual == 5) {
-				if(sound == true){
-					animator.SetBool ("on", false);
-					AudioListener.volume = 0.0f;
-					sound = false;
-								}else{
-					animator.SetBool ("on", true);
-					AudioListener.volume = 1.0f;
-					sound = true;
-				}
-			}
-			Debug.LogError(sound);
 
 				}
+
+			}
 		}
 	void Voltar(){
 		if (Input.GetButton ("Voltar") && atual == 2 || Input.GetKey(KeyCode.K) && atual == 2) {

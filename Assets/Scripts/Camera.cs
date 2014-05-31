@@ -11,6 +11,7 @@ public class Camera : MonoBehaviour {
 	public float limitefrente;
 	public float limitetras;
 	public bool camera_lock = false;
+	public bool travou;
 
 	void Start () {
 		//a camera vai assim que o jogo começa para aonde o player estiver na posiçao previamente definida

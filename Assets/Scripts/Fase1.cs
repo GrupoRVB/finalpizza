@@ -20,6 +20,6 @@ public class Fase1 : MonoBehaviour {
 									
 								Application.LoadLevel ("cena12");
 						}
-		Debug.Log (passar);
+
 				}
 }

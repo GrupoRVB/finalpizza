@@ -15,7 +15,7 @@ public class Finalfase1 : MonoBehaviour {
 				
 				Application.LoadLevel ("Menu");
 			}
-		Debug.LogError (passar);
+
 
 		}
 	

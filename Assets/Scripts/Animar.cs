@@ -22,7 +22,8 @@ public class Animar : MonoBehaviour {
 			stand = 0;
 				}
 		//a cada frame ele recebe o valor 0.01;
-		stand += 0.01f;
+		stand += 0.85f*Time.deltaTime;
+		Debug.Log (stand);
 		//se stand for maior que 5;
 		if(stand > 5){
 			//vai setar bool para a variavel cansado para true;
@@ -77,7 +78,7 @@ public class Animar : MonoBehaviour {
 			anim.SetBool("cansado", false);
 		}
 		//se o jogador apertar o botao definido como "Atacar"  
-		if(Input.GetButton("Atacar")||  Input.GetKey (KeyCode.N)){
+		if(Input.GetButtonDown	("Atacar")||  Input.GetKey (KeyCode.N)){
 			//seta o estado atacando como true e a variavel stand se torna 0 ( se ele estiver no modo stand, sai dele)
 			anim.SetBool("atacando", true);
 			stand = 0;

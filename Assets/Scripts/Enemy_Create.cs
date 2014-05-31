@@ -167,14 +167,14 @@ public class Enemy_Create : MonoBehaviour
 		if (Time.time > control_go && go_showed == false && start_go == true) {
 
 			go_showed = true;
-			go.text = "Go!";
+			go.text = "Go!->";
 			//go.transform.position = new Vector2 (max_x - 1, 0.81f);
-			go.fontSize = 30;
+			go.fontSize = 60;
 
 				}
 
 		if (go_showed == true) {
-			go.text = "Go!";
+			go.text = "Go!->";
 						if (size_go <= 40) {
 
 				go.enabled = false;

@@ -68,8 +68,8 @@ public class Enemymov : MonoBehaviour {
 				tomou = true;
 						vida -= 1.5f;
 				}
-		if (other.gameObject.tag == "jogado" && other.GetComponent<Movimento>().atacando == true && other.GetComponent<Movimento>().andarFrente == 0) {
-			vida -= 2;
+		if (other.gameObject.tag == "jogado" && other.GetComponent<Movimento>().atacando == true && other.GetComponent<Movimento>().andarFrente == 0 ) {
+			vida -= 1;
 				tomou = true;
 
 
@@ -92,7 +92,7 @@ public class Enemymov : MonoBehaviour {
 			if(rand <35 && rand > 5){
 				Instantiate (municao1, new Vector3(this.transform.position.x,this.transform.position.y-0.2f,0), Quaternion.identity);
 			}
-			if(rand > 85){
+			if(rand > 90){
 				Instantiate (municao2, new Vector3(this.transform.position.x,this.transform.position.y-0.2f,0), Quaternion.identity);
 			}
 			if(rand < 5){

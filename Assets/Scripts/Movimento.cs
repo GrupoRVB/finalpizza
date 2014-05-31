@@ -155,7 +155,7 @@ public class Movimento : MonoBehaviour {
 		if(Input.GetKey(KeyCode.F)){
 			player.transform.Translate(0.8f, 0 ,0);
 		}
-		if (Input.GetButton ("Atacar") || Input.GetKey (KeyCode.N)) {
+		if (Input.GetButtonDown ("Atacar") || Input.GetKey (KeyCode.N)) {
 						atacando = true;
 				} else {
 						atacando = false;
@@ -267,7 +267,7 @@ public class Movimento : MonoBehaviour {
 	void GameOver(){
 
 		tempo += 1 * Time.deltaTime;
-		Debug.LogError (tempo);
+
 		if (tempo > 5) {
 						Application.LoadLevel ("GameOver");
 	

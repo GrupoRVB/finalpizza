@@ -37,12 +37,14 @@
 				public bool action = false;
 				public float hit_pulo;
 				public float boss_life = 1;
-				private int feedback;
+				private float feedback;
 				private bool tomou = false;
 				private GUISkin textButton;
 				public bool dead = false;
 				public float control_dead = 0;
 				private float passar = 0;
+	//public GameObject municao1;
+	//public GameObject municao2;
 	public bool falled = false;
 				
 				// Use this for initialization
@@ -70,9 +72,9 @@
 				void Update () {
 
 				if (dead == true) {
-			passar += 0.01f* Time.deltaTime;
-			Debug.LogError(passar);
-			if (passar > 5) {
+			passar += 0.5f* Time.deltaTime;
+
+			if (passar > 4) {
 			Application.LoadLevel ("finalfase1");
 
 			}
@@ -83,8 +85,8 @@
 								layer.color = new Color (1f, 1f, 1f, 1f);
 						} else {
 								layer.color = new Color (1f, 0f, 0f, 1f);	
-								feedback += 1;			
-								if (feedback == 2) {
+				feedback += 10f * Time.deltaTime;			
+				if (feedback > 0.4f) {
 										layer.color = new Color (1f, 0f, 0f, 1f);	
 										feedback = 0;
 										tomou = false;
@@ -177,7 +179,7 @@
 
 										random_action = Random.Range (1, 100);
 
-										if (random_action <1) {
+										if (random_action <100) {
 												anim.SetBool ("andando", false);
 												anim.SetBool ("tiro", true);
 												next_walk = Time.time + 0.8f;
@@ -205,7 +207,7 @@
 														this.dir = -1;
 												}
 
-										} else if (random_action >= 2 && random_action < 100) {
+										} else if (random_action >= 1 && random_action < 2) {
 												anim.SetBool ("andando", false);
 												anim.SetBool ("pulo", true);
 												next_walk = Time.time + 11.1f;
@@ -261,7 +263,11 @@
 										this.is_falling = true;
 										this.transform.Translate (0, -40 * Time.deltaTime, 0);
 										this.jumping = false;
-										anim.SetBool ("pulo", false);
+					anim.SetBool ("pulo", false);
+
+					if(this.transform.position.y < -0.7184167){
+						this.transform.position = new Vector3(this.transform.position.x, -0.7184167f,0);
+					}
 										
 										this.jump_hit = true;
 
@@ -299,11 +305,11 @@
 								if (Time.time < camera_time) {
 
 										if (camera_control >= 0 && camera_control <= 3) {
-												camera_obj.transform.Translate (0.02f, 0, 0);
+												camera_obj.transform.Translate (7.5f*Time.deltaTime, 0, 0);
 												camera_control++;
 
 										} else if (camera_control > 3 && camera_control <= 6) {
-												camera_obj.transform.Translate (-0.02f, 0, 0);
+						camera_obj.transform.Translate (-7.5f*Time.deltaTime, 0, 0);
 												camera_control++;
 
 										} else if (camera_control > 6) {
@@ -406,7 +412,7 @@
 								boss_life -= 0.5f;
 						}
 						if (other.gameObject.tag == "jogado" && other.GetComponent<Movimento> ().atacando == true && other.GetComponent<Movimento> ().andarFrente == 0) {
-								boss_life -= 0.2f;
+								boss_life -= 2.0f;
 								tomou = true;
 						
 						}

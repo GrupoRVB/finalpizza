@@ -21,12 +21,12 @@ public class Icone1 : MonoBehaviour {
 		if (player.transform.position.x < 56.60 && chefe == false) {
 			//ela se move junto a tela
 			this.transform.position = new Vector2(player.transform.position.x-alinhamento, topo);
-		} else {
+		} /*else {
 			//chefe se torna true, para nao voltar no outro loop
 			chefe = true;
 			//e fica estatico.
 			this.transform.position = new Vector2(55f, topo);
-		}
+		}*/
 
 	}
 }
