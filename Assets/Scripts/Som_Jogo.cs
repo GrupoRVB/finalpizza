@@ -3,11 +3,11 @@ using System.Collections;
 
 public class Som_Jogo : MonoBehaviour {
 	public AudioClip fase;
-	private GameObject player;
+	public GameObject player;
 	// Use this for initialization
 	void Start () {
 		audio.clip = fase;
-		player = GameObject.Find("Jogador");
+
 	}
 	
 	// Update is called once per frame

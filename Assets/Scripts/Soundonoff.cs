@@ -4,12 +4,11 @@ using System.Collections;
 public class Soundonoff : MonoBehaviour {
 	public Animator anim;
 	private bool onoff;
-	private GameObject global;
+	public GameObject global;
 
 	// Use this for initialization
 	void Start () {
 		anim = this.GetComponent<Animator>();
-		global = GameObject.Find ("Global");
 	}
 	
 	// Update is called once per frame

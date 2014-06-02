@@ -25,8 +25,8 @@ public class Robot_Move : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
 		player = GameObject.Find ("Jogador");
+
 		anim = GetComponent<Animator> ();
 		enemy_spawn = GameObject.Find ("Enemy_spawner");
 		enemy_creator = GameObject.Find ("Enemy_spawner");

@@ -3,10 +3,10 @@ using System.Collections;
 
 public class Parallax : MonoBehaviour {
 	public float translacao;
-	private GameObject player;
+	public GameObject player;
 	// Use this for initialization
 	void Start () {
-		player = GameObject.Find ("Jogador");
+
 	
 	}
 	

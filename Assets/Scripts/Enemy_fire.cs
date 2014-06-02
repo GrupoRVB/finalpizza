@@ -10,10 +10,10 @@ public class Enemy_fire : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		player = GameObject.Find ("Jogador");
 		cont_wait = 0;
 
-		player = GameObject.Find ("Jogador");
+
 		if (this.transform.position.x <= player.transform.position.x) {
 			this.dir = 1;
 			}else{

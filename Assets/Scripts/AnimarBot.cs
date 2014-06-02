@@ -4,10 +4,10 @@ using System.Collections;
 public class AnimarBot : MonoBehaviour {
 	private Animator anim;
 	private int tipo;
-	private GameObject player;
+	public GameObject player;
 	//funciona quando inicia
 	void Start () {
-		player = GameObject.Find ("Jogador");
+
 		//pega o componente "Animator" e armazena na variavel anim
 		anim = GetComponent<Animator>();
 		//seta a variavel do animator "sele" como true

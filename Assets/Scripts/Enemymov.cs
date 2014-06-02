@@ -20,10 +20,10 @@ public class Enemymov : MonoBehaviour {
 	void Start () {
 		//inimigo começa com 5 vidas
 		vida = 5;
+		player = GameObject.Find ("Jogador");
 		//layer vai pegar o componente SpriteRender(aonde contem o controlador de layer)
 		layer = GetComponent<SpriteRenderer>();
 		//acha o gameobject "jogador"(personagem principal) e atribui a variavel player
-		player = GameObject.Find ("Jogador");
 		enemy_creator = GameObject.Find ("Enemy_spawner");	
 		anim = this.GetComponent<Animator>();
 		anim.SetBool("vivo", true);

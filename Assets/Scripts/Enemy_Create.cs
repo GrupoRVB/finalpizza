@@ -45,7 +45,7 @@ public class Enemy_Create : MonoBehaviour
 		void Start ()
 		{
 				//acha a o gameobject "Jogador" e aloca na variavel plauer
-				player = GameObject.Find ("Jogador");
+
 				// seta que o tempo de spawn dos mobs e de 2.5f
 				time_spawn = 3.5F;
 				minima = player.GetComponent<Movimento> ().alturaMinima;

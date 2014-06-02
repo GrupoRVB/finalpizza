@@ -3,12 +3,8 @@ using System.Collections;
 
 public class Fase1 : MonoBehaviour {
 	private float passar;
-	private Animator anim;
 	// Use this for initialization
 	void Start () {
-		anim = GetComponent<Animator>();
-		anim.SetBool("Acabou", false);
-
 	
 	}
 	

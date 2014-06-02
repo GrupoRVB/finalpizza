@@ -4,16 +4,16 @@ using System.Collections;
 public class Bala : MonoBehaviour {
 	public int forca = 1000;
 	//cria uma variavel do tipo GameObject com o nome player
-	private GameObject player;
+	public GameObject player;
 	// Use this for initialization
 	void Start () 
 	{
 		//variaval "acha" o Jogador(nome do objeto que esta na cena, no caso poderia ser bola, Player1 e ate Main Camera
-		player = GameObject.Find ("Jogador");
+
 		//Ultiliza o metodo direcao
 		direcao ();
 
-
+		player = GameObject.Find ("Jogador");
 		}
 			
 

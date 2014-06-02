@@ -11,10 +11,10 @@ public class Boss_fire : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		
+		player = GameObject.Find ("Jogador");
 		cont_wait = 0;
 		
-		player = GameObject.Find ("Jogador");
+
 		chefe = GameObject.FindGameObjectWithTag ("boss");
 
 		this.dir = chefe.GetComponent<Roboter_move> ().aim;

@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class azeitona : MonoBehaviour {
-	private GameObject player;
+	public GameObject player;
 	private SpriteRenderer layer;
 	// Use this for initialization
 	void Start () {

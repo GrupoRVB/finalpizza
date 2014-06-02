@@ -50,7 +50,7 @@
 				// Use this for initialization
 				void Start () {
 					
-					player = GameObject.Find ("Jogador");
+		player = GameObject.Find ("Jogador");
 					camera_obj = GameObject.Find ("Main Camera");
 					anim = GetComponent<Animator> ();
 					layer = GetComponent<SpriteRenderer>();

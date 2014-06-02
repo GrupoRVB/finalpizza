@@ -28,8 +28,8 @@
 		
 		// Use this for initialization
 		void Start () {
-			
-			player = GameObject.Find ("Jogador");
+		player = GameObject.Find ("Jogador");
+
 			anim = GetComponent<Animator> ();
 			enemy_creator = GameObject.Find ("Enemy_spawner");
 			hit_circle = GetComponent<CircleCollider2D>();
