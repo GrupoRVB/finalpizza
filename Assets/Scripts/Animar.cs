@@ -23,7 +23,6 @@ public class Animar : MonoBehaviour {
 				}
 		//a cada frame ele recebe o valor 0.01;
 		stand += 0.85f*Time.deltaTime;
-		Debug.Log (stand);
 		//se stand for maior que 5;
 		if(stand > 5){
 			//vai setar bool para a variavel cansado para true;

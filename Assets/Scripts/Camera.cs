@@ -12,6 +12,7 @@ public class Camera : MonoBehaviour {
 	public float limitetras;
 	public bool camera_lock = false;
 	public bool travou;
+	public GameObject Barra_movel_boss;
 
 	void Start () {
 		//a camera vai assim que o jogo começa para aonde o player estiver na posiçao previamente definida
@@ -21,6 +22,7 @@ public class Camera : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
 				//a camera acompanha o jogador conforme os frames vao se passando
 				/*if (player.transform.position.x < 56.60 && chefe == false) {
 			limiten=maincamera.transform.position.x-0.3f;

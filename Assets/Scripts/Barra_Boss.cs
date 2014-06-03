@@ -14,9 +14,9 @@ using System.Collections;
 		
 		public GUISkin textButton;
 		public Animator anim;
-		public SpriteRenderer rend;
 		public bool invenc;
 		public GameObject boss;
+	public GameObject Barra_movel_boss;
 		
 		
 		
@@ -24,13 +24,14 @@ using System.Collections;
 			//acha o GameObject, jogador (personagem principal)e joga ele dentro da variavel player
 			boss = GameObject.Find ("Boss");
 			//
+
 			
 			
 			//pega o componente Animator, e joga ele dentro da variavel anim
 			anim = GetComponent<Animator>();
 			//define as variveis
-			quantvida =100;
-			MaxVida= 100;
+
+		MaxVida = 100;
 			dano = 0.8f;
 			proxima = 0.0f;
 			//seta a variavel "vivo" como true no componente animator
@@ -39,7 +40,7 @@ using System.Collections;
 		
 		void Update () {
 			
-			
+		quantvida = GetComponent<Roboter_move>().boss_life;
 				//posiçao no eixo x recebe o valor da tela/20(posiciona mais para esquerda)
 		posicaox = Screen.width / 2 + 150;
 		//posiçao no eixo y recebe o valor da tela/3- o valor da tela/4, ou seja, um valor positivo (posiciona proximo do topo)

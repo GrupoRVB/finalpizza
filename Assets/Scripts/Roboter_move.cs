@@ -36,7 +36,7 @@
 				public float randomY;
 				public bool action = false;
 				public float hit_pulo;
-				public float boss_life = 1;
+				public float boss_life = 100;
 				private float feedback;
 				private bool tomou = false;
 				private GUISkin textButton;
@@ -412,7 +412,7 @@
 								boss_life -= 0.5f;
 						}
 						if (other.gameObject.tag == "jogado" && other.GetComponent<Movimento> ().atacando == true && other.GetComponent<Movimento> ().andarFrente == 0) {
-								boss_life -= 2.0f;
+								boss_life -= 0.5f;
 								tomou = true;
 						
 						}
