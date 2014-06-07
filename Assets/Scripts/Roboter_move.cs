@@ -179,7 +179,7 @@
 
 										random_action = Random.Range (1, 100);
 
-										if (random_action <100) {
+										if (random_action <35) {
 												anim.SetBool ("andando", false);
 												anim.SetBool ("tiro", true);
 												next_walk = Time.time + 0.8f;
@@ -193,7 +193,7 @@
 												}
 												this.shoting = true;
 
-										} else if (random_action >= 1 && random_action < 2) {
+										} else if (random_action >= 35 && random_action < 75) {
 												anim.SetBool ("andando", false);
 												anim.SetBool ("soco", true);
 												next_walk = Time.time + 2.1f;
@@ -207,7 +207,7 @@
 														this.dir = -1;
 												}
 
-										} else if (random_action >= 1 && random_action < 2) {
+										} else if (random_action >= 75 && random_action < 100) {
 												anim.SetBool ("andando", false);
 												anim.SetBool ("pulo", true);
 												next_walk = Time.time + 11.1f;
@@ -305,11 +305,11 @@
 								if (Time.time < camera_time) {
 
 										if (camera_control >= 0 && camera_control <= 3) {
-												camera_obj.transform.Translate (7.5f*Time.deltaTime, 0, 0);
+												camera_obj.transform.Translate (3.5f*Time.deltaTime, 0, 0);
 												camera_control++;
 
 										} else if (camera_control > 3 && camera_control <= 6) {
-						camera_obj.transform.Translate (-7.5f*Time.deltaTime, 0, 0);
+						camera_obj.transform.Translate (-3.5f*Time.deltaTime, 0, 0);
 												camera_control++;
 
 										} else if (camera_control > 6) {
@@ -351,12 +351,14 @@
 			anim.SetBool ("normal", false);
 			anim.SetBool ("andando", false);
 			anim.SetBool("morto",true);
+			this.hit_area.enabled = false;
 		}
 		
 		if (dead == true && Time.time > control_dead) {
 			
 			anim.SetBool("morto",false);
 			anim.SetBool("morto2",true);
+
 									
 		}
 

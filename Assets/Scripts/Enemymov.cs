@@ -14,6 +14,9 @@ public class Enemymov : MonoBehaviour {
 	private float feedback;
 	private bool tomou = false;
 	public BoxCollider2D hit_box;
+	public GameObject[] inimigos;
+	public Vector3 coherency;
+	public Vector3 separation;
 
 
 	// Use this for initialization
@@ -27,9 +30,9 @@ public class Enemymov : MonoBehaviour {
 		enemy_creator = GameObject.Find ("Enemy_spawner");	
 		anim = this.GetComponent<Animator>();
 		anim.SetBool("vivo", true);
-		rend = this.GetComponent<SpriteRenderer>();
+		rend = GetComponent<SpriteRenderer>();
 		hit_box = this.GetComponent<BoxCollider2D> ();
-
+		inimigos = GameObject.FindGameObjectsWithTag ("inimigo");
 
 	}
 	
@@ -80,6 +83,10 @@ public class Enemymov : MonoBehaviour {
 		if (player.transform.position.y < this.transform.position.y) {
 			this.layer.sortingLayerName = "Frente";
 		}
+
+
+
+
 
 
 		if(vida <= 0){
