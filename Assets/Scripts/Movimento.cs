@@ -57,8 +57,8 @@ public class Movimento : MonoBehaviour {
 			GameOver();
 			}
 		//faz com que o GUITEXT(que e o contador), apar
-		muniAze.text = ""+municao_azeitona;
-		muniTomat.text = ""+municao_tomate;
+		muniAze.text = "" + municao_azeitona;
+		muniTomat.text = "" + municao_tomate;
 		Kitmedico.text = "" + MedictKit;
 	}
 
