@@ -1,4 +1,4 @@
-	using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class Movimento : MonoBehaviour {
@@ -31,6 +31,8 @@ public class Movimento : MonoBehaviour {
 	private Animator anim;
 	public AudioClip azeitona;
 	public AudioClip tomate;
+	public AudioClip municao;
+	public AudioClip sembala;
 	// Use this for initialization
 	void Start () {	
 
@@ -48,9 +50,10 @@ public class Movimento : MonoBehaviour {
 		if (vivo == true) {
 			//chama todas as funçoes de açao
 						Moviment ();
-						Atirar ();
+					
 						TipoDeTiro ();
 						Curar();
+			   Atirar ();
 				} else {
 	
 			//senao, chama a funçao gameover
@@ -189,52 +192,70 @@ public class Movimento : MonoBehaviour {
 
 				//se o jogador apertar a tecla RT ou LT no controle
 				if (tipodemunicao == 1) {
+			if(municao_azeitona == 0){
+				if (Input.GetAxis ("Tiro") != 0 && Time.time > proximotiro || Input.GetKey (KeyCode.J) && Time.time > proximotiro || Input.GetKey (KeyCode.K) && Time.time > proximotiro) {		
+					audio.PlayOneShot(sembala);
+					proximotiro = Time.time + fireRate;	
+				}
+			}
 						if (municao_azeitona > 0) {		
-				if (Input.GetAxis ("Tiro") != 0 && Time.time > proximotiro || Input.GetKey (KeyCode.J) && Time.time > proximotiro || Input.GetKey (KeyCode.K) && Time.time > proximotiro) {								
+								if (Input.GetAxis ("Tiro") != 0 && Time.time > proximotiro || Input.GetKey (KeyCode.J) && Time.time > proximotiro || Input.GetKey (KeyCode.K) && Time.time > proximotiro) {								
 										//cria o objeto "Bala", na posiçao do player								
 										proximotiro = Time.time + fireRate;								
 										Instantiate (Bala, new Vector2 (player.transform.position.x, player.transform.position.y - 0.05f), Quaternion.identity);
 										municao_azeitona -= 1;
-					audio.PlayOneShot(azeitona);
+										audio.PlayOneShot (azeitona);
 
-					if (Input.GetAxis ("Tiro") > 0 || Input.GetKey (KeyCode.J)) {
+
+										if (Input.GetAxis ("Tiro") > 0 || Input.GetKey (KeyCode.J)) {
 						
-						player.transform.localScale = new Vector2 (-0.5f, 0.5f);
+												player.transform.localScale = new Vector2 (-0.5f, 0.5f);
 						
-					}
-					if (Input.GetAxis ("Tiro") < 0 || Input.GetKey (KeyCode.K)) {
+										}
+										if (Input.GetAxis ("Tiro") < 0 || Input.GetKey (KeyCode.K)) {
 						
-						player.transform.localScale = new Vector2 (0.5f, 0.5f);
-					}
+												player.transform.localScale = new Vector2 (0.5f, 0.5f);
+										}
 
 			
-										
+				
 								}
 						}
 				}
 						if (tipodemunicao == 2) {
+			if(municao_tomate == 0){
+				if (Input.GetAxis ("Tiro") != 0 && Time.time > proximotiro || Input.GetKey (KeyCode.J) && Time.time > proximotiro || Input.GetKey (KeyCode.K) && Time.time > proximotiro) {		
+					audio.PlayOneShot(sembala);
+					proximotiro = Time.time + fireRate;	
+				}}
 								if (municao_tomate > 0) {		
-				if (Input.GetAxis ("Tiro") != 0 && Time.time > proximotiro || Input.GetKey (KeyCode.J) && Time.time > proximotiro || Input.GetKey (KeyCode.K) && Time.time > proximotiro) {								
-												//cria o objeto "Bala", na posiçao do player								
+																
+												//cria o objeto "Bala", na posiçao do player
+				if (Input.GetAxis ("Tiro") != 0 && Time.time > proximotiro || Input.GetKey (KeyCode.J) && Time.time > proximotiro || Input.GetKey (KeyCode.K) && Time.time > proximotiro) {		
 												proximotiro = Time.time + fireTomate;								
 												Instantiate (BalaTomate, new Vector3 (player.transform.position.x, player.transform.position.y - 0.03f, 0), Quaternion.identity);
 												municao_tomate -= 1;
-					audio.PlayOneShot(tomate);
-					if (Input.GetAxis ("Tiro") > 0 || Input.GetKey (KeyCode.J)) {
+				
+												audio.PlayOneShot (tomate);
+				
+
+												if (Input.GetAxis ("Tiro") > 0 || Input.GetKey (KeyCode.J)) {
 						
-						player.transform.localScale = new Vector2 (-0.5f, 0.5f);
+														player.transform.localScale = new Vector2 (-0.5f, 0.5f);
 						
-					}
-					if (Input.GetAxis ("Tiro") < 0 || Input.GetKey (KeyCode.K)) {
+												}
+												if (Input.GetAxis ("Tiro") < 0 || Input.GetKey (KeyCode.K)) {
 						
-						player.transform.localScale = new Vector2 (0.5f, 0.5f);
-					}
+														player.transform.localScale = new Vector2 (0.5f, 0.5f);
+												}
+				}
+				
 					
 			
 										}
 								}
-						}
 				}
+
 	void Curar(){
 		if (Input.GetButtonDown ("Kitmedico")) {
 			if(MedictKit >0){
@@ -256,9 +277,12 @@ public class Movimento : MonoBehaviour {
 
 				if (colisor.gameObject.tag == "azeitona") {
 						municao_azeitona += 5;
+			audio.PlayOneShot(municao);
+
 				}
 				if (colisor.gameObject.tag == "tomate") {
 						municao_tomate += 20;
+			audio.PlayOneShot(municao);
 				}
 				if (colisor.gameObject.tag == "medico") {
 			MedictKit +=1;
