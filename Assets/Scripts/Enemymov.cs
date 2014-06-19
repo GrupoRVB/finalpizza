@@ -17,6 +17,7 @@ public class Enemymov : MonoBehaviour {
 	public GameObject[] inimigos;
 	public Vector3 coherency;
 	public Vector3 separation;
+	public GameObject analisator;
 
 
 	// Use this for initialization
@@ -33,6 +34,7 @@ public class Enemymov : MonoBehaviour {
 		rend = GetComponent<SpriteRenderer>();
 		hit_box = this.GetComponent<BoxCollider2D> ();
 		inimigos = GameObject.FindGameObjectsWithTag ("inimigo");
+		analisator = GameObject.Find ("analisator");
 
 	}
 	
@@ -96,10 +98,10 @@ public class Enemymov : MonoBehaviour {
 				this.hit_box.enabled = false;
 			Destroy (this.gameObject , 2f);
 			rand = Random.Range(1,100);
-			if(rand <35 && rand > 5){
+			if(rand < (35 + analisator.GetComponent<Analise>().drop_rate_plus) && rand > 5){
 				Instantiate (municao1, new Vector3(this.transform.position.x,this.transform.position.y-0.2f,0), Quaternion.identity);
 			}
-			if(rand > 90){
+				if(rand > (90 - analisator.GetComponent<Analise>().drop_rate_plus)){
 				Instantiate (municao2, new Vector3(this.transform.position.x,this.transform.position.y-0.2f,0), Quaternion.identity);
 			}
 			if(rand < 5){

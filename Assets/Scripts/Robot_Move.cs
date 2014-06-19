@@ -21,6 +21,7 @@ public class Robot_Move : MonoBehaviour {
 	public bool is_shoting;
 	public CircleCollider2D hit_circle;
 	public GameObject enemy_creator;
+	public GameObject analisator;
 
 
 	// Use this for initialization
@@ -30,6 +31,7 @@ public class Robot_Move : MonoBehaviour {
 		anim = GetComponent<Animator> ();
 		enemy_spawn = GameObject.Find ("Enemy_spawner");
 		enemy_creator = GameObject.Find ("Enemy_spawner");
+		analisator = GameObject.Find ("analisator");
 		hit_circle = GetComponent<CircleCollider2D>();
 
 		//enemy_fire = GameObject.Find ("enemy_fire");
@@ -47,7 +49,7 @@ public class Robot_Move : MonoBehaviour {
 
 			shoting = anim.GetBool ("atirando");
 						distancia = player.transform.position.x - this.transform.position.x;
-						if (distancia > -8 && distancia < 8) {
+						if (distancia > -20 && distancia < 20) {
 					
 								if (distancia >= 0) {
 										this.transform.localScale = new Vector2 (-1, 1);
@@ -60,11 +62,11 @@ public class Robot_Move : MonoBehaviour {
 								
 
 						if (distancia >= 0.8f ) {
-							this.transform.Translate (/*0.005f*/ 0.5f* Time.deltaTime, 0, 0);
+						this.transform.Translate (/*0.005f*/ (0.5f + analisator.GetComponent<Analise>().move_speed) *  Time.deltaTime, 0, 0);
 							anim.SetBool ("andando", true);
 							anim.SetBool ("atirando", false);
 						} else if(distancia <= -0.8f) {
-							this.transform.Translate (/*-0.005f*/-0.5f* Time.deltaTime, 0, 0);
+						this.transform.Translate (/*-0.005f*/(-0.5f - analisator.GetComponent<Analise>().move_speed)* Time.deltaTime, 0, 0);
 							anim.SetBool ("andando", true);
 							anim.SetBool ("atirando", false);	
 							
@@ -101,7 +103,8 @@ public class Robot_Move : MonoBehaviour {
 					audio.PlayOneShot(tiro);
 										control = Time.time + 3;
 					Instantiate (enemy_fire, new Vector3 (this.transform.position.x + (0.25f* this.aim), this.transform.position.y - 0.05f, 0), Quaternion.identity);
-					this.is_shoting = false;									
+					this.is_shoting = false;
+					analisator.GetComponent<Analise>().enemy_shots++;
 								}
 
 						}

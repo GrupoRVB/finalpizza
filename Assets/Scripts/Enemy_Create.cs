@@ -23,7 +23,7 @@ public class Enemy_Create : MonoBehaviour
 		public bool boss_activated = false;
 		public float tempo;
 		public float initial_position;
-		public int random_enemy_count;
+		public float random_enemy_count;
 		public int random_enemy_type;
 		public float max_x;
 		public float min_x;
@@ -39,6 +39,12 @@ public class Enemy_Create : MonoBehaviour
 	public bool go_showed;
 	public bool start_go;
 	public float size_go = 0;
+	public float life_ini;
+	public float life_final;
+	public float life_loss;
+	public GameObject analisator;
+	public float melee_enemy;
+	public float ranged_enemy;
 
 
 
@@ -54,6 +60,8 @@ public class Enemy_Create : MonoBehaviour
 				initial_position = player.transform.position.x;
 				camera_control = GameObject.Find ("camera_control");
 				main_camera = GameObject.Find ("Main Camera");
+				life_ini = player.GetComponent<Barra> ().quantvida;
+				analisator = GameObject.Find ("analisator");
 
 
 	
@@ -91,6 +99,7 @@ public class Enemy_Create : MonoBehaviour
 						//main_camera.transform.position = new Vector3(player.transform.position.x - 1.5f, main_camera.transform.position.y,-38.33f);
 						lock_screen = true;
 						camera_control.GetComponent<Camera>().camera_lock = true;
+						life_ini = player.GetComponent<Barra> ().quantvida;
 						
 
 				}
@@ -116,41 +125,46 @@ public class Enemy_Create : MonoBehaviour
 				if (lock_screen == true && spawned_area == false) {
 
 						spawned_area = true;
-						random_enemy_count = Random.Range (6, 9);
+						random_enemy_count = 9 + (analisator.GetComponent<Analise>().enemy_plus);
+						melee_enemy = analisator.GetComponent<Analise>().melee_enemy_count;
+						ranged_enemy = analisator.GetComponent<Analise>().ranged_enemy_count;
+			
+			for (int i = 0; i <= ranged_enemy; i++) {
 
-						for (int i = 0; i <= random_enemy_count; i++) {
-
-								random_enemy_type = Random.Range (1, 100);
-								random_side = Random.Range (1, 100);
-
-								if (random_enemy_type <= 50) {
-
-										if (random_side <= 50) {
-
-												Instantiate (Robotic, new Vector3 (min_x - Random.Range(3,5), Random.Range (-1.25f, -0.42f), 0), Quaternion.identity);
-
-										} else {
-
-						Instantiate (Robotic, new Vector3 (max_x + Random.Range(3,5), Random.Range (-1.25f, -0.42f), 0), Quaternion.identity);	
-										}
-
-								} else {
-									
-										if (random_side <= 50) {
-						
-						Instantiate (Enemy2, new Vector3 (min_x - Random.Range(3,5), Random.Range (-1.25f, -0.42f), 0), Quaternion.identity);
-						
-										} else {
-						
-						Instantiate (Enemy2, new Vector3 (max_x + Random.Range(3,5), Random.Range (-1.25f, -0.42f), 0), Quaternion.identity);	
-										}
-									
-
-								}
-
-						}
+				analisator.GetComponent<Analise>().total_enemies_spawned++;
+				random_side = Random.Range (1, 100);
+				
+				if (random_side <= 50) {
+					
+					Instantiate (Robotic, new Vector3 (min_x - Random.Range(3,15), Random.Range (-1.25f, -0.42f), 0), Quaternion.identity);
+					
+				} else {
+					
+					Instantiate (Robotic, new Vector3 (max_x + Random.Range(3,15), Random.Range (-1.25f, -0.42f), 0), Quaternion.identity);	
 				}
+				
+			}
+			
+			
+			for (int i = 0; i <= melee_enemy; i++) {
 
+				analisator.GetComponent<Analise>().total_enemies_spawned++;
+
+				random_side = Random.Range (1, 100);
+
+				if (random_side <= 50) {
+					
+					Instantiate (Enemy2, new Vector3 (min_x - Random.Range(3,15), Random.Range (-1.25f, -0.42f), 0), Quaternion.identity);
+					
+				} else {
+					
+					Instantiate (Enemy2, new Vector3 (max_x + Random.Range(3,15), Random.Range (-1.25f, -0.42f), 0), Quaternion.identity);	
+				}
+				
+				
+			}
+			
+		}
 		count_remain = GameObject.FindGameObjectsWithTag ("inimigo").Length + GameObject.FindGameObjectsWithTag ("inimigo_atirador").Length;
 
 		if (lock_screen == true && spawned_area == true && count_remain <= 0) {
@@ -160,6 +174,10 @@ public class Enemy_Create : MonoBehaviour
 			spawned_area = false;
 			initial_position = max_x;
 			control_go = Time.time + 2;
+
+			life_final = player.GetComponent<Barra> ().quantvida;
+			
+			life_loss = life_ini - life_final;
 
 			start_go = true;
 

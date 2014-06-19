@@ -13,8 +13,8 @@ public class Movimento : MonoBehaviour {
 	private float proximotiro = 0.0F;
 	private float oxilador;
 	private int totaldearmas = 2;
-	private int municao_azeitona = 0;
-	private int municao_tomate = 0;
+	public int municao_azeitona = 0;
+	public int municao_tomate = 0;
 	public int MedictKit = 0;
 	public int tipodemunicao = 1;
 	public bool chefe = false;
@@ -33,6 +33,7 @@ public class Movimento : MonoBehaviour {
 	public AudioClip tomate;
 	public AudioClip municao;
 	public AudioClip sembala;
+	public GameObject analisator;
 	// Use this for initialization
 	void Start () {	
 
@@ -40,6 +41,7 @@ public class Movimento : MonoBehaviour {
 				player = this.gameObject;
 		//pega o componente "Animator" e armazena na variavel anim
 		anim = GetComponent<Animator>();
+		analisator = GameObject.Find ("analisator");
 
 	}
 	// Vai chamar a cada frame os metodos:Movimentar e Atirar
@@ -205,6 +207,7 @@ public class Movimento : MonoBehaviour {
 										Instantiate (Bala, new Vector2 (player.transform.position.x, player.transform.position.y - 0.05f), Quaternion.identity);
 										municao_azeitona -= 1;
 										audio.PlayOneShot (azeitona);
+										analisator.GetComponent<Analise>().shots++;
 
 
 										if (Input.GetAxis ("Tiro") > 0 || Input.GetKey (KeyCode.J)) {
@@ -235,7 +238,7 @@ public class Movimento : MonoBehaviour {
 												proximotiro = Time.time + fireTomate;								
 												Instantiate (BalaTomate, new Vector3 (player.transform.position.x, player.transform.position.y - 0.03f, 0), Quaternion.identity);
 												municao_tomate -= 1;
-				
+												analisator.GetComponent<Analise>().shots++;
 												audio.PlayOneShot (tomate);
 				
 

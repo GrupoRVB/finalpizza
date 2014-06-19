@@ -5,6 +5,7 @@ public class Bala : MonoBehaviour {
 	public int forca = 1000;
 	//cria uma variavel do tipo GameObject com o nome player
 	public GameObject player;
+	public GameObject analisator;
 	// Use this for initialization
 	void Start () 
 	{
@@ -14,6 +15,7 @@ public class Bala : MonoBehaviour {
 		direcao ();
 
 		player = GameObject.Find ("Jogador");
+		analisator = GameObject.Find ("analisator");
 		}
 			
 
@@ -44,6 +46,7 @@ public class Bala : MonoBehaviour {
 				Destroy(this.gameObject, 0.02f);
 		}
 		if (other.gameObject.tag == "inimigo"|| other.gameObject.tag == "boss" || other.gameObject.tag == "inimigo_atirador") {
+			analisator.GetComponent<Analise>().shots_hit++;
 			Destroy(this.gameObject);	
 		}
 }
