@@ -45,7 +45,7 @@ public class Analise : MonoBehaviour {
 		shot_result = shots_hit / shots;
 		life_loss = enemy_spawner.GetComponent<Enemy_Create> ().life_loss;
 
-				if (shot_result <= 0.5f) {
+				if (shot_result <= 0.7f) {
 
 						drop_rate_plus = (1 - shot_result) * 30;
 
