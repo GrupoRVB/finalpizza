@@ -65,17 +65,17 @@
 												this.isAttacking = false;
 
 												if (distancia >= 0.5f) {
-														this.transform.Translate (/*0.008f*/(0.4f +  analisator.GetComponent<Analise>().move_speed)* Time.deltaTime, 0, 0);
+														this.transform.Translate (/*0.008f*/(0.6f +  analisator.GetComponent<Analise>().move_speed)* Time.deltaTime, 0, 0);
 														anim.SetBool ("andando", true);
 														anim.SetBool ("atacando", false);
 												} else if (distancia < -0.5f) {
-						this.transform.Translate ((-0.4f - analisator.GetComponent<Analise>().move_speed) * Time.deltaTime, 0, 0);
+						this.transform.Translate ((-0.6f - analisator.GetComponent<Analise>().move_speed) * Time.deltaTime, 0, 0);
 														anim.SetBool ("andando", true);
 														anim.SetBool ("atacando", false);
 							
 												} else {
 
-														this.transform.Translate (0.4f * this.aim * Time.deltaTime, 0, 0);
+														this.transform.Translate (0.6f * this.aim * Time.deltaTime, 0, 0);
 														anim.SetBool ("andando", true);
 														anim.SetBool ("atacando", false);
 
@@ -83,7 +83,7 @@
 										
 					
 												if (player.transform.position.y >= this.transform.position.y) {
-														this.transform.Translate (0, 0.3f * Time.deltaTime, 0);
+														this.transform.Translate (0, 0.4f * Time.deltaTime, 0);
 														anim.SetBool ("andando", true);
 														anim.SetBool ("atacando", false);
 						
@@ -91,7 +91,7 @@
 												} else {
 						
 						
-														this.transform.Translate (0, -0.3f * Time.deltaTime, 0);
+														this.transform.Translate (0, -0.4f * Time.deltaTime, 0);
 														anim.SetBool ("andando", true);
 														anim.SetBool ("atacando", false);
 												}
@@ -115,10 +115,10 @@
 
 														if (player.transform.position.y >= this.transform.position.y) {
 	
-																this.transform.Translate (8f * this.aim_attack * Time.deltaTime, 0.5f * Time.deltaTime, 0);
+																this.transform.Translate (10f * this.aim_attack * Time.deltaTime, 0.5f * Time.deltaTime, 0);
 														} else {
 
-																this.transform.Translate (8f * this.aim_attack * Time.deltaTime, 0.5f * Time.deltaTime, 0);
+																this.transform.Translate (10f * this.aim_attack * Time.deltaTime, -0.5f * Time.deltaTime, 0);
 
 														}
 

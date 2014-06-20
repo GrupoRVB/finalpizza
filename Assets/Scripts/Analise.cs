@@ -74,7 +74,7 @@ public class Analise : MonoBehaviour {
 				} else {
 
 						enemy_plus = -3;
-						move_speed = 0.2f;
+						move_speed = -0.1f;
 
 				}
 
