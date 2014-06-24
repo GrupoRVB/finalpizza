@@ -43,6 +43,7 @@
 				public bool dead = false;
 				public float control_dead = 0;
 				private float passar = 0;
+	public AudioClip morreu;
 	//public GameObject municao1;
 	//public GameObject municao2;
 	public bool falled = false;
@@ -352,6 +353,7 @@
 			anim.SetBool ("andando", false);
 			anim.SetBool("morto",true);
 			this.hit_area.enabled = false;
+			audio.PlayOneShot(morreu);
 		}
 		
 		if (dead == true && Time.time > control_dead) {
@@ -406,7 +408,7 @@
 
 				
 						if (other.gameObject.tag == "Bala") {
-								boss_life -= 1;
+								boss_life -= 50;
 								tomou = true;
 						}
 						if (other.gameObject.tag == "Bala_tomate") {

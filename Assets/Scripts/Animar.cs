@@ -80,7 +80,8 @@ public class Animar : MonoBehaviour {
 		if(Input.GetButtonDown	("Atacar")||  Input.GetKey (KeyCode.N)){
 			//seta o estado atacando como true e a variavel stand se torna 0 ( se ele estiver no modo stand, sai dele)
 			anim.SetBool("atacando", true);
-			stand = 0;
+
+
 			anim.SetBool("cansado", false);
 		}
 	}

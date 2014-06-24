@@ -28,11 +28,13 @@ public class Movimento : MonoBehaviour {
 	public GUIText Kitmedico;
 	private bool vivo = true;
 	public bool atacando = false;
+	private int atacou = 0;
 	private Animator anim;
 	public AudioClip azeitona;
 	public AudioClip tomate;
 	public AudioClip municao;
 	public AudioClip sembala;
+	public AudioClip cortador;
 	public GameObject analisator;
 	// Use this for initialization
 	void Start () {	
@@ -70,13 +72,13 @@ public class Movimento : MonoBehaviour {
 	//trata do movimento
 	void Moviment()
 	{
-		if (contrario == false) {
-			oxilador = 1;
+				if (contrario == false) {
+						oxilador = 1;
 				} else {
-			oxilador = 0.5f;
+						oxilador = 0.5f;
 				}
 				//cria a variavel que armazena se se o jogador esta andando para frente ou para tras
-		andarFrente = ((Input.GetAxis ("Horizontal") * Time.deltaTime));
+				andarFrente = ((Input.GetAxis ("Horizontal") * Time.deltaTime));
 				//se o valor de x for negativo(andando pra esquerda)
 				if (andarFrente < 0) {
 						//os sprites mudam para a esquerda
@@ -87,32 +89,32 @@ public class Movimento : MonoBehaviour {
 						player.transform.localScale = new Vector2 (0.5f, 0.5f);
 				}
 				//move o jogador para a direçao em que esta sendo precionada
-		if (anim.GetInteger ("velo") == 1 && anim.GetBool ("atirando") == true) {
-			if (Input.GetAxis ("Tiro") > 0 || Input.GetKey (KeyCode.J)){
+				if (anim.GetInteger ("velo") == 1 && anim.GetBool ("atirando") == true) {
+						if (Input.GetAxis ("Tiro") > 0 || Input.GetKey (KeyCode.J)) {
 								player.transform.localScale = new Vector2 (-0.5f, 0.5f);
 								player.transform.Translate (andarFrente, 0, 0);
-				if(andarFrente > 0){
-					contrario =true;
-				}
+								if (andarFrente > 0) {
+										contrario = true;
+								}
 
 				
 						}
-			if (Input.GetAxis ("Tiro") < 0 || Input.GetKey (KeyCode.K)) {
+						if (Input.GetAxis ("Tiro") < 0 || Input.GetKey (KeyCode.K)) {
 								player.transform.localScale = new Vector2 (0.5f, 0.5f);
 								player.transform.Translate (andarFrente, 0, 0);
-				if(andarFrente < 0){
-					contrario =true;
-				}
+								if (andarFrente < 0) {
+										contrario = true;
+								}
 						} 
-		}else {
-			player.transform.Translate (andarFrente, 0, 0);
-			contrario = false;
+				} else {
+						player.transform.Translate (andarFrente, 0, 0);
+						contrario = false;
 				}
 
 
 				//cria a variavel que armazena se se o jogador esta indo para cima ou para baixo
 
-		andarCima = Input.GetAxis ("Vertical") * Time.deltaTime;
+				andarCima = Input.GetAxis ("Vertical") * Time.deltaTime;
 				//move o jogador para a direçao em que esta sendo precionada
 				player.transform.Translate (0, andarCima, 0);
 				//se o jogador chegar no ponto maximo definido da tela
@@ -125,46 +127,49 @@ public class Movimento : MonoBehaviour {
 						//entao ele nao consegue descer mais, fica na posiçao minima definida
 						player.transform.position = new Vector2 (player.transform.position.x, alturaMinima);		
 				}
-		if (player.transform.position.x > 35.0) {
+				if (player.transform.position.x > 35.0) {
 						alturaMaxima = -0.27f;
 				} else {
 						alturaMaxima = -0.42f;
 				}
-		if(player.transform.position.x >35.84167){
-			alturaMinima= -1.167768f; 
+				if (player.transform.position.x > 35.84167) {
+						alturaMinima = -1.167768f; 
 		
-		} else {
-			alturaMinima =-1.25f;
+				} else {
+						alturaMinima = -1.25f;
 				
-		}
+				}
 
 
-		if (player.transform.position.x >= 56.60) {
+				if (player.transform.position.x >= 56.60) {
 						chefe = true;
 				}
 
-		if (player.transform.position.x > 58.42766f) {
+				if (player.transform.position.x > 58.42766f) {
 						player.transform.position = new Vector2 (58.42766f, player.transform.position.y);
 
 				}
-		if (chefe == true) {
-			if (player.transform.position.x < 54.76541f) {
-				player.transform.position = new Vector2 (54.76541f, player.transform.position.y);
+				if (chefe == true) {
+						if (player.transform.position.x < 54.76541f) {
+								player.transform.position = new Vector2 (54.76541f, player.transform.position.y);
 				
-			}
+						}
 				
-		}
+				}
 
 
 
-		if(Input.GetKey(KeyCode.F)){
-			player.transform.Translate(0.8f, 0 ,0);
-		}
-		if (Input.GetButtonDown ("Atacar") || Input.GetKey (KeyCode.N)) {
+				if (Input.GetKey (KeyCode.F)) {
+						player.transform.Translate (0.8f, 0, 0);
+				}
+				if (Input.GetButtonDown ("Atacar") || Input.GetKeyDown (KeyCode.N)) {
 						atacando = true;
+
 				} else {
 						atacando = false;
-				}
+	
+		}
+				
 
 
 
