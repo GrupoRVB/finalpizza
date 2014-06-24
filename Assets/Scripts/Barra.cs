@@ -41,7 +41,7 @@ public class Barra : MonoBehaviour {
 	
 	void Update () {
 
-		if (Input.GetButtonDown ("Kitmedico")) {
+		if (Input.GetButtonDown ("Kitmedico")||Input.GetKeyDown(KeyCode.M)) {
 				if(GetComponent<Movimento>().MedictKit > 0){
 				quantvida +=30;
 				if(quantvida  > 100)
