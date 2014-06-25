@@ -33,7 +33,7 @@ public class Enemy_Create : MonoBehaviour
 		public int random_side;
 		public GameObject camera_control;
 		public GameObject main_camera;
-		int count_remain = 0;
+		public int count_remain = 0;
 		public GUIText go;
 	public float control_go;
 	public bool go_showed;
@@ -136,11 +136,11 @@ public class Enemy_Create : MonoBehaviour
 				
 				if (random_side <= 50) {
 					
-					Instantiate (Robotic, new Vector3 (min_x - Random.Range(3,15), Random.Range (-1.25f, -0.42f), 0), Quaternion.identity);
+					Instantiate (Robotic, new Vector3 (min_x - Random.Range(3,15), (Random.Range (-125, -42f)/100), 0), Quaternion.identity);
 					
 				} else {
 					
-					Instantiate (Robotic, new Vector3 (max_x + Random.Range(3,15), Random.Range (-1.25f, -0.42f), 0), Quaternion.identity);	
+					Instantiate (Robotic, new Vector3 (max_x + Random.Range(3,15), (Random.Range (-125, -42f)/100), 0), Quaternion.identity);	
 				}
 				
 			}
@@ -154,18 +154,18 @@ public class Enemy_Create : MonoBehaviour
 
 				if (random_side <= 50) {
 					
-					Instantiate (Enemy2, new Vector3 (min_x - Random.Range(3,15), Random.Range (-1.25f, -0.42f), 0), Quaternion.identity);
+					Instantiate (Enemy2, new Vector3 (min_x - Random.Range(3,15), (Random.Range (-125, -42f)/100), 0), Quaternion.identity);
 					
 				} else {
 					
-					Instantiate (Enemy2, new Vector3 (max_x + Random.Range(3,15), Random.Range (-1.25f, -0.42f), 0), Quaternion.identity);	
+					Instantiate (Enemy2, new Vector3 (max_x + Random.Range(3,15), (Random.Range (-125, -42f)/100), 0), Quaternion.identity);	
 				}
 				
 				
 			}
 			
 		}
-		count_remain = GameObject.FindGameObjectsWithTag ("inimigo").Length + GameObject.FindGameObjectsWithTag ("inimigo_atirador").Length;
+		count_remain = GameObject.FindGameObjectsWithTag ("inimigo").Length + GameObject.FindGameObjectsWithTag ("inimigo_atirador").Length - 53;
 
 		if (lock_screen == true && spawned_area == true && count_remain <= 0) {
 

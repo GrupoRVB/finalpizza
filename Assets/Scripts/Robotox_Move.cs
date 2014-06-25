@@ -44,58 +44,62 @@
 		
 		// Update is called once per frame
 		void Update () {	
-				if (anim.GetBool ("vivo") == false) {
-						this.transform.Translate (0, 0, 0);
-						this.hit_circle.enabled = false;
-				} else {
-
-						distancia = player.transform.position.x - this.transform.position.x;
-						if (distancia > -20 && distancia < 20) {
-											
-								if (Time.time > next_walk) {
-
-												if (distancia >= 0.5f && this.isAttacking == false) {
-														this.transform.localScale = new Vector2 (-1, 1);
-														this.aim = 1;
-												} else if (distancia < -0.5f) {
-														this.transform.localScale = new Vector2 (1, 1);
-														this.aim = -1;
-												}
-
-												this.isAttacking = false;
-
-												if (distancia >= 0.5f) {
-														this.transform.Translate (/*0.008f*/(0.6f +  analisator.GetComponent<Analise>().move_speed)* Time.deltaTime, 0, 0);
-														anim.SetBool ("andando", true);
-														anim.SetBool ("atacando", false);
-												} else if (distancia < -0.5f) {
-						this.transform.Translate ((-0.6f - analisator.GetComponent<Analise>().move_speed) * Time.deltaTime, 0, 0);
-														anim.SetBool ("andando", true);
-														anim.SetBool ("atacando", false);
-							
-												} else {
-
-														this.transform.Translate (0.6f * this.aim * Time.deltaTime, 0, 0);
-														anim.SetBool ("andando", true);
-														anim.SetBool ("atacando", false);
-
-												}
-										
+		if (anim.GetBool ("vivo") == false) {
+			this.transform.Translate (0, 0, 0);
+		} else {
+			
+			distancia = player.transform.position.x - this.transform.position.x;
+			if (distancia > -20 && distancia < 20) {
+				
+				if (Time.time > next_walk) {
 					
-												if (player.transform.position.y >= this.transform.position.y) {
-														this.transform.Translate (0, 0.4f * Time.deltaTime, 0);
-														anim.SetBool ("andando", true);
-														anim.SetBool ("atacando", false);
+					if (distancia >= -0.19f && this.isAttacking == false) {
+						this.transform.localScale = new Vector2 (-1, 1);
+						this.aim = 1;
+					} else if (distancia <= 0.19f) {
+						this.transform.localScale = new Vector2 (1, 1);
+						this.aim = -1;
+					}
+					
+					this.isAttacking = false;
+					
+					if (distancia > 0.2f) {
+						this.transform.Translate ((0.6f + analisator.GetComponent<Analise>().move_speed) * Time.deltaTime, 0, 0);
+						anim.SetBool ("andando", true);
+						anim.SetBool ("atacando", false);
+					} else if (distancia < -0.2f) {
+						this.transform.Translate ((-0.6f - analisator.GetComponent<Analise>().move_speed) * Time.deltaTime, 0, 0);
+						anim.SetBool ("andando", true);
+						anim.SetBool ("atacando", false);
+						
+					//}else if (distancia > -0.4f && distancia < -0.8f){
+
+						//this.transform.Translate (-0.6f * Time.deltaTime, 0, 0);
+						//anim.SetBool ("andando", true);
+						//anim.SetBool ("atacando", false);
+					//}else if (distancia <0.4f && distancia > 0.8f){
+						
+						//this.transform.Translate (0.6f * Time.deltaTime, 0, 0);
+						//anim.SetBool ("andando", true);
+						//anim.SetBool ("atacando", false);
+					}
+					
+					if (this.transform.position.x <= enemy_creator.GetComponent<Enemy_Create>().max_x && this.transform.position.x >= enemy_creator.GetComponent<Enemy_Create>().min_x){
+					if (player.transform.position.y >= this.transform.position.y) {
+						this.transform.Translate (0, 0.2f * Time.deltaTime, 0);
+						anim.SetBool ("andando", true);
+						anim.SetBool ("atacando", false);
 						
 						
-												} else {
+					} else {
 						
 						
-														this.transform.Translate (0, -0.4f * Time.deltaTime, 0);
-														anim.SetBool ("andando", true);
-														anim.SetBool ("atacando", false);
-												}
-								
+						this.transform.Translate (0, -0.2f * Time.deltaTime, 0);
+						anim.SetBool ("andando", true);
+						anim.SetBool ("atacando", false);
+					}
+				}
+				}
 
 												if (distancia >= -0.8f && distancia <= 0.8f && Time.time > proximotiro) {	
 														this.isAttacking = true;
@@ -103,7 +107,7 @@
 														proximotiro = Time.time + 6;
 														anim.SetBool ("andando", false);
 														anim.SetBool ("atacando", true);
-														control_attack = Time.time + 2f;
+														control_attack = Time.time + 0.15f;
 														this.aim_attack = this.aim;
 														analisator.GetComponent<Analise> ().melee_attacks++;
 														
@@ -115,10 +119,10 @@
 
 														if (player.transform.position.y >= this.transform.position.y) {
 	
-																this.transform.Translate (10f * this.aim_attack * Time.deltaTime, 0.5f * Time.deltaTime, 0);
+																this.transform.Translate ((5.5f * this.aim_attack) * Time.deltaTime, 0.5f * Time.deltaTime, 0);
 														} else {
 
-																this.transform.Translate (10f * this.aim_attack * Time.deltaTime, -0.5f * Time.deltaTime, 0);
+																this.transform.Translate ((5.5f * this.aim_attack) * Time.deltaTime, -0.5f * Time.deltaTime, 0);
 
 														}
 
@@ -143,7 +147,7 @@
 			
 						}
 				}
-		}
+		
 		
 		void OnTriggerEnter2D(Collider2D other) {
 		
@@ -156,6 +160,22 @@
 						analisator.GetComponent<Analise>().melee_attacks_hit++;
 
 					}
+
+		if (other.gameObject.tag == "barreira" && this.isAttacking == true) {
+
+			if(other.transform.position.x > this.transform.position.x){
+			this.isAttacking = false;
+			this.transform.position = new Vector2 (this.transform.position.x - 0.3f, this.transform.position.y);
+			}else{
+
+				this.isAttacking = false;
+				this.transform.position = new Vector2 (this.transform.position.x + 0.3f, this.transform.position.y);
+
 			}
+				}
+
+			}
+
+
 	}
 

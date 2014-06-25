@@ -76,7 +76,7 @@ public class Robot_Move : MonoBehaviour {
 
 
 											
-				
+					if (this.transform.position.x <= enemy_creator.GetComponent<Enemy_Create>().max_x && this.transform.position.x >= enemy_creator.GetComponent<Enemy_Create>().min_x){
 										if (player.transform.position.y >= this.transform.position.y) {
 						this.transform.Translate (0, /*0.003*/0.3f* Time.deltaTime, 0);
 												anim.SetBool ("andando", true);
@@ -90,6 +90,7 @@ public class Robot_Move : MonoBehaviour {
 												anim.SetBool ("atirando", false);
 										}
 								}
+				}
 
 				if (Time.time > proximotiro && this.transform.position.x >= enemy_spawn.GetComponent<Enemy_Create>().min_x && this.transform.position.x <= enemy_spawn.GetComponent<Enemy_Create>().max_x && (this.transform.position.y <= (player.transform.position.y + 0.2f) && this.transform.position.y >= (player.transform.position.y - 0.2f)) ) {
 										anim.SetBool ("atirando", true);
