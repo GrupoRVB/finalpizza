@@ -265,7 +265,7 @@ public class Movimento : MonoBehaviour {
 				}
 
 	void Curar(){
-		if (Input.GetButtonDown ("Kitmedico")) {
+		if (Input.GetButtonDown ("Kitmedico")||Input.GetKeyDown(KeyCode.M)) {
 			if(MedictKit >0){
 			MedictKit -=1;
 			}

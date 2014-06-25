@@ -47,6 +47,8 @@
 				if (anim.GetBool ("vivo") == false) {
 						this.transform.Translate (0, 0, 0);
 						this.hit_circle.enabled = false;
+
+
 				} else {
 
 						distancia = player.transform.position.x - this.transform.position.x;

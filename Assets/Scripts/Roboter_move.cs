@@ -44,6 +44,7 @@
 				public float control_dead = 0;
 				private float passar = 0;
 	public AudioClip morreu;
+	public AudioClip tiro;
 	//public GameObject municao1;
 	//public GameObject municao2;
 	public bool falled = false;
@@ -183,6 +184,7 @@
 										if (random_action <35) {
 												anim.SetBool ("andando", false);
 												anim.SetBool ("tiro", true);
+						audio.PlayOneShot(tiro);
 												next_walk = Time.time + 0.8f;
 												next_action = Time.time + 7;
 												control = Time.time + 0.5f;

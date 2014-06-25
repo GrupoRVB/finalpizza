@@ -24,6 +24,7 @@ public class Robot_Move : MonoBehaviour {
 	public GameObject analisator;
 
 
+
 	// Use this for initialization
 	void Start () {
 		player = GameObject.Find ("Jogador");
@@ -44,6 +45,7 @@ public class Robot_Move : MonoBehaviour {
 
 
 				if (anim.GetBool ("vivo") == false) {
+
 			this.transform.Translate(0,0 , 0 );
 				} else {
 

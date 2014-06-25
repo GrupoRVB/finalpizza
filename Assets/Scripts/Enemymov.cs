@@ -18,6 +18,7 @@ public class Enemymov : MonoBehaviour {
 	public Vector3 coherency;
 	public Vector3 separation;
 	public GameObject analisator;
+	public AudioClip morto;
 
 
 	// Use this for initialization
@@ -92,6 +93,7 @@ public class Enemymov : MonoBehaviour {
 
 
 		if(vida <= 0){
+				audio.PlayOneShot(morto);
 				this.layer.sortingLayerName = "Frente";
 
 			anim.SetBool("vivo", false);
@@ -107,7 +109,9 @@ public class Enemymov : MonoBehaviour {
 			if(rand < 5){
 				Instantiate (municao1, new Vector3(this.transform.position.x,this.transform.position.y-0.3f,0), Quaternion.identity);
 				Instantiate (municao2, new Vector3(this.transform.position.x,this.transform.position.y-0.2f,0), Quaternion.identity);
+
 					}
+
 				}
 			}
 		}

@@ -16,6 +16,7 @@ public class Chefe_sound : MonoBehaviour {
 			audio.clip = loop;
 			audio.Play ();
 			mudar = false;
+			audio.loop = true;
 		}
 						//if (audio.isPlaying) {
 						//

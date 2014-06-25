@@ -8,9 +8,10 @@ public class Boss_fire : MonoBehaviour {
 	public int real_dir;
 	public GameObject player;
 	public GameObject chefe;
-	
+	public AudioClip tiro;
 	// Use this for initialization
 	void Start () {
+		audio.PlayOneShot (tiro);
 		player = GameObject.Find ("Jogador");
 		cont_wait = 0;
 		
