@@ -89,7 +89,21 @@ public class Enemymov : MonoBehaviour {
 
 
 
+			if(this.transform.position.x >= 29.4f && this.transform.position.x <= 33.8f){
 
+				if(this.transform.position.y <= -0.9f){
+
+					this.transform.position = new Vector2(this.transform.position.x, -0.9f);
+
+				}
+
+				if(this.transform.position.y >= -0.62f){
+					
+					this.transform.position = new Vector2(this.transform.position.x, -0.62f);
+					
+				}
+
+			}
 
 
 		if(vida <= 0){
