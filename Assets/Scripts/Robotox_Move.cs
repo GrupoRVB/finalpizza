@@ -44,7 +44,7 @@
 		
 		// Update is called once per frame
 		void Update () {	
-<<<<<<< HEAD
+
 				if (anim.GetBool ("vivo") == false) {
 						this.transform.Translate (0, 0, 0);
 						this.hit_circle.enabled = false;
@@ -72,7 +72,7 @@
 														anim.SetBool ("andando", true);
 														anim.SetBool ("atacando", false);
 												} else if (distancia < -0.5f) {
-=======
+
 		if (anim.GetBool ("vivo") == false) {
 			this.transform.Translate (0, 0, 0);
 		} else {
@@ -97,7 +97,6 @@
 						anim.SetBool ("andando", true);
 						anim.SetBool ("atacando", false);
 					} else if (distancia < -0.2f) {
->>>>>>> 4519f6f719840283a10179a4f6326f218967b969
 						this.transform.Translate ((-0.6f - analisator.GetComponent<Analise>().move_speed) * Time.deltaTime, 0, 0);
 						anim.SetBool ("andando", true);
 						anim.SetBool ("atacando", false);
@@ -176,7 +175,12 @@
 
 			
 						}
+					}
 				}
+			}
+		}
+	}
+				
 		
 		
 		void OnTriggerEnter2D(Collider2D other) {

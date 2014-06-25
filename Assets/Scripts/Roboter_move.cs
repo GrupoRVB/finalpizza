@@ -1,4 +1,4 @@
-﻿		using UnityEngine;
+		using UnityEngine;
 		using System.Collections;
 
 		public class Roboter_move : MonoBehaviour {
@@ -44,22 +44,19 @@
 				public float control_dead = 0;
 				private float passar = 0;
 	public AudioClip morreu;
-	public AudioClip tiro;
+
 	//public GameObject municao1;
 	//public GameObject municao2;
 	public bool falled = false;
-	public GameObject shadow;
-	public bool create_shadow = false;
 				
 				// Use this for initialization
 				void Start () {
 					
-					player = GameObject.Find ("Jogador");
+		player = GameObject.Find ("Jogador");
 					camera_obj = GameObject.Find ("Main Camera");
 					anim = GetComponent<Animator> ();
 					layer = GetComponent<SpriteRenderer>();
 					hit_area = GetComponent<BoxCollider2D> ();
-					
 					
 					
 					
@@ -184,10 +181,10 @@
 
 										random_action = Random.Range (1, 100);
 
-										if (random_action <0) {
+										if (random_action <35) {
 												anim.SetBool ("andando", false);
 												anim.SetBool ("tiro", true);
-						audio.PlayOneShot(tiro);
+				
 												next_walk = Time.time + 0.8f;
 												next_action = Time.time + 7;
 												control = Time.time + 0.5f;
@@ -199,7 +196,7 @@
 												}
 												this.shoting = true;
 
-										} else if (random_action >= 0 && random_action < 1) {
+										} else if (random_action >= 35 && random_action < 75) {
 												anim.SetBool ("andando", false);
 												anim.SetBool ("soco", true);
 												next_walk = Time.time + 2.1f;
@@ -213,7 +210,7 @@
 														this.dir = -1;
 												}
 
-										} else if (random_action >= 1 && random_action < 100) {
+										} else if (random_action >= 75 && random_action < 100) {
 												anim.SetBool ("andando", false);
 												anim.SetBool ("pulo", true);
 												next_walk = Time.time + 11.1f;
@@ -221,15 +218,13 @@
 												control = Time.time + 1.5f;
 												this.jumping = true;
 												trigger_fall = Time.time + 5;
-												stop_falling = Time.time + 12;
+												stop_falling = Time.time + 10;
 												this.is_falling = false;
 												action = true;	
-												falled = false;
-												create_shadow = false;
-												
-												
-						
-					}
+											falled = false;
+
+
+										}
 								}
 								if (Time.time > control && this.shoting == true) {
 										this.shoting = false;
@@ -245,15 +240,8 @@
 								}
 
 								if (Time.time > control && this.jumping == true && Time.time < trigger_fall) {
-								
-					if (create_shadow == false){
-
-						Instantiate (shadow, new Vector3 (this.transform.position.x, this.transform.position.y - 0.7f, 0), Quaternion.identity);
-						create_shadow = true;
-					}
 
 					this.transform.Translate (0, 18* Time.deltaTime, 0);
-
 
 										if (distancia >= 0) {
 						this.transform.Translate (0.5f* Time.deltaTime, 0, 0);
@@ -320,11 +308,11 @@
 								if (Time.time < camera_time) {
 
 										if (camera_control >= 0 && camera_control <= 3) {
-												camera_obj.transform.Translate (1.0f*Time.deltaTime, 0, 0);
+												camera_obj.transform.Translate (3.5f*Time.deltaTime, 0, 0);
 												camera_control++;
 
 										} else if (camera_control > 3 && camera_control <= 6) {
-						camera_obj.transform.Translate (-1.0f*Time.deltaTime, 0, 0);
+						camera_obj.transform.Translate (-3.5f*Time.deltaTime, 0, 0);
 												camera_control++;
 
 										} else if (camera_control > 6) {
