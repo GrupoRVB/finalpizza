@@ -17,6 +17,6 @@ public class Som_Jogo : MonoBehaviour {
 			audio.volume -=0.021f* Time.deltaTime;
 
 		}
-		Debug.LogError(audio.volume);
+
 	}
 }

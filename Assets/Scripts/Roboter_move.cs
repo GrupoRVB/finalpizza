@@ -44,15 +44,15 @@
 				public float control_dead = 0;
 				private float passar = 0;
 	public AudioClip morreu;
-<<<<<<< HEAD
+
 	public AudioClip dash;
 	public AudioClip pulou;
 	private int pogpulo;
 
-=======
+
 	public GameObject shadow;
 	public bool create_shadow = false;
->>>>>>> ef5ccfad4f8d443fa64261a37ef8ff0ebb1457de
+
 
 	//public GameObject municao1;
 	//public GameObject municao2;
@@ -252,14 +252,14 @@
 								}
 
 								if (Time.time > control && this.jumping == true && Time.time < trigger_fall) {
-<<<<<<< HEAD
+
 		
 					this.transform.Translate (0, 18* Time.deltaTime, 0);
 					if(pogpulo == 1){
 						audio.PlayOneShot(pulou);
 						pogpulo =0;
 					}
-=======
+
 
 					if (create_shadow == false){
 
@@ -271,7 +271,7 @@
 					this.transform.Translate (0, 18* Time.deltaTime, 0);
 
 
->>>>>>> ef5ccfad4f8d443fa64261a37ef8ff0ebb1457de
+ 	
 										if (distancia >= 0) {
 						this.transform.Translate (0.5f* Time.deltaTime, 0, 0);
 
