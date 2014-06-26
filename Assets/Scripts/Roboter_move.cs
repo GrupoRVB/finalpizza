@@ -44,6 +44,10 @@
 				public float control_dead = 0;
 				private float passar = 0;
 	public AudioClip morreu;
+	public AudioClip dash;
+	public AudioClip pulou;
+	private int pogpulo;
+
 
 	//public GameObject municao1;
 	//public GameObject municao2;
@@ -199,6 +203,7 @@
 										} else if (random_action >= 35 && random_action < 75) {
 												anim.SetBool ("andando", false);
 												anim.SetBool ("soco", true);
+						audio.PlayOneShot(dash);
 												next_walk = Time.time + 2.1f;
 												next_action = Time.time + 8;
 												this.socando = true;
@@ -213,6 +218,7 @@
 										} else if (random_action >= 75 && random_action < 100) {
 												anim.SetBool ("andando", false);
 												anim.SetBool ("pulo", true);
+						pogpulo =1;
 												next_walk = Time.time + 11.1f;
 												next_action = Time.time + 15;
 												control = Time.time + 1.5f;
@@ -240,9 +246,12 @@
 								}
 
 								if (Time.time > control && this.jumping == true && Time.time < trigger_fall) {
-
+		
 					this.transform.Translate (0, 18* Time.deltaTime, 0);
-
+					if(pogpulo == 1){
+						audio.PlayOneShot(pulou);
+						pogpulo =0;
+					}
 										if (distancia >= 0) {
 						this.transform.Translate (0.5f* Time.deltaTime, 0, 0);
 
@@ -273,6 +282,7 @@
 					}
 										
 										this.jump_hit = true;
+
 
 										
 

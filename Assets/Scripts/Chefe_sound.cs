@@ -18,6 +18,7 @@ public class Chefe_sound : MonoBehaviour {
 			mudar = false;
 			audio.loop = true;
 		}
+		if(
 						//if (audio.isPlaying) {
 						//
 						//
