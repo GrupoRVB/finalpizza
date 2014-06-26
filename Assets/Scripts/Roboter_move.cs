@@ -44,10 +44,15 @@
 				public float control_dead = 0;
 				private float passar = 0;
 	public AudioClip morreu;
+<<<<<<< HEAD
 	public AudioClip dash;
 	public AudioClip pulou;
 	private int pogpulo;
 
+=======
+	public GameObject shadow;
+	public bool create_shadow = false;
+>>>>>>> ef5ccfad4f8d443fa64261a37ef8ff0ebb1457de
 
 	//public GameObject municao1;
 	//public GameObject municao2;
@@ -61,7 +66,7 @@
 					anim = GetComponent<Animator> ();
 					layer = GetComponent<SpriteRenderer>();
 					hit_area = GetComponent<BoxCollider2D> ();
-					
+
 					
 					
 					anim.SetBool ("caindo", true);
@@ -227,7 +232,8 @@
 												stop_falling = Time.time + 10;
 												this.is_falling = false;
 												action = true;	
-											falled = false;
+												falled = false;
+													create_shadow = false;
 
 
 										}
@@ -246,12 +252,26 @@
 								}
 
 								if (Time.time > control && this.jumping == true && Time.time < trigger_fall) {
+<<<<<<< HEAD
 		
 					this.transform.Translate (0, 18* Time.deltaTime, 0);
 					if(pogpulo == 1){
 						audio.PlayOneShot(pulou);
 						pogpulo =0;
 					}
+=======
+
+					if (create_shadow == false){
+
+												Instantiate (shadow, new Vector3 (this.transform.position.x, this.transform.position.y - 0.7f, 0), Quaternion.identity);
+												create_shadow = true;
+											}
+
+
+					this.transform.Translate (0, 18* Time.deltaTime, 0);
+
+
+>>>>>>> ef5ccfad4f8d443fa64261a37ef8ff0ebb1457de
 										if (distancia >= 0) {
 						this.transform.Translate (0.5f* Time.deltaTime, 0, 0);
 
@@ -318,11 +338,11 @@
 								if (Time.time < camera_time) {
 
 										if (camera_control >= 0 && camera_control <= 3) {
-												camera_obj.transform.Translate (3.5f*Time.deltaTime, 0, 0);
+												camera_obj.transform.Translate (1.5f*Time.deltaTime, 0, 0);
 												camera_control++;
 
 										} else if (camera_control > 3 && camera_control <= 6) {
-						camera_obj.transform.Translate (-3.5f*Time.deltaTime, 0, 0);
+						camera_obj.transform.Translate (-1.5f*Time.deltaTime, 0, 0);
 												camera_control++;
 
 										} else if (camera_control > 6) {
