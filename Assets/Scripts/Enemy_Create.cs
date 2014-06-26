@@ -165,7 +165,7 @@ public class Enemy_Create : MonoBehaviour
 			}
 			
 		}
-		count_remain = GameObject.FindGameObjectsWithTag ("inimigo").Length + GameObject.FindGameObjectsWithTag ("inimigo_atirador").Length - 53;
+		count_remain = GameObject.FindGameObjectsWithTag ("inimigo").Length + GameObject.FindGameObjectsWithTag ("inimigo_atirador").Length;
 
 		if (lock_screen == true && spawned_area == true && count_remain <= 0) {
 

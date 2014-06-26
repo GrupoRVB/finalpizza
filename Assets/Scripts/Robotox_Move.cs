@@ -46,34 +46,6 @@
 		void Update () {	
 
 				if (anim.GetBool ("vivo") == false) {
-						this.transform.Translate (0, 0, 0);
-						this.hit_circle.enabled = false;
-
-
-				} else {
-
-						distancia = player.transform.position.x - this.transform.position.x;
-						if (distancia > -20 && distancia < 20) {
-											
-								if (Time.time > next_walk) {
-
-												if (distancia >= 0.5f && this.isAttacking == false) {
-														this.transform.localScale = new Vector2 (-1, 1);
-														this.aim = 1;
-												} else if (distancia < -0.5f) {
-														this.transform.localScale = new Vector2 (1, 1);
-														this.aim = -1;
-												}
-
-												this.isAttacking = false;
-
-												if (distancia >= 0.5f) {
-														this.transform.Translate (/*0.008f*/(0.6f +  analisator.GetComponent<Analise>().move_speed)* Time.deltaTime, 0, 0);
-														anim.SetBool ("andando", true);
-														anim.SetBool ("atacando", false);
-												} else if (distancia < -0.5f) {
-
-		if (anim.GetBool ("vivo") == false) {
 			this.transform.Translate (0, 0, 0);
 		} else {
 			
@@ -176,10 +148,10 @@
 			
 						}
 					}
-				}
-			}
-		}
-	}
+				
+			
+		
+	
 				
 		
 		
