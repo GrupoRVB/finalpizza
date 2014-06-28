@@ -72,7 +72,7 @@ public class Enemy_Create : MonoBehaviour
 		{
 				tempo = Time.time;
 				//se for a posiçao do jogador for maior ou igual a 53.10
-				if (player.transform.position.x >= 53 && boss_activated == false) {
+				if (player.transform.position.x >= 56.6f && boss_activated == false) {
 						boss_control = Time.time + 10;
 						boss_activated = true;
 						//o tempo do spawn e diminuido (fica mais rapido)
