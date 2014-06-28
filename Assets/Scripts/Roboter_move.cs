@@ -45,7 +45,7 @@
 				private float passar = 0;
 	public AudioClip morreu;
 	public AudioClip terremoto;
-
+	public AudioClip tiro;	
 	public AudioClip dash;
 	public AudioClip pulou;
 	private int pogpulo;
@@ -241,6 +241,7 @@
 								}
 								if (Time.time > control && this.shoting == true) {
 										this.shoting = false;
+					audio.PlayOneShot(tiro);
 					Instantiate (Boss_fire, new Vector3 (this.transform.position.x + (0.56f * this.aim), this.transform.position.y - 0.21f, 0), Quaternion.identity);
 									
 								}	
@@ -263,6 +264,7 @@
 					if (create_shadow == false){
 												Instantiate (shadow, new Vector3 (this.transform.position.x, this.transform.position.y - 0.7f, 0), Quaternion.identity);
 												create_shadow = true;
+
 											}
 
 
