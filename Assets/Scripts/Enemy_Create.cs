@@ -90,7 +90,7 @@ public class Enemy_Create : MonoBehaviour
 					Instantiate (Boss, new Vector3 (58, 2.37f, 0), Quaternion.identity);
 
 
-			Boss.name = "Boss_Spawned";
+
 
 
 
