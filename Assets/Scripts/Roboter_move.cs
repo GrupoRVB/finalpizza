@@ -44,6 +44,7 @@
 				public float control_dead = 0;
 				private float passar = 0;
 	public AudioClip morreu;
+	public AudioClip terremoto;
 
 	public AudioClip dash;
 	public AudioClip pulou;
@@ -259,10 +260,7 @@
 						audio.PlayOneShot(pulou);
 						pogpulo =0;
 					}
-
-
 					if (create_shadow == false){
-
 												Instantiate (shadow, new Vector3 (this.transform.position.x, this.transform.position.y - 0.7f, 0), Quaternion.identity);
 												create_shadow = true;
 											}
@@ -274,13 +272,8 @@
  	
 										if (distancia >= 0) {
 						this.transform.Translate (0.5f* Time.deltaTime, 0, 0);
-
-							
 										} else {
 						this.transform.Translate (-0.5f* Time.deltaTime, 0, 0);
-
-							
-							
 										}
 
 									
@@ -299,6 +292,7 @@
 
 					if(this.transform.position.y < -0.7184167){
 						this.transform.position = new Vector3(this.transform.position.x, -0.7184167f,0);
+
 					}
 										
 										this.jump_hit = true;
@@ -313,6 +307,7 @@
 										hit_pulo = Time.time + 0.1f;
 										stop_falling = 0;
 										anim.SetBool ("caindo", true);
+					audio.PlayOneShot(terremoto);
 										camera_shake = true;
 										camera_time = Time.time + 2;
 										falled = true;
