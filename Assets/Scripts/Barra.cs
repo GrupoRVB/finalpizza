@@ -43,7 +43,7 @@ public class Barra : MonoBehaviour {
 
 		if (Input.GetButtonDown ("Kitmedico")||Input.GetKeyDown(KeyCode.M)) {
 				if(GetComponent<Movimento>().MedictKit > 0){
-				quantvida +=30;
+				quantvida +=40;
 				if(quantvida  > 100)
 				{
 					quantvida = 100;
@@ -114,7 +114,7 @@ public class Barra : MonoBehaviour {
 			//e destroy a bala do inimigo
 			Destroy(other.gameObject);
 			//perde 2 de vida
-			quantvida -=2;
+			quantvida -=1.5f;
 
 			
 			

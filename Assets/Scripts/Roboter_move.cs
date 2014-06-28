@@ -236,7 +236,7 @@
 												this.is_falling = false;
 												action = true;	
 												falled = false;
-													create_shadow = false;
+												create_shadow = false;
 
 
 										}
@@ -326,6 +326,8 @@
 										anim.SetBool ("caindo2", true);
 										
 										this.is_falling = false;
+
+										
 										
 
 								}
@@ -438,7 +440,7 @@
 
 				
 						if (other.gameObject.tag == "Bala") {
-								boss_life -= 50;
+								boss_life -= 1;
 								tomou = true;
 						}
 						if (other.gameObject.tag == "Bala_tomate") {

@@ -9,7 +9,8 @@ public class shadow_move : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 	
-		boss = GameObject.FindGameObjectWithTag ("boss");
+		boss = GameObject.Find ("Boss");
+		Destroy(gameObject, 6.5f);
 
 	}
 	
@@ -78,14 +79,15 @@ public class shadow_move : MonoBehaviour {
 		}
 
 
-	
-		if (boss.GetComponent<Roboter_move> ().anim.GetBool ("caindo2") == true) {
 
-			Destroy(gameObject, 0.5f);
 
-				}
+			
+
+
 
 
 
 	}
+
+
 }

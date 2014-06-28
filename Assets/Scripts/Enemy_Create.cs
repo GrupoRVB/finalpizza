@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Collections;
 
+
 public class Enemy_Create : MonoBehaviour
 {
 
@@ -84,8 +85,12 @@ public class Enemy_Create : MonoBehaviour
 						//boss recebe que ja foi criado
 						boss_created = true;	
 						// e instancia o boss
-						Instantiate (Boss, new Vector3 (58, 2.37f, 0), Quaternion.identity);
 
+
+					Instantiate (Boss, new Vector3 (58, 2.37f, 0), Quaternion.identity);
+
+
+			Boss.name = "Boss_Spawned";
 
 
 
