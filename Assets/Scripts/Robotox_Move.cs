@@ -159,7 +159,7 @@
 		
 					if (other.gameObject.tag == "jogado" && this.isAttacking == true && other.GetComponent<Barra>().invenc == false) {
 							
-						other.GetComponent<Barra>().quantvida-=5;
+						other.GetComponent<Barra>().quantvida-=2.5f;
 						other.GetComponent<Barra>().rend.color = new Color(1f, 0f, 0f, 1f);
 						other.GetComponent<Barra>().invenc = true;
 						other.GetComponent<Barra>().proxima = Time.time + 0.8f;	
