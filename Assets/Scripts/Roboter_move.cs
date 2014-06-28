@@ -48,7 +48,9 @@
 	public AudioClip tiro;	
 	public AudioClip dash;
 	public AudioClip pulou;
+	public AudioClip batendo;
 	private int pogpulo;
+	private float pogsoco;
 
 
 	public GameObject shadow;
@@ -365,8 +367,7 @@
 								next_walk = Time.time + 0.5f;
 								next_action = 0;
 								next_action = Time.time + 5;
-
-						}
+			}
 
 				}
 				
